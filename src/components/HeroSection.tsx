@@ -1,97 +1,234 @@
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { ArrowDownCircle, Star } from 'lucide-react';
 
 const HeroSection = () => {
+  // Animation variants
+  const floatingAnimation = {
+    y: [0, -10, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  };
+
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20"
     >
-      <div className="absolute inset-0 bg-designer-light-yellow/50 dark:bg-designer-dark-yellow/10 -z-10"></div>
-      <div className="absolute top-0 left-0 right-0 bottom-0 -z-10 bg-[radial-gradient(circle_at_20%_75%,rgba(255,213,79,0.2),transparent_40%)] dark:bg-[radial-gradient(circle_at_20%_75%,rgba(255,193,7,0.1),transparent_40%)]"></div>
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
+        <div className="absolute inset-0 bg-designer-light-yellow/30 dark:bg-designer-dark-yellow/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,213,79,0.4),transparent_30%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,193,7,0.2),transparent_30%)]"></div>
+        
+        {/* Decorative elements */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-primary/30 dark:bg-primary/20"
+            style={{
+              width: `${Math.random() * 100 + 50}px`,
+              height: `${Math.random() * 100 + 50}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.1
+            }}
+            animate={{
+              x: [0, Math.random() * 20 - 10],
+              y: [0, Math.random() * 20 - 10],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
       
-      <div className="container mx-auto px-4 md:px-8 pt-16 lg:pt-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <motion.div
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <motion.div 
+            className="lg:col-span-7 z-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div className="space-y-6">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-designer-light-yellow dark:bg-designer-dark-yellow/30 text-designer-dark-yellow rounded-full py-2 px-4"
+              >
+                <Star className="h-4 w-4 fill-designer-dark-yellow text-designer-dark-yellow" />
+                <span className="text-sm font-medium">UI/UX Designer</span>
+              </motion.div>
+              
+              <motion.h1 
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                Creating <br />
+                <motion.span 
+                  className="gradient-text relative inline-block"
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  beautiful
+                </motion.span>
+                <br className="md:hidden" /> digital experiences
+              </motion.h1>
+              
+              <motion.p 
+                className="text-foreground/80 dark:text-foreground/70 text-lg md:text-xl max-w-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                Hi, I'm a passionate UI/UX designer focused on crafting intuitive and engaging user experiences that solve real problems.
+              </motion.p>
+            </motion.div>
+            
+            <motion.div 
+              className="flex flex-wrap gap-4 mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <span className="inline-block py-1 px-3 mb-4 bg-designer-light-yellow dark:bg-designer-dark-yellow/30 text-designer-dark-yellow dark:text-designer-yellow rounded-full text-sm font-medium">UI/UX Designer</span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Creating <span className="gradient-text">beautiful</span> digital experiences
-              </h1>
-              <p className="mt-6 text-gray-600 dark:text-gray-300 text-lg md:text-xl max-w-lg">
-                Hi, I'm a passionate UI/UX designer focused on crafting intuitive and engaging user experiences that solve real problems.
-              </p>
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-designer-dark-yellow dark:hover:bg-designer-yellow/90 text-primary-foreground group relative overflow-hidden"
+              >
+                <span className="relative z-10">View My Work</span>
+                <span className="absolute inset-0 bg-designer-dark-yellow dark:bg-designer-yellow/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-primary text-primary hover:bg-primary/10 group"
+              >
+                <span>Contact Me</span>
+                <motion.span 
+                  className="ml-2"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </Button>
             </motion.div>
             
             <motion.div 
-              className="flex flex-wrap gap-4"
+              className="flex items-center gap-8 mt-12 text-foreground/80 dark:text-foreground/70"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
             >
-              <Button size="lg" className="bg-primary hover:bg-designer-dark-yellow dark:hover:bg-designer-yellow/90 text-primary-foreground">
-                View My Work
-              </Button>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                Contact Me
-              </Button>
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-8 text-foreground/80 dark:text-foreground/70"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <div className="flex flex-col">
-                <span className="text-3xl font-bold text-primary">5+</span>
+              <motion.div 
+                className="flex flex-col"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-4xl font-bold text-primary">5+</span>
                 <span className="text-sm">Years Experience</span>
-              </div>
+              </motion.div>
               <div className="h-12 w-px bg-border"></div>
-              <div className="flex flex-col">
-                <span className="text-3xl font-bold text-primary">50+</span>
+              <motion.div 
+                className="flex flex-col"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-4xl font-bold text-primary">50+</span>
                 <span className="text-sm">Projects Completed</span>
-              </div>
+              </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
           
           <motion.div 
-            className="relative hidden lg:block"
+            className="lg:col-span-5 relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
           >
             <div className="relative">
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full"></div>
-              <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/10 rounded-full"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Designer workspace" 
-                className="rounded-xl shadow-xl relative z-10 object-cover h-[500px] w-full"
-              />
+              <motion.div 
+                className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full z-0"
+                animate={floatingAnimation}
+              ></motion.div>
+              <motion.div 
+                className="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/20 rounded-full z-0"
+                animate={{
+                  ...floatingAnimation,
+                  transition: { ...floatingAnimation.transition, delay: 1 }
+                }}
+              ></motion.div>
+              
+              <div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden rotate-3 hover:rotate-0 transition-all duration-500">
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                  alt="Designer workspace" 
+                  className="w-full h-[500px] object-cover"
+                />
+              </div>
+              
+              <motion.div 
+                className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground">UI</div>
+                  <div>
+                    <p className="font-semibold">UI Design</p>
+                    <p className="text-xs text-foreground/60">Expert Level</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 -rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 bg-designer-dark-yellow rounded-full flex items-center justify-center text-white">UX</div>
+                  <div>
+                    <p className="font-semibold">UX Research</p>
+                    <p className="text-xs text-foreground/60">Professional</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-        <a href="#about" className="flex flex-col items-center text-foreground/70 hover:text-primary">
-          <span className="text-sm mb-2">Scroll Down</span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-5 w-5" 
-            viewBox="0 0 20 20" 
-            fill="currentColor"
-          >
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
-          </svg>
-        </a>
-      </div>
+      <motion.a 
+        href="#about"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-foreground/60 hover:text-primary transition-colors"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        whileHover={{ scale: 1.1 }}
+      >
+        <span className="text-sm mb-2">Scroll Down</span>
+        <motion.div
+          animate={{
+            y: [0, 5, 0]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "loop"
+          }}
+        >
+          <ArrowDownCircle className="h-6 w-6" />
+        </motion.div>
+      </motion.a>
     </section>
   );
 };

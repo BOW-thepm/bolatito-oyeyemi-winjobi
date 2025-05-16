@@ -2,14 +2,26 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { motion } from 'framer-motion';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      
+      // Update active section based on scroll position
+      const sections = ['hero', 'about', 'projects', 'contact'];
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element && window.scrollY >= element.offsetTop - 100) {
+          setActiveLink(section);
+          break;
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -24,30 +36,64 @@ const NavBar = () => {
   ];
 
   return (
-    <nav 
+    <motion.nav 
       className={cn(
-        'fixed w-full z-50 transition-all duration-300 py-4',
+        'fixed w-full z-50 transition-all duration-300',
         isScrolled 
-          ? 'bg-background shadow-md py-3 dark:bg-background/90 dark:backdrop-blur-sm' 
-          : 'bg-transparent'
+          ? 'py-3 backdrop-blur-lg bg-background/90 shadow-md' 
+          : 'py-5 bg-transparent'
       )}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <a href="#hero" className="font-playfair text-2xl font-bold gradient-text">
-          Design<span className="text-primary">.</span>
-        </a>
+      <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
+        <motion.a 
+          href="#hero" 
+          className="font-playfair text-2xl font-bold relative z-10 group"
+          whileHover={{ scale: 1.05 }}
+        >
+          <span className="gradient-text">Design</span>
+          <span className="text-primary relative">
+            .
+            <motion.span 
+              className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"
+              animate={{ 
+                scale: [1, 1.5, 1],
+                opacity: [1, 0.5, 1]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity
+              }}
+            />
+          </span>
+        </motion.a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 items-center">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-foreground hover:text-primary font-medium transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+        <div className="hidden md:flex space-x-10 items-center">
+          <div className="flex space-x-6 items-center">
+            {navLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "text-foreground hover:text-primary font-medium transition-colors relative py-2",
+                  activeLink === link.href.substring(1) && "text-primary"
+                )}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => setActiveLink(link.href.substring(1))}
+              >
+                {link.name}
+                {activeLink === link.href.substring(1) && (
+                  <motion.div 
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"
+                    layoutId="navIndicator"
+                  />
+                )}
+              </motion.a>
+            ))}
+          </div>
           <ThemeToggle />
         </div>
 
@@ -55,54 +101,66 @@ const NavBar = () => {
         <div className="md:hidden flex items-center space-x-4">
           <ThemeToggle />
           <button 
-            className="text-foreground"
+            className="text-foreground p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            <div className="w-8 h-6 flex flex-col justify-between overflow-hidden">
+              <motion.span 
+                className="w-8 h-0.5 bg-foreground rounded-full"
+                animate={{ 
+                  rotate: isMobileMenuOpen ? 45 : 0,
+                  y: isMobileMenuOpen ? 10 : 0
+                }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span 
+                className="w-8 h-0.5 bg-foreground rounded-full"
+                animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span 
+                className="w-8 h-0.5 bg-foreground rounded-full"
+                animate={{ 
+                  rotate: isMobileMenuOpen ? -45 : 0,
+                  y: isMobileMenuOpen ? -10 : 0
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-background dark:bg-background/95 dark:backdrop-blur-md shadow-lg absolute w-full animate-fade-in">
-          <div className="container mx-auto py-4 flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-foreground hover:text-primary font-medium px-4 py-2 rounded-md transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+      <motion.div 
+        className={cn(
+          "md:hidden fixed top-[68px] left-0 right-0 bg-background dark:bg-background/95 dark:backdrop-blur-md shadow-lg",
+          "overflow-hidden"
+        )}
+        initial={{ height: 0 }}
+        animate={{ height: isMobileMenuOpen ? 'auto' : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="container mx-auto py-6 flex flex-col space-y-6">
+          {navLinks.map((link, index) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              className="text-foreground hover:text-primary font-medium px-6 py-3 rounded-md hover:bg-foreground/5 transition-colors"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setActiveLink(link.href.substring(1));
+              }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.3 }}
+            >
+              {link.name}
+            </motion.a>
+          ))}
         </div>
-      )}
-    </nav>
+      </motion.div>
+    </motion.nav>
   );
 };
 

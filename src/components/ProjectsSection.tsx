@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Eye, ArrowRight } from 'lucide-react';
+import { Eye, ArrowRight, ExternalLink } from 'lucide-react';
 
 const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   
   const projects = [
     {
@@ -49,6 +50,7 @@ const ProjectsSection = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
   
+  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -61,24 +63,29 @@ const ProjectsSection = () => {
   
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    show: { opacity: 1, y: 0 }
   };
   
   return (
-    <section id="projects" className="section-padding">
+    <section id="projects" className="section-padding py-24 lg:py-32 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl"></div>
+      </div>
+      
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.span 
-            className="inline-block py-1 px-3 mb-4 bg-designer-light-purple text-designer-dark-purple rounded-full text-sm font-medium"
+            className="inline-block py-1 px-3 mb-4 bg-designer-light-yellow text-designer-dark-yellow rounded-full text-sm font-medium"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
             My Work
           </motion.span>
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-5xl font-bold mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -87,7 +94,7 @@ const ProjectsSection = () => {
             Featured <span className="gradient-text">Projects</span>
           </motion.h2>
           <motion.p 
-            className="text-gray-600 max-w-2xl mx-auto"
+            className="text-foreground/70 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -104,19 +111,32 @@ const ProjectsSection = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          {filters.map((filter) => (
-            <Button
-              key={filter}
-              variant={activeFilter === filter ? "default" : "outline"}
-              onClick={() => setActiveFilter(filter)}
-              className={activeFilter === filter 
-                ? "bg-designer-purple hover:bg-designer-dark-purple" 
-                : "border-gray-300 hover:border-designer-purple hover:text-designer-purple"
-              }
-            >
-              {filter}
-            </Button>
-          ))}
+          <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-1.5 flex gap-2 shadow-md">
+            {filters.map((filter) => (
+              <motion.button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={cn(
+                  "relative px-4 py-2 rounded-full text-sm font-medium transition-all",
+                  "hover:text-primary focus:outline-none"
+                )}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {activeFilter === filter && (
+                  <motion.div
+                    layoutId="filterBackground"
+                    className="absolute inset-0 bg-primary rounded-full"
+                    initial={false}
+                    transition={{ type: "spring", duration: 0.6 }}
+                  />
+                )}
+                <span className={activeFilter === filter ? "text-primary-foreground relative z-10" : ""}>
+                  {filter}
+                </span>
+              </motion.button>
+            ))}
+          </div>
         </motion.div>
         
         <motion.div 
@@ -129,61 +149,102 @@ const ProjectsSection = () => {
           {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow project-card"
               variants={item}
+              transition={{ duration: 0.5 }}
+              className="group"
+              onMouseEnter={() => setHoveredProject(project.id)}
+              onMouseLeave={() => setHoveredProject(null)}
             >
-              <div className="relative overflow-hidden group">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                  <Button 
-                    variant="secondary" 
-                    size="sm" 
-                    className="flex items-center gap-2"
+              <motion.div 
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              >
+                <div className="relative overflow-hidden aspect-video">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center"
+                    animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
                   >
-                    <Eye size={16} />
-                    View Project
-                  </Button>
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                  <Badge variant="outline" className="bg-designer-light-purple text-designer-dark-purple border-none">
+                    <Button 
+                      variant="secondary" 
+                      size="lg"
+                      className="gap-2 shadow-xl"
+                    >
+                      <Eye size={18} />
+                      View Details
+                    </Button>
+                  </motion.div>
+                  
+                  <motion.img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover"
+                    animate={{ 
+                      scale: hoveredProject === project.id ? 1.05 : 1
+                    }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  
+                  <Badge 
+                    variant="outline" 
+                    className="absolute top-4 right-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-foreground border-none z-20"
+                  >
                     {project.category}
                   </Badge>
                 </div>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{project.title}</h3>
+                  </div>
+                  <p className="text-foreground/70 mb-4 line-clamp-2">{project.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex justify-between items-center">
+                    <Button 
+                      variant="ghost" 
+                      className="text-primary hover:text-designer-dark-yellow hover:bg-designer-light-yellow/50 p-0 gap-2 group/btn"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      View Case Study 
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ArrowRight size={16} />
+                      </motion.div>
+                    </Button>
+                    
+                    <Button 
+                      size="icon"
+                      variant="outline"
+                      className="rounded-full h-8 w-8"
+                    >
+                      <ExternalLink size={14} />
+                    </Button>
+                  </div>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  className="text-designer-purple hover:text-designer-dark-purple hover:bg-designer-light-purple/50 p-0 flex items-center gap-2"
-                >
-                  View Case Study 
-                  <ArrowRight size={16} />
-                </Button>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
         
-        <div className="text-center mt-12">
-          <Button className="bg-designer-purple hover:bg-designer-dark-purple text-white">
-            View All Projects
-          </Button>
+        <div className="text-center mt-16">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button className="bg-primary hover:bg-designer-dark-yellow text-primary-foreground text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-primary/20">
+              View All Projects
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -191,3 +252,8 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
+
+// Helper function since cn might be missing in this context
+function cn(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(Boolean).join(' ');
+}
