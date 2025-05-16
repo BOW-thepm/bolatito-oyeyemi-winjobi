@@ -19,11 +19,11 @@ const Footer = () => {
   ];
   
   return (
-    <footer className="bg-designer-charcoal text-white py-12">
+    <footer className="bg-designer-charcoal text-white dark:bg-gray-950 py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 mb-8">
           <a href="#hero" className="font-playfair text-2xl font-bold text-white">
-            Design<span className="text-designer-purple">.</span>
+            Design<span className="text-primary">.</span>
           </a>
           
           <div className="flex space-x-4 md:space-x-6">
