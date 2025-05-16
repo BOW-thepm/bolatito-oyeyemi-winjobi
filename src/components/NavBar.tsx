@@ -50,25 +50,29 @@ const NavBar = () => {
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
         <motion.a 
           href="#hero" 
-          className="font-playfair text-2xl font-bold relative z-10 group flex items-center"
+          className="font-playfair relative z-10 group flex items-center"
           whileHover={{ scale: 1.05 }}
         >
-          <span className="gradient-text mr-2">BOW</span>
-          <span className="text-xs sm:text-sm md:text-base font-medium opacity-80">Bolatito Oyeyemi Winjobi</span>
-          <span className="text-primary relative">
-            .
-            <motion.span 
-              className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"
-              animate={{ 
-                scale: [1, 1.5, 1],
-                opacity: [1, 0.5, 1]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity
-              }}
-            />
-          </span>
+          <div className="logo-container flex items-center">
+            <div className="logo-box relative mr-3">
+              <div className="logo-bg absolute inset-0 bg-primary rounded-md -rotate-3 shadow-lg opacity-30"></div>
+              <div className="logo-text relative px-3 py-1 font-bold text-2xl md:text-3xl">
+                <span className="gradient-text">BOW</span>
+                <motion.span 
+                  className="absolute -top-1 -right-1 h-2 w-2 bg-primary rounded-full"
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [1, 0.5, 1]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                />
+              </div>
+            </div>
+            <span className="text-xs sm:text-sm md:text-base font-medium opacity-80">Bolatito Oyeyemi Winjobi</span>
+          </div>
         </motion.a>
 
         {/* Desktop Navigation */}
