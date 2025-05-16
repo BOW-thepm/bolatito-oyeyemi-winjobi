@@ -50,10 +50,11 @@ const NavBar = () => {
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
         <motion.a 
           href="#hero" 
-          className="font-playfair text-2xl font-bold relative z-10 group"
+          className="font-playfair text-2xl font-bold relative z-10 group flex items-center"
           whileHover={{ scale: 1.05 }}
         >
-          <span className="gradient-text">Design</span>
+          <span className="gradient-text mr-2">BOW</span>
+          <span className="text-xs sm:text-sm md:text-base font-medium opacity-80">Bolatito Oyeyemi Winjobi</span>
           <span className="text-primary relative">
             .
             <motion.span 

@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   useEffect(() => {
     // Change page title
-    document.title = "UI/UX Designer Portfolio";
+    document.title = "Bolatito Oyeyemi Winjobi (BOW) - UI/UX Designer Portfolio";
   }, []);
 
   return (
