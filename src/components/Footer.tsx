@@ -37,7 +37,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 relative">
         <motion.button
           onClick={scrollToTop}
-          className="absolute top-0 right-4 md:right-6 -translate-y-1/2 bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-designer-neon-purple transition-colors z-10"
+          className="absolute top-0 right-4 md:right-6 -translate-y-1/2 bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-designer-dark-yellow transition-colors z-10"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >

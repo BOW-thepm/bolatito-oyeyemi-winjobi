@@ -21,8 +21,8 @@ const HeroSection = () => {
     >
       {/* Background Elements */}
       <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
-        <div className="absolute inset-0 bg-designer-soft-lilac/30 dark:bg-designer-electric-violet/10"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(217,191,255,0.4),transparent_30%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(108,56,255,0.2),transparent_30%)]"></div>
+        <div className="absolute inset-0 bg-designer-light-yellow/30 dark:bg-designer-dark-yellow/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,213,79,0.4),transparent_30%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,193,7,0.2),transparent_30%)]"></div>
         
         {/* Decorative elements */}
         {[...Array(6)].map((_, i) => (
@@ -63,9 +63,9 @@ const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-designer-soft-lilac/30 dark:bg-designer-electric-violet/30 text-designer-electric-violet dark:text-designer-soft-lilac rounded-full py-2 px-4"
+                className="inline-flex items-center gap-2 bg-designer-light-yellow dark:bg-designer-dark-yellow/30 text-designer-dark-yellow rounded-full py-2 px-4"
               >
-                <Star className="h-4 w-4 fill-designer-electric-violet dark:fill-designer-soft-lilac text-designer-electric-violet dark:text-designer-soft-lilac" />
+                <Star className="h-4 w-4 fill-designer-dark-yellow text-designer-dark-yellow" />
                 <span className="text-sm font-medium">UI/UX Designer</span>
               </motion.div>
               
@@ -104,10 +104,10 @@ const HeroSection = () => {
             >
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-designer-neon-purple dark:hover:bg-designer-soft-lilac/90 text-primary-foreground group relative overflow-hidden"
+                className="bg-primary hover:bg-designer-dark-yellow dark:hover:bg-designer-yellow/90 text-primary-foreground group relative overflow-hidden"
               >
                 <span className="relative z-10">View My Work</span>
-                <span className="absolute inset-0 bg-designer-neon-purple dark:bg-designer-soft-lilac/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                <span className="absolute inset-0 bg-designer-dark-yellow dark:bg-designer-yellow/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
               </Button>
               
               <Button 
@@ -195,7 +195,7 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 bg-designer-neon-purple rounded-full flex items-center justify-center text-white">UX</div>
+                  <div className="h-10 w-10 bg-designer-dark-yellow rounded-full flex items-center justify-center text-white">UX</div>
                   <div>
                     <p className="font-semibold">UX Research</p>
                     <p className="text-xs text-foreground/60">Professional</p>

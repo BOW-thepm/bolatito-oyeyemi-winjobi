@@ -77,7 +77,7 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.span 
-            className="inline-block py-1 px-3 mb-4 bg-designer-soft-lilac/20 text-designer-electric-violet rounded-full text-sm font-medium"
+            className="inline-block py-1 px-3 mb-4 bg-designer-light-yellow text-designer-dark-yellow rounded-full text-sm font-medium"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -211,7 +211,7 @@ const ProjectsSection = () => {
                   <div className="flex justify-between items-center">
                     <Button 
                       variant="ghost" 
-                      className="text-primary hover:text-designer-neon-purple hover:bg-designer-soft-lilac/30 p-0 gap-2 group/btn"
+                      className="text-primary hover:text-designer-dark-yellow hover:bg-designer-light-yellow/50 p-0 gap-2 group/btn"
                     >
                       View Case Study 
                       <motion.div
@@ -241,7 +241,7 @@ const ProjectsSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button className="bg-primary hover:bg-designer-neon-purple text-primary-foreground text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-primary/20">
+            <Button className="bg-primary hover:bg-designer-dark-yellow text-primary-foreground text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-primary/20">
               View All Projects
             </Button>
           </motion.div>

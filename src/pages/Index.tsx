@@ -11,13 +11,10 @@ const Index = () => {
   useEffect(() => {
     // Change page title
     document.title = "Bolatito Oyeyemi Winjobi (BOW) - UI/UX Designer Portfolio";
-    
-    // Apply futuristic styles to body
-    document.body.classList.add('royal-futuristic-theme');
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-background/90 backdrop-blur-sm">
+    <div className="min-h-screen">
       <NavBar />
       <HeroSection />
       <AboutSection />

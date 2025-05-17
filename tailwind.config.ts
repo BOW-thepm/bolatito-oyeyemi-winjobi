@@ -69,11 +69,6 @@ export default {
 					'light-yellow': '#FEF7CD',
 					'soft-gray': '#F1F0FB',
 					'charcoal': '#403E43',
-					'electric-violet': '#6C38FF',
-					'soft-lilac': '#D9BFFF',
-					'deep-space': '#1E1B2E',
-					'lavender-mist': '#F4F1FA',
-					'neon-purple': '#A259FF',
 				}
 			},
 			borderRadius: {
@@ -117,16 +112,6 @@ export default {
 						opacity: '1',
 						transform: 'translateX(0)'
 					}
-				},
-				'glow': {
-					'0%, 100%': { 
-						boxShadow: '0 0 5px #6C38FF, 0 0 10px #A259FF',
-						opacity: '0.8' 
-					},
-					'50%': { 
-						boxShadow: '0 0 15px #6C38FF, 0 0 20px #A259FF',
-						opacity: '1' 
-					},
 				}
 			},
 			animation: {
@@ -134,7 +119,6 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'slide-in': 'slide-in 0.4s ease-out',
-				'glow': 'glow 2s ease-in-out infinite',
 			},
 			fontFamily: {
 				'poppins': ['Poppins', 'sans-serif'],
