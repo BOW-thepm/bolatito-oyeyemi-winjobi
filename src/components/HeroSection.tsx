@@ -1,243 +1,234 @@
 
-import { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useTheme } from '@/components/ThemeProvider';
-import { ArrowDownCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import { ArrowDownCircle, Star } from 'lucide-react';
 
 const HeroSection = () => {
-  const controls = useAnimation();
-  const { theme } = useTheme();
-  const [scrollIndicator, setScrollIndicator] = useState(true);
-  
-  useEffect(() => {
-    // Hide scroll indicator after scrolling
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrollIndicator(false);
-      } else {
-        setScrollIndicator(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Start animation sequence when component mounts
-    const sequence = async () => {
-      await controls.start("visible");
-    };
-    sequence();
-  }, [controls]);
-
-  // Text animation variants
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      }
-    },
-  };
-
-  const lineVariants = {
-    hidden: { width: 0 },
-    visible: { 
-      width: '100%',
-      transition: { duration: 1, ease: "easeInOut" }
+  // Animation variants
+  const floatingAnimation = {
+    y: [0, -10, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
     }
   };
-
-  // Custom cursor point component
-  const CustomCursor = () => {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
-
-    useEffect(() => {
-      const handleMouseMove = (e: MouseEvent) => {
-        setPosition({ x: e.clientX, y: e.clientY });
-      };
-
-      const handleMouseOver = (e: MouseEvent) => {
-        const target = e.target as HTMLElement;
-        if (target.tagName === 'A' || target.tagName === 'BUTTON' || 
-            target.closest('a') || target.closest('button')) {
-          setIsHovering(true);
-        } else {
-          setIsHovering(false);
-        }
-      };
-
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseover', handleMouseOver);
-
-      return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('mouseover', handleMouseOver);
-      };
-    }, []);
-
-    return (
-      <motion.div
-        className="fixed w-6 h-6 rounded-full pointer-events-none z-50 mix-blend-difference"
-        animate={{
-          x: position.x - 12,
-          y: position.y - 12,
-          scale: isHovering ? 1.5 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
-      >
-        <motion.div 
-          className="w-full h-full rounded-full bg-white opacity-50"
-          animate={{ scale: isHovering ? 1.2 : 1 }}
-        />
-      </motion.div>
-    );
-  };
-
-  // Generate the background gradient based on theme
-  const backgroundGradient = theme === 'dark' 
-    ? 'bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#334155]' // Dark space blue
-    : 'bg-gradient-to-br from-[#FEF9C3] via-[#FEF5E7] to-[#FFFBEB]'; // Soft cream
 
   return (
     <section 
       id="hero" 
-      className={`min-h-screen flex flex-col items-center justify-center relative overflow-hidden ${backgroundGradient}`}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20"
     >
-      {/* Custom cursor (desktop only) */}
-      <div className="hidden md:block">
-        <CustomCursor />
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
+        <div className="absolute inset-0 bg-designer-light-yellow/30 dark:bg-designer-dark-yellow/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,213,79,0.4),transparent_30%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,193,7,0.2),transparent_30%)]"></div>
+        
+        {/* Decorative elements */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-primary/30 dark:bg-primary/20"
+            style={{
+              width: `${Math.random() * 100 + 50}px`,
+              height: `${Math.random() * 100 + 50}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.1
+            }}
+            animate={{
+              x: [0, Math.random() * 20 - 10],
+              y: [0, Math.random() * 20 - 10],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
       
-      {/* Centered content */}
-      <motion.div
-        className="container mx-auto px-4 text-center z-10"
-        initial="hidden"
-        animate={controls}
-        variants={textVariants}
-      >
-        {/* Logo */}
-        <motion.div 
-          className="mb-8"
-          variants={textVariants}
-        >
-          <motion.div
-            className="inline-block relative"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <motion.div 
+            className="lg:col-span-7 z-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <motion.div 
-              className="absolute -inset-6 bg-primary/20 rounded-full blur-xl"
-              animate={{ 
-                scale: [0.8, 1.1, 0.8], 
-                opacity: [0.5, 0.8, 0.5] 
-              }}
-              transition={{ 
-                duration: 5, 
-                repeat: Infinity,
-                repeatType: "reverse" 
-              }}
-            />
-            <div className="relative py-3 px-5 text-6xl md:text-8xl font-bold text-foreground">
-              <span className="font-playfair">B</span>
-              <motion.span 
-                className="relative inline-flex items-center justify-center text-primary mx-1"
-                animate={{ 
-                  rotate: [0, 360],
-                }}
-                transition={{ 
-                  duration: 15, 
-                  repeat: Infinity,
-                  ease: "linear" 
-                }}
+            <motion.div className="space-y-6">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-designer-light-yellow dark:bg-designer-dark-yellow/30 text-designer-dark-yellow rounded-full py-2 px-4"
               >
-                <span className="absolute w-10 h-10 md:w-14 md:h-14 border-2 border-primary/30 rounded-full" />
-                <span className="absolute w-4 h-4 md:w-6 md:h-6 bg-primary/10 rounded-full backdrop-blur-sm" />
-                0
-              </motion.span>
-              <span className="font-playfair">W</span>
+                <Star className="h-4 w-4 fill-designer-dark-yellow text-designer-dark-yellow" />
+                <span className="text-sm font-medium">UI/UX Designer</span>
+              </motion.div>
+              
+              <motion.h1 
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                Creating <br />
+                <motion.span 
+                  className="gradient-text relative inline-block"
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  beautiful
+                </motion.span>
+                <br className="md:hidden" /> digital experiences
+              </motion.h1>
+              
+              <motion.p 
+                className="text-foreground/80 dark:text-foreground/70 text-lg md:text-xl max-w-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                Hi, I'm a passionate UI/UX designer focused on crafting intuitive and engaging user experiences that solve real problems.
+              </motion.p>
+            </motion.div>
+            
+            <motion.div 
+              className="flex flex-wrap gap-4 mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-designer-dark-yellow dark:hover:bg-designer-yellow/90 text-primary-foreground group relative overflow-hidden"
+              >
+                <span className="relative z-10">View My Work</span>
+                <span className="absolute inset-0 bg-designer-dark-yellow dark:bg-designer-yellow/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-primary text-primary hover:bg-primary/10 group"
+              >
+                <span>Contact Me</span>
+                <motion.span 
+                  className="ml-2"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </Button>
+            </motion.div>
+            
+            <motion.div 
+              className="flex items-center gap-8 mt-12 text-foreground/80 dark:text-foreground/70"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+            >
+              <motion.div 
+                className="flex flex-col"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-4xl font-bold text-primary">5+</span>
+                <span className="text-sm">Years Experience</span>
+              </motion.div>
+              <div className="h-12 w-px bg-border"></div>
+              <motion.div 
+                className="flex flex-col"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-4xl font-bold text-primary">50+</span>
+                <span className="text-sm">Projects Completed</span>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+          
+          <motion.div 
+            className="lg:col-span-5 relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
+            <div className="relative">
+              <motion.div 
+                className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full z-0"
+                animate={floatingAnimation}
+              ></motion.div>
+              <motion.div 
+                className="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/20 rounded-full z-0"
+                animate={{
+                  ...floatingAnimation,
+                  transition: { ...floatingAnimation.transition, delay: 1 }
+                }}
+              ></motion.div>
+              
+              <div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden rotate-3 hover:rotate-0 transition-all duration-500">
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                  alt="Designer workspace" 
+                  className="w-full h-[500px] object-cover"
+                />
+              </div>
+              
+              <motion.div 
+                className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground">UI</div>
+                  <div>
+                    <p className="font-semibold">UI Design</p>
+                    <p className="text-xs text-foreground/60">Expert Level</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 -rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 bg-designer-dark-yellow rounded-full flex items-center justify-center text-white">UX</div>
+                  <div>
+                    <p className="font-semibold">UX Research</p>
+                    <p className="text-xs text-foreground/60">Professional</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
-        </motion.div>
-        
-        {/* Full name */}
-        <motion.h2 
-          className="text-xl md:text-2xl font-light text-foreground/80 tracking-wider mb-6"
-          variants={textVariants}
-        >
-          Bolatito Oyeyemi Winjobi
-        </motion.h2>
-        
-        {/* Decorative line */}
-        <motion.div 
-          className="h-px bg-primary/50 w-0 mx-auto"
-          variants={lineVariants}
-        />
-        
-        {/* Role description */}
-        <motion.p
-          className="mt-6 text-lg md:text-xl font-light text-foreground/70 max-w-md mx-auto"
-          variants={textVariants}
-        >
-          UI/UX Designer & Creative Product Manager
-        </motion.p>
-      </motion.div>
+        </div>
+      </div>
       
-      {/* Scroll indicator */}
-      {scrollIndicator && (
-        <motion.a 
-          href="#about"
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-foreground/60 hover:text-primary transition-colors"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ 
-            opacity: [0, 1, 0.5, 1], 
-            y: [0, 10, 5, 10] 
-          }}
-          transition={{ 
-            duration: 2.5, 
-            repeat: Infinity,
-            repeatType: "reverse" 
-          }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <span className="text-sm mb-2">Scroll</span>
-          <ArrowDownCircle className="h-6 w-6" />
-        </motion.a>
-      )}
-      
-      {/* Decorative floating elements */}
-      {Array.from({ length: 5 }).map((_, i) => (
+      <motion.a 
+        href="#about"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-foreground/60 hover:text-primary transition-colors"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        whileHover={{ scale: 1.1 }}
+      >
+        <span className="text-sm mb-2">Scroll Down</span>
         <motion.div
-          key={i}
-          className="absolute rounded-full bg-primary/10 backdrop-blur-sm"
-          style={{
-            width: `${Math.random() * 200 + 50}px`,
-            height: `${Math.random() * 200 + 50}px`,
-            left: `${Math.random() * 80 + 10}%`,
-            top: `${Math.random() * 80 + 10}%`,
-            zIndex: 0
-          }}
           animate={{
-            x: [0, Math.random() * 50 - 25],
-            y: [0, Math.random() * 50 - 25],
-            opacity: [0.1, 0.3, 0.1],
+            y: [0, 5, 0]
           }}
           transition={{
-            duration: Math.random() * 10 + 10,
+            duration: 1.5,
             repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
+            repeatType: "loop"
           }}
-        />
-      ))}
-      
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent to-background/30 pointer-events-none" />
+        >
+          <ArrowDownCircle className="h-6 w-6" />
+        </motion.div>
+      </motion.a>
     </section>
   );
 };

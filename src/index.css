@@ -1,15 +1,12 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Light mode colors */
-    --background: 46 100% 97%;
-    --foreground: 240 10% 3.9%;
+    --background: 0 0% 100%;
+    --foreground: 240 5.9% 10%;
 
     --card: 0 0% 100%;
     --card-foreground: 240 5.9% 10%;
@@ -26,7 +23,7 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 41 100% 70%;
+    --accent: 45 100% 97%;
     --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
@@ -49,11 +46,10 @@
   }
 
   .dark {
-    /* Dark mode colors */
-    --background: 222 47% 11%;
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
-    --card: 222 47% 11%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
 
     --popover: 240 10% 3.9%;
@@ -68,7 +64,7 @@
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
 
-    --accent: 217 91% 60%;
+    --accent: 45 70% 30%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -85,7 +81,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter selection:bg-primary/20 selection:text-foreground;
+    @apply bg-background text-foreground font-poppins;
   }
   
   h1, h2, h3, h4, h5 {
@@ -102,93 +98,5 @@
   
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-designer-dark-yellow text-transparent bg-clip-text;
-  }
-  
-  /* Custom glassmorphism class */
-  .glass {
-    @apply backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
-  }
-  
-  /* Theme-based text gradient */
-  .light-mode-gradient {
-    @apply bg-gradient-to-r from-[#FFD54F] to-[#FFA000] text-transparent bg-clip-text;
-  }
-  
-  .dark-mode-gradient {
-    @apply bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-transparent bg-clip-text;
-  }
-  
-  /* Theme-based button gradients */
-  .btn-gradient-light {
-    @apply bg-gradient-to-r from-[#FEF9C3] to-[#FFD54F] text-gray-900;
-  }
-  
-  .btn-gradient-dark {
-    @apply bg-gradient-to-r from-[#3B82F6] to-[#6366F1] text-white;
-  }
-  
-  /* Custom background gradients */
-  .bg-gradient-radial {
-    background: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-to));
-  }
-}
-
-/* Font configs */
-@layer utilities {
-  .font-sora {
-    font-family: 'Sora', sans-serif;
-  }
-  
-  .font-inter {
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .font-playfair {
-    font-family: 'Playfair Display', serif;
-  }
-}
-
-/* Animation utilities */
-@layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px -10px var(--primary);
-  }
-  to {
-    box-shadow: 0 0 20px 10px var(--primary);
   }
 }
