@@ -114,7 +114,7 @@ const Footer = () => {
                 <span className="block">California, USA</span>
               </li>
               <li>
-                <a href="mailto:hello@designportfolio.com" className="text-gray-400 hover:text-primary transition-colors">oyeyemi8899.com</a>
+                <a href="mailto:hello@designportfolio.com" className="text-gray-400 hover:text-primary transition-colors">oyeyemi8899@gmail.com</a>
               </li>
             </ul>
             
