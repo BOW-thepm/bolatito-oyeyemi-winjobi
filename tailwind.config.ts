@@ -69,6 +69,9 @@ export default {
 					'light-yellow': '#FEF7CD',
 					'soft-gray': '#F1F0FB',
 					'charcoal': '#403E43',
+					purple: 'hsl(var(--designer-purple))',
+					lilac: 'hsl(var(--designer-lilac))',
+					highlight: 'hsl(var(--designer-highlight))'
 				}
 			},
 			borderRadius: {

@@ -1,59 +1,60 @@
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
 }
 
-export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+const SmoothScrollProvider = ({ children }: SmoothScrollProviderProps) => {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
-    const lenis = new Lenis({
+    // Create Lenis instance with correct options
+    lenisRef.current = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical', // Use orientation instead of direction
+      smoothWheel: true,
+      wheelMultiplier: 1,
       smoothTouch: false,
       touchMultiplier: 2,
+      infinite: false,
     });
 
     function raf(time: number) {
-      lenis.raf(time);
+      if (lenisRef.current) {
+        lenisRef.current.raf(time);
+      }
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
 
-    // Handle anchor links
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      
-      if (!anchor) return;
-      
-      const href = anchor.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      
-      e.preventDefault();
-      
-      const targetElement = document.querySelector(href);
-      if (!targetElement) return;
-      
-      lenis.scrollTo(targetElement, { 
-        offset: 0, 
-        duration: 1.5,
-        easing: (t) => 1 - Math.pow(1 - t, 3), // cubic ease out
-      });
-    };
+    // Add scroll anchors for smooth scrolling to IDs
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const href = this.getAttribute('href');
+        if (!href) return;
 
-    document.addEventListener('click', handleAnchorClick);
+        const targetElement = document.querySelector(href);
+        if (targetElement && lenisRef.current) {
+          lenisRef.current.scrollTo(targetElement as HTMLElement);
+        }
+      });
+    });
 
     return () => {
-      document.removeEventListener('click', handleAnchorClick);
-      lenis.destroy();
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
     };
   }, []);
 
   return <>{children}</>;
-}
+};
+
+export default SmoothScrollProvider;
