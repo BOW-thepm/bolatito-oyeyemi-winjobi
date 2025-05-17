@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Star, ArrowUp, Instagram, Twitter, Linkedin, Github, Mail } from 'lucide-react';
+import { Star, ArrowUp, Instagram, Twitter, Linkedin, Github, Mail, FileDown } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -117,8 +117,20 @@ const Footer = () => {
             </ul>
             
             <div className="mt-8">
-              <Button variant="outline" className="border-gray-700 hover:border-primary hover:bg-transparent text-white">
-                Download Resume
+              <Button 
+                variant="outline" 
+                className="border-gray-700 hover:border-primary hover:bg-primary/10 text-white group transition-all duration-300"
+                asChild
+              >
+                <a 
+                  href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view?usp=sharing" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <span>Download Resume</span>
+                  <FileDown className="h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
+                </a>
               </Button>
             </div>
           </div>
