@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle, Star } from 'lucide-react';
+import { ArrowDownCircle, Star, ExternalLink } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 const HeroSection = () => {
   // Animation variants
   const floatingAnimation = {
@@ -12,6 +13,7 @@ const HeroSection = () => {
       ease: "easeInOut"
     }
   };
+  
   return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden py-20">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
@@ -104,8 +106,10 @@ const HeroSection = () => {
             delay: 0.7,
             duration: 0.6
           }}>
-              <Button size="lg" className="bg-primary hover:bg-designer-dark-yellow dark:hover:bg-designer-yellow/90 text-primary-foreground group relative overflow-hidden">
+              <Button size="lg" className="bg-primary hover:bg-designer-dark-yellow dark:hover:bg-designer-yellow/90 text-primary-foreground group relative overflow-hidden" 
+                onClick={() => window.open('https://www.behance.net/bowthetechpm', '_blank', 'noopener,noreferrer')}>
                 <span className="relative z-10">View My Work</span>
+                <ExternalLink className="ml-1 h-4 w-4 relative z-10" />
                 <span className="absolute inset-0 bg-designer-dark-yellow dark:bg-designer-yellow/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
               </Button>
               
@@ -251,4 +255,5 @@ const HeroSection = () => {
       </motion.a>
     </section>;
 };
+
 export default HeroSection;
