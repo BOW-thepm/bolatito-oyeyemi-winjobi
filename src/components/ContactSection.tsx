@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -6,6 +7,7 @@ import * as z from "zod";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { Send } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -31,6 +33,7 @@ const formSchema = z.object({
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const recipientEmail = "oyeyeyemi8899@gmail.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,12 +47,20 @@ const ContactSection = () => {
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (values) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/sendEmail', {
+      // Create a FormData object for email service
+      const formData = new FormData();
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('message', values.message);
+      formData.append('to', recipientEmail);
+      
+      // Use EmailJS or similar service
+      const response = await fetch('https://formsubmit.co/' + recipientEmail, {
         method: 'POST',
+        body: formData,
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(values),
       });
 
       if (response.ok) {
@@ -138,9 +149,13 @@ const ContactSection = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Send Message"}
+              <Button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2">
+                <Send className="h-4 w-4" />
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
+              <p className="text-xs text-center text-muted-foreground mt-2">
+                Your message will be sent directly to {recipientEmail}
+              </p>
             </form>
           </Form>
         </motion.div>
