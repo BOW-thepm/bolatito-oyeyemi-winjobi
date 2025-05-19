@@ -1,6 +1,7 @@
+
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Star, ArrowUp, Instagram, Twitter, Linkedin, Github, Mail, FileDown } from 'lucide-react';
+import { Star, ArrowUp, Instagram, Twitter, Linkedin, Github, Mail, FileDown, Phone } from 'lucide-react';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const footerLinks = [{
@@ -110,8 +111,11 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-white">Contact</h3>
             <ul className="space-y-3">
               <li className="text-gray-400">
-                <span className="block">San Francisco</span>
-                <span className="block">California, USA</span>
+                <span className="block">Ibadan, Nigeria</span>
+                <a href="tel:+2349046211727" className="flex items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+                  <Phone size={14} />
+                  <span>+2349046211727</span>
+                </a>
               </li>
               <li>
                 <a href="mailto:hello@designportfolio.com" className="text-gray-400 hover:text-primary transition-colors">oyeyemi8899@gmail.com</a>
