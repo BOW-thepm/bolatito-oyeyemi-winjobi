@@ -7,7 +7,7 @@ import * as z from "zod";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { Send } from "lucide-react";
+import { Send, Check } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { toast } from "@/components/ui/use-toast"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 // Define the schema for the contact form
 const formSchema = z.object({
@@ -33,6 +34,7 @@ const formSchema = z.object({
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const recipientEmail = "oyeyeyemi8899@gmail.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,9 +55,13 @@ const ContactSection = () => {
       formData.append('email', values.email);
       formData.append('message', values.message);
       formData.append('to', recipientEmail);
+      formData.append('_subject', `New Contact Form Message from ${values.name}`);
+      // This ensures you get a copy of the submission
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
       
-      // Use EmailJS or similar service
-      const response = await fetch('https://formsubmit.co/' + recipientEmail, {
+      // Use FormSubmit service
+      const response = await fetch('https://formsubmit.co/ajax/' + recipientEmail, {
         method: 'POST',
         body: formData,
         headers: {
@@ -64,16 +70,24 @@ const ContactSection = () => {
       });
 
       if (response.ok) {
+        // Show toast notification
         toast({
           title: "Success!",
           description: "Your message has been sent successfully!",
+          duration: 5000, // Show for 5 seconds
         })
+        
+        // Show success dialog
+        setShowSuccessDialog(true);
+        
+        // Reset form
         form.reset();
       } else {
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
           description: "There was a problem sending your message. Please try again later.",
+          duration: 5000, // Show for 5 seconds
         })
       }
     } catch (error) {
@@ -81,6 +95,7 @@ const ContactSection = () => {
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
         description: "An unexpected error occurred. Please try again later.",
+        duration: 5000, // Show for 5 seconds
       })
     } finally {
       setIsSubmitting(false);
@@ -150,8 +165,14 @@ const ContactSection = () => {
                 )}
               />
               <Button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2">
-                <Send className="h-4 w-4" />
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? (
+                  <>Sending...</>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
               <p className="text-xs text-center text-muted-foreground mt-2">
                 Your message will be sent directly to {recipientEmail}
@@ -159,6 +180,27 @@ const ContactSection = () => {
             </form>
           </Form>
         </motion.div>
+
+        {/* Success Dialog */}
+        <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Check className="h-5 w-5 text-green-500" />
+                Message Sent Successfully!
+              </DialogTitle>
+            </DialogHeader>
+            <div className="py-4">
+              <p>Thank you for reaching out! Your message has been sent successfully to {recipientEmail}.</p>
+              <p className="mt-2">I'll get back to you as soon as possible.</p>
+            </div>
+            <div className="flex justify-end">
+              <Button onClick={() => setShowSuccessDialog(false)}>
+                Close
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
