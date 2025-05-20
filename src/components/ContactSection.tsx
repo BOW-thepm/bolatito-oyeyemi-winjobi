@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -48,6 +47,9 @@ const ContactSection = () => {
 
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (values) => {
     setIsSubmitting(true);
+    console.log("Sending email to:", recipientEmail);
+    console.log("Form values:", values);
+    
     try {
       // Create a FormData object for email service
       const formData = new FormData();
@@ -60,8 +62,8 @@ const ContactSection = () => {
       formData.append('_captcha', 'false');
       formData.append('_template', 'table');
       
-      // Use FormSubmit service
-      const response = await fetch('https://formsubmit.co/ajax/' + recipientEmail, {
+      // Use FormSubmit service with direct endpoint
+      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -69,7 +71,12 @@ const ContactSection = () => {
         },
       });
 
+      console.log("FormSubmit response:", response);
+      
       if (response.ok) {
+        const responseData = await response.json();
+        console.log("FormSubmit response data:", responseData);
+        
         // Show toast notification
         toast({
           title: "Success!",
@@ -83,6 +90,7 @@ const ContactSection = () => {
         // Reset form
         form.reset();
       } else {
+        console.error("FormSubmit error:", response.statusText);
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
@@ -91,6 +99,7 @@ const ContactSection = () => {
         })
       }
     } catch (error) {
+      console.error("Form submission error:", error);
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
