@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, Star, ExternalLink } from 'lucide-react';
@@ -176,31 +177,19 @@ const HeroSection = () => {
             }}>
                 <CarouselContent>
                   <CarouselItem>
-                    <motion.div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden" 
+                    <motion.div className="relative z-10 overflow-hidden" 
                       whileHover={{
                         scale: 1.05,
                         transition: { duration: 0.3 }
-                      }}
-                      initial={{
-                        rotate: 0
-                      }} 
-                      transition={{
-                        duration: 0.5
                       }}>
                       <img src="/lovable-uploads/20dd3bb4-98df-409b-b155-235ffd1a56f4.png" alt="Designer professional portrait" className="w-full h-[500px] object-contain" />
                     </motion.div>
                   </CarouselItem>
                   <CarouselItem>
-                    <motion.div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden" 
+                    <motion.div className="relative z-10 overflow-hidden" 
                       whileHover={{
                         scale: 1.05,
                         transition: { duration: 0.3 }
-                      }}
-                      initial={{
-                        rotate: 0
-                      }} 
-                      transition={{
-                        duration: 0.5
                       }}>
                       <img src="/lovable-uploads/43599bfc-4daf-4eb9-9ed4-8dcd971fcc46.png" alt="Designer casual portrait" className="w-full h-[500px] object-contain" />
                     </motion.div>

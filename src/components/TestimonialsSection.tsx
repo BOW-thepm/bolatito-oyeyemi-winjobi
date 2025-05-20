@@ -49,6 +49,15 @@ const testimonials: Testimonial[] = [
     rating: 5,
     avatar: "https://randomuser.me/api/portraits/women/44.jpg"
   },
+  {
+    id: 4,
+    name: "Sajad Haidary",
+    position: "Technical Manager and Team Lead",
+    company: "Healthcare App",
+    content: "I had the pleasure of working with Bow on the UI/UX design of our healthcare application, and I can confidently say that she is a talented and dedicated designer who brings both creativity and precision to her work. From day one, Bow showed a deep understanding of user-centered design principles and transformed complex healthcare workflows into intuitive, seamless experiences for our users. She was instrumental in shaping features like appointment booking, real-time waiting time tracking, location-based search, and medical history management. Her attention to detail, responsiveness to feedback, and collaborative spirit made the entire design process smooth and efficient. Bow doesn't just design interfaces-she designs with purpose, empathy, and a clear vision for user impact. I highly recommend her for any UI/UX role and would gladly work with her again in the future.",
+    rating: 5,
+    avatar: "/lovable-uploads/5a4177fc-16e5-4453-b8ee-7a09d6e86f15.png"
+  },
 ];
 
 const TestimonialsSection = () => {
