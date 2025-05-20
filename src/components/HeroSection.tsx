@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, Star, ExternalLink } from 'lucide-react';
@@ -176,27 +177,35 @@ const HeroSection = () => {
             }}>
                 <CarouselContent>
                   <CarouselItem>
-                    <motion.div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden" whileHover={{
-                    scale: 1.02,
-                    rotate: 0
-                  }} initial={{
-                    rotate: 3
-                  }} transition={{
-                    duration: 0.5
-                  }}>
-                      <img src="/lovable-uploads/54b37118-d82f-4885-a3ae-48c116c69da7.png" alt="Designer portrait" className="w-full h-[500px] object-cover" />
+                    <motion.div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden" 
+                      whileHover={{
+                        scale: 1.05,
+                        rotate: 0,
+                        transition: { duration: 0.3 }
+                      }}
+                      initial={{
+                        rotate: 3
+                      }} 
+                      transition={{
+                        duration: 0.5
+                      }}>
+                      <img src="/lovable-uploads/20dd3bb4-98df-409b-b155-235ffd1a56f4.png" alt="Designer professional portrait" className="w-full h-[500px] object-cover" />
                     </motion.div>
                   </CarouselItem>
                   <CarouselItem>
-                    <motion.div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden" whileHover={{
-                    scale: 1.02,
-                    rotate: 0
-                  }} initial={{
-                    rotate: -3
-                  }} transition={{
-                    duration: 0.5
-                  }}>
-                      <img src="/lovable-uploads/3a8a97c9-56ff-437b-a188-6a058798ea0f.png" alt="Designer portrait alternative pose" className="w-full h-[500px] object-cover" />
+                    <motion.div className="relative z-10 rounded-xl bg-white dark:bg-gray-800 shadow-2xl overflow-hidden" 
+                      whileHover={{
+                        scale: 1.05,
+                        rotate: 0,
+                        transition: { duration: 0.3 }
+                      }}
+                      initial={{
+                        rotate: -3
+                      }} 
+                      transition={{
+                        duration: 0.5
+                      }}>
+                      <img src="/lovable-uploads/43599bfc-4daf-4eb9-9ed4-8dcd971fcc46.png" alt="Designer casual portrait" className="w-full h-[500px] object-cover" />
                     </motion.div>
                   </CarouselItem>
                 </CarouselContent>
@@ -204,9 +213,11 @@ const HeroSection = () => {
                 <CarouselNext className="hidden md:flex -right-5" />
               </Carousel>
               
-              <motion.div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer" whileHover={{
-              scale: 1.05
-            }}>
+              <motion.div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer" 
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}>
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground">UI</div>
                   <div>
@@ -216,9 +227,11 @@ const HeroSection = () => {
                 </div>
               </motion.div>
               
-              <motion.div className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 -rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer" whileHover={{
-              scale: 1.05
-            }}>
+              <motion.div className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 -rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer" 
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}>
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 bg-designer-dark-yellow rounded-full flex items-center justify-center text-white">UX</div>
                   <div>

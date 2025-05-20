@@ -14,7 +14,7 @@ const NavBar = () => {
       setIsScrolled(window.scrollY > 20);
       
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'testimonials', 'projects', 'contact'];
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element && window.scrollY >= element.offsetTop - 100) {
@@ -31,6 +31,7 @@ const NavBar = () => {
   const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -76,7 +77,7 @@ const NavBar = () => {
         </motion.a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-10 items-center">
+        <div className="hidden md:flex space-x-6 items-center">
           <div className="flex space-x-6 items-center">
             {navLinks.map((link) => (
               <motion.a
