@@ -35,7 +35,7 @@ const formSchema = z.object({
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
-  const recipientEmail = "oyeyeyemi8899@gmail.com";
+  const recipientEmail = "oyeyemi8899@gmail.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
