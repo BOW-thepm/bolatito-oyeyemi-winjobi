@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -41,7 +40,7 @@ const AboutSection = () => {
     },
     {
       title: "Experience",
-      content: "With over 5 years in the field, I've worked with startups, agencies, and enterprise clients across fintech, healthcare, and e-commerce sectors. My experience includes leading design teams, conducting workshops, and implementing design systems that scale across products."
+      content: "With over a year of experience in UI/UX design and product development, I've worked at the intersection of user needs and business vision — crafting experiences that are not only functional but truly human. I've designed for healthcare, e-commerce, personal projcets, partnering with developers, and stakeholders to bring ideas to life. Whether leading user research, mapping flows, or building responsive interfaces, I bring a product-thinking mindset to every phase of the design process."
     },
     {
       title: "Education",
@@ -192,9 +191,17 @@ const AboutSection = () => {
               >
                 <p className="mb-6">{tabContent[activeTab].content}</p>
                 
-                <p className="mb-6">
-                  I believe that great design is about solving real problems. My approach blends aesthetics with functionality to create interfaces that are not just beautiful but also intuitive and accessible.
-                </p>
+                {activeTab === 1 && (
+                  <p className="mb-6">
+                    Every screen I design is driven by empathy, shaped by data, and refined through collaboration because great design isn't just how it looks, but how effortlessly it works.
+                  </p>
+                )}
+                
+                {activeTab !== 1 && (
+                  <p className="mb-6">
+                    I believe that great design is about solving real problems. My approach blends aesthetics with functionality to create interfaces that are not just beautiful but also intuitive and accessible.
+                  </p>
+                )}
               </motion.div>
             </div>
             

@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowUp, Linkedin, Twitter, Download } from 'lucide-react';
+import { ArrowUp, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,6 +14,9 @@ const Footer = () => {
   }, {
     name: "Projects",
     href: "#projects"
+  }, {
+    name: "Testimonials",
+    href: "#testimonials"
   }, {
     name: "Contact",
     href: "#contact"
@@ -32,7 +35,11 @@ const Footer = () => {
     }, 
     {
       name: "TikTok",
-      icon: Download, // Using Download icon from lucide for TikTok since TikTok isn't in the allowed icons
+      icon: () => (
+        <svg width="16" height="16" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+        </svg>
+      ),
       href: "https://www.tiktok.com/@bowthedesigner?_t=ZM-8wYJJ6mqrQ6&_r=1"
     }
   ];
@@ -69,23 +76,13 @@ const Footer = () => {
             <motion.a href="#hero" className="font-playfair text-3xl md:text-4xl font-bold flex items-center" whileHover={{
             scale: 1.05
           }}>
-              <span className="gradient-text">Design</span>
+              <span className="text-white">BOW</span>
               <span className="text-primary relative">.</span>
             </motion.a>
             
             <p className="mt-6 text-gray-400 max-w-md">
               Creating intuitive and engaging digital experiences through thoughtful design. Let's build something amazing together.
             </p>
-            
-            <div className="mt-8 flex items-center gap-2">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map(i => <div key={i} className="w-10 h-10 rounded-full border-2 border-gray-900 dark:border-gray-800 overflow-hidden" style={{
-                backgroundImage: `url(https://i.pravatar.cc/40?img=${i + 10})`,
-                backgroundSize: 'cover',
-                zIndex: 3 - i
-              }} />)}
-              </div>
-            </div>
           </div>
           
           {/* Navigation links */}
@@ -118,7 +115,6 @@ const Footer = () => {
               <Button variant="outline" className="border-gray-700 hover:border-primary hover:bg-primary/10 text-white group transition-all duration-300" asChild>
                 <a href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <span>Download Resume</span>
-                  <Download className="h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
                 </a>
               </Button>
             </div>
@@ -134,8 +130,6 @@ const Footer = () => {
             <div className="flex space-x-6">
               {socialLinks.map(link => {
                 const IconComponent = link.icon;
-                // Custom styling for TikTok icon since we're using the Download icon
-                const isTikTok = link.name === "TikTok";
                 return (
                   <motion.a 
                     key={link.name} 
@@ -146,14 +140,7 @@ const Footer = () => {
                     whileHover={{ y: -3 }}
                     aria-label={link.name}
                   >
-                    {isTikTok ? (
-                      <div className="relative">
-                        <span className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-xs font-bold">TikTok</span>
-                        <IconComponent className="h-5 w-5" />
-                      </div>
-                    ) : (
-                      <IconComponent className="h-5 w-5" />
-                    )}
+                    <IconComponent className="h-5 w-5" />
                   </motion.a>
                 );
               })}
