@@ -1,7 +1,8 @@
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Star, ArrowUp, Instagram, Twitter, Linkedin, Github, Mail, FileDown, Phone } from 'lucide-react';
+import { ArrowUp, Linkedin, Twitter, Download } from 'lucide-react';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const footerLinks = [{
@@ -17,33 +18,32 @@ const Footer = () => {
     name: "Contact",
     href: "#contact"
   }];
-  const socialLinks = [{
-    name: "LinkedIn",
-    icon: Linkedin,
-    href: "#"
-  }, {
-    name: "Twitter",
-    icon: Twitter,
-    href: "#"
-  }, {
-    name: "Instagram",
-    icon: Instagram,
-    href: "#"
-  }, {
-    name: "Github",
-    icon: Github,
-    href: "#"
-  }, {
-    name: "Email",
-    icon: Mail,
-    href: "mailto:hello@designportfolio.com"
-  }];
+  
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/bolatito-oyeyemi-winjobi-bowthepm?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    }, 
+    {
+      name: "X",
+      icon: Twitter,
+      href: "https://x.com/bowthepm?s=21"
+    }, 
+    {
+      name: "TikTok",
+      icon: Download, // Using Download icon from lucide for TikTok since TikTok isn't in the allowed icons
+      href: "https://www.tiktok.com/@bowthedesigner?_t=ZM-8wYJJ6mqrQ6&_r=1"
+    }
+  ];
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
+  
   return <footer className="bg-designer-charcoal text-white dark:bg-gray-900 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 -z-10">
@@ -85,10 +85,6 @@ const Footer = () => {
                 zIndex: 3 - i
               }} />)}
               </div>
-              <div className="flex items-center gap-1 bg-gray-800 dark:bg-gray-800/50 py-1 px-3 rounded-full">
-                <Star className="h-4 w-4 fill-primary text-primary" />
-                <span className="text-sm">5.0 Rating</span>
-              </div>
             </div>
           </div>
           
@@ -112,21 +108,17 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="text-gray-400">
                 <span className="block">Ibadan, Nigeria</span>
-                <a href="tel:+2349046211727" className="flex items-center gap-1 text-gray-400 hover:text-primary transition-colors">
-                  <Phone size={14} />
-                  <span>+2349046211727</span>
-                </a>
               </li>
               <li>
-                <a href="mailto:hello@designportfolio.com" className="text-gray-400 hover:text-primary transition-colors">oyeyemi8899@gmail.com</a>
+                <a href="mailto:oyeyemi8899@gmail.com" className="text-gray-400 hover:text-primary transition-colors">oyeyemi8899@gmail.com</a>
               </li>
             </ul>
             
             <div className="mt-8">
               <Button variant="outline" className="border-gray-700 hover:border-primary hover:bg-primary/10 text-white group transition-all duration-300" asChild>
-                <a href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <span>Download Resume</span>
-                  <FileDown className="h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
+                  <Download className="h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
                 </a>
               </Button>
             </div>
@@ -139,12 +131,32 @@ const Footer = () => {
               &copy; {currentYear} UI/UX Designer Portfolio. All rights reserved.
             </p>
             
-            <div className="flex space-x-4">
-              {socialLinks.map(link => <motion.a key={link.name} href={link.href} className="text-gray-400 hover:text-primary transition-colors" whileHover={{
-              y: -3
-            }} aria-label={link.name}>
-                  <link.icon className="h-5 w-5" />
-                </motion.a>)}
+            <div className="flex space-x-6">
+              {socialLinks.map(link => {
+                const IconComponent = link.icon;
+                // Custom styling for TikTok icon since we're using the Download icon
+                const isTikTok = link.name === "TikTok";
+                return (
+                  <motion.a 
+                    key={link.name} 
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-primary transition-colors" 
+                    whileHover={{ y: -3 }}
+                    aria-label={link.name}
+                  >
+                    {isTikTok ? (
+                      <div className="relative">
+                        <span className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-xs font-bold">TikTok</span>
+                        <IconComponent className="h-5 w-5" />
+                      </div>
+                    ) : (
+                      <IconComponent className="h-5 w-5" />
+                    )}
+                  </motion.a>
+                );
+              })}
             </div>
             
             <div className="flex space-x-4 text-sm text-gray-500">
@@ -156,4 +168,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;

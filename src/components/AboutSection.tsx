@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -199,9 +200,11 @@ const AboutSection = () => {
             
             <div className="flex gap-4 flex-wrap">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-primary hover:bg-designer-dark-yellow text-primary-foreground gap-2">
-                  <FileText className="h-4 w-4" />
-                  Download Resume
+                <Button className="bg-primary hover:bg-designer-dark-yellow text-primary-foreground gap-2" asChild>
+                  <a href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view" target="_blank" rel="noopener noreferrer">
+                    <FileText className="h-4 w-4" />
+                    Download Resume
+                  </a>
                 </Button>
               </motion.div>
               
