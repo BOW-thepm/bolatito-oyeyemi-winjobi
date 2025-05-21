@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -37,7 +36,7 @@ const AboutSection = () => {
   const tabContent = [
     {
       title: "Skills",
-      content: "I specialize in UI/UX design with expertise in user research, wireframing, prototyping, and visual design. I'm proficient with industry-standard tools like Figma, Sketch, Adobe XD, and have a working knowledge of front-end development to effectively collaborate with development teams."
+      content: "I specialize in user research, wireframing, prototyping, interaction design, and usability testing — creating intuitive, accessible, and responsive interfaces that meet both user needs and business goals. With a strong foundation in design thinking and a collaborative mindset, I bridge the gap between strategy and execution to deliver seamless digital experiences."
     },
     {
       title: "Experience",
