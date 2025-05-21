@@ -121,8 +121,7 @@ export default {
 				'slide-in': 'slide-in 0.4s ease-out',
 			},
 			fontFamily: {
-				'poppins': ['Poppins', 'sans-serif'],
-				'playfair': ['Playfair Display', 'serif'],
+				'satoshi': ['Satoshi', 'sans-serif'],
 			},
 		}
 	},

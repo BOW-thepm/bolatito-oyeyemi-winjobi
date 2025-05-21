@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle, Star, ExternalLink } from 'lucide-react';
+import { ArrowDownCircle, ExternalLink } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const HeroSection = () => {
@@ -51,20 +51,6 @@ const HeroSection = () => {
           duration: 0.8
         }}>
             <motion.div className="space-y-6">
-              <motion.div initial={{
-              opacity: 0,
-              scale: 0.8
-            }} animate={{
-              opacity: 1,
-              scale: 1
-            }} transition={{
-              delay: 0.2,
-              duration: 0.6
-            }} className="inline-flex items-center gap-2 bg-designer-light-yellow dark:bg-designer-dark-yellow/30 text-designer-dark-yellow rounded-full py-2 px-4">
-                <Star className="h-4 w-4 fill-designer-dark-yellow text-designer-dark-yellow" />
-                <span className="text-sm font-medium">UI/UX Designer</span>
-              </motion.div>
-              
               <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight" initial={{
               opacity: 0
             }} animate={{
@@ -177,7 +163,7 @@ const HeroSection = () => {
             }}>
                 <CarouselContent>
                   <CarouselItem>
-                    <motion.div className="relative z-10 overflow-hidden" 
+                    <motion.div className="relative z-10" 
                       whileHover={{
                         scale: 1.05,
                         transition: { duration: 0.3 }
@@ -186,7 +172,7 @@ const HeroSection = () => {
                     </motion.div>
                   </CarouselItem>
                   <CarouselItem>
-                    <motion.div className="relative z-10 overflow-hidden" 
+                    <motion.div className="relative z-10" 
                       whileHover={{
                         scale: 1.05,
                         transition: { duration: 0.3 }
@@ -198,34 +184,6 @@ const HeroSection = () => {
                 <CarouselPrevious className="hidden md:flex -left-5" />
                 <CarouselNext className="hidden md:flex -right-5" />
               </Carousel>
-              
-              <motion.div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer" 
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground">UI</div>
-                  <div>
-                    <p className="font-semibold">UI Design</p>
-                    <p className="text-xs text-foreground/60">Expert Level</p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 -rotate-6 hover:rotate-0 transition-all duration-300 cursor-pointer" 
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 bg-designer-dark-yellow rounded-full flex items-center justify-center text-white">UX</div>
-                  <div>
-                    <p className="font-semibold">UX Research</p>
-                    <p className="text-xs text-foreground/60">Professional</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
