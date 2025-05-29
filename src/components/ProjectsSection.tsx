@@ -177,10 +177,10 @@ const ProjectsSection = () => {
                     src={project.image} 
                     alt={project.title} 
                     className={`w-full h-full object-cover ${
-                      project.id === 1 ? 'object-center scale-150' : ''
+                      project.id === 1 ? 'object-center scale-90' : ''
                     }`}
                     animate={{ 
-                      scale: hoveredProject === project.id ? (project.id === 1 ? 1.6 : 1.05) : (project.id === 1 ? 1.5 : 1)
+                      scale: hoveredProject === project.id ? (project.id === 1 ? 0.95 : 1.05) : (project.id === 1 ? 0.9 : 1)
                     }}
                     transition={{ duration: 0.4 }}
                   />
