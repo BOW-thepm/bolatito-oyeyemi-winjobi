@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       id: 1,
       title: "TODO++",
       description: "A simple hardware based to do list designed for users who want a dedicated task management device on their desk.",
-      image: "/lovable-uploads/dde561b4-ffa1-4856-80c1-0961939c864f.png",
+      image: "/lovable-uploads/aff60699-f0cd-4501-97fa-2050eb65ded5.png",
       category: "Mobile App",
       tags: ["UI Design", "UX Research", "Prototyping"],
       caseStudyUrl: "https://www.behance.net/gallery/226627939/TODO"
