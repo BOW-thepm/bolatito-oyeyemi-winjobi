@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -12,11 +11,12 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Finance App Redesign",
-      description: "Improving the user experience of a personal finance tracking application",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      title: "TODO++",
+      description: "A simple hardware based to do list designed for users who want a dedicated task management device on their desk.",
+      image: "/lovable-uploads/dde561b4-ffa1-4856-80c1-0961939c864f.png",
       category: "Mobile App",
-      tags: ["UI Design", "UX Research", "Prototyping"]
+      tags: ["UI Design", "UX Research", "Prototyping"],
+      caseStudyUrl: "https://www.behance.net/gallery/226627939/TODO"
     },
     {
       id: 2,
@@ -212,14 +212,21 @@ const ProjectsSection = () => {
                     <Button 
                       variant="ghost" 
                       className="text-primary hover:text-designer-dark-yellow hover:bg-designer-light-yellow/50 p-0 gap-2 group/btn"
+                      asChild
                     >
-                      View Case Study 
-                      <motion.div
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                      <a 
+                        href={project.caseStudyUrl || "#"} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                       >
-                        <ArrowRight size={16} />
-                      </motion.div>
+                        View Case Study 
+                        <motion.div
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          <ArrowRight size={16} />
+                        </motion.div>
+                      </a>
                     </Button>
                     
                     <Button 
