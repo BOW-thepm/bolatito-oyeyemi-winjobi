@@ -1,14 +1,6 @@
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -62,10 +54,11 @@ const testimonials: Testimonial[] = [
 ];
 
 const TestimonialsSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Duplicate testimonials for seamless loop
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" className="py-20 bg-primary/5">
+    <section id="testimonials" className="py-20 bg-primary/5 overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div 
           className="text-center mb-16"
@@ -80,97 +73,77 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
-          <Carousel 
-            className="w-full" 
-            opts={{ loop: true, align: "center" }}
-            setApi={(api) => {
-              api?.on('select', () => {
-                setActiveIndex(api.selectedScrollSnap());
-              });
+        <div className="relative">
+          <motion.div 
+            className="flex gap-6"
+            animate={{
+              x: [0, -100 * testimonials.length + "%"]
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear"
+              }
+            }}
+            style={{
+              width: `${duplicatedTestimonials.length * 400 + (duplicatedTestimonials.length - 1) * 24}px`
             }}
           >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={testimonial.id} className="md:basis-full">
-                  <motion.div 
-                    className="p-4 md:p-8"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="bg-background rounded-3xl p-6 md:p-10 shadow-xl dark:shadow-primary/10 relative overflow-hidden">
-                      {/* Decorative elements */}
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
-                      <div className="absolute bottom-0 left-0 w-20 h-20 bg-primary/10 rounded-full -ml-10 -mb-10"></div>
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <div 
+                key={`${testimonial.id}-${index}`} 
+                className="flex-shrink-0 w-[400px]"
+              >
+                <div className="bg-background rounded-3xl p-6 md:p-8 shadow-xl dark:shadow-primary/10 relative overflow-hidden h-full">
+                  {/* Decorative elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-primary/10 rounded-full -ml-10 -mb-10"></div>
+                  
+                  <div className="relative">
+                    {/* Client info and image */}
+                    <div className="flex items-center mb-6">
+                      <Avatar className="w-16 h-16 mr-4 border-4 border-primary/20">
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                        <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
+                      </Avatar>
                       
-                      <div className="flex flex-col md:flex-row gap-8 relative">
-                        {/* Client info and image - On top for mobile, left for desktop */}
-                        <div className="flex flex-col items-center md:items-start md:max-w-[200px]">
-                          <Avatar className="w-24 h-24 mb-4 border-4 border-primary/20">
-                            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                            <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
-                          </Avatar>
-                          
-                          <h4 className="font-bold text-lg text-center md:text-left">{testimonial.name}</h4>
-                          <p className="text-sm text-foreground/70 text-center md:text-left mb-2">
-                            {testimonial.position} at {testimonial.company}
-                          </p>
-                          
-                          {/* Rating */}
-                          <div className="flex mb-4">
-                            {[...Array(5)].map((_, i) => (
-                              <Star 
-                                key={i} 
-                                className={cn(
-                                  "h-4 w-4", 
-                                  i < testimonial.rating 
-                                    ? "text-designer-dark-yellow fill-designer-dark-yellow" 
-                                    : "text-gray-300"
-                                )} 
-                              />
-                            ))}
-                          </div>
-                        </div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                        <p className="text-sm text-foreground/70 mb-2">
+                          {testimonial.position} at {testimonial.company}
+                        </p>
                         
-                        {/* Content */}
-                        <div className="flex-1 relative">
-                          <Quote className="absolute top-0 left-0 h-12 w-12 text-primary/20 -translate-x-2 -translate-y-2" />
-                          <blockquote className="text-lg md:text-xl mt-8 md:mt-0 relative">
-                            <p className="text-foreground/80">{testimonial.content}</p>
-                          </blockquote>
+                        {/* Rating */}
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              className={cn(
+                                "h-4 w-4", 
+                                i < testimonial.rating 
+                                  ? "text-designer-dark-yellow fill-designer-dark-yellow" 
+                                  : "text-gray-300"
+                              )} 
+                            />
+                          ))}
                         </div>
                       </div>
                     </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            
-            <div className="flex items-center justify-center mt-8">
-              <CarouselPrevious className="relative static transform-none mx-2" />
-              
-              <div className="flex space-x-2 mx-4">
-                {testimonials.map((_, index) => (
-                  <motion.button
-                    key={index}
-                    className={cn(
-                      "w-3 h-3 rounded-full transition-all duration-300",
-                      activeIndex === index 
-                        ? "bg-primary w-6" 
-                        : "bg-primary/30"
-                    )}
-                    onClick={() => {
-                      // This will be handled by the carousel API
-                    }}
-                  />
-                ))}
+                    
+                    {/* Content */}
+                    <div className="relative">
+                      <Quote className="absolute top-0 left-0 h-8 w-8 text-primary/20 -translate-x-1 -translate-y-1" />
+                      <blockquote className="text-base mt-4 relative">
+                        <p className="text-foreground/80 line-clamp-6">{testimonial.content}</p>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
-              <CarouselNext className="relative static transform-none mx-2" />
-            </div>
-          </Carousel>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
