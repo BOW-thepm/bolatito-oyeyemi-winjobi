@@ -63,12 +63,32 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				designer: {
-					yellow: '#FFD54F',
-					'dark-yellow': '#FFC107',
-					'light-yellow': '#FEF7CD',
-					'soft-gray': '#F1F0FB',
-					'charcoal': '#403E43',
+				// Brand colors for direct use
+				'dusty-rose': {
+					DEFAULT: '#D28E8E',
+					50: '#F5EAEA',
+					100: '#EDDBDB',
+					200: '#DFBDBD',
+					300: '#D19E9E',
+					400: '#C47F7F',
+					500: '#D28E8E',
+					600: '#B67171',
+					700: '#9A5454',
+					800: '#7E3737',
+					900: '#621A1A'
+				},
+				'sage-green': {
+					DEFAULT: '#B9C4B5',
+					50: '#F0F2EF',
+					100: '#E5E9E2',
+					200: '#D5DBD1',
+					300: '#C5CCC0',
+					400: '#B5BFAF',
+					500: '#B9C4B5',
+					600: '#A0AC9B',
+					700: '#879481',
+					800: '#6E7C67',
+					900: '#55644D'
 				}
 			},
 			borderRadius: {
