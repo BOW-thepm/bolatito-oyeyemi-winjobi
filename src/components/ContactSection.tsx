@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -17,6 +18,7 @@ import {
 } from "@/components/ui/form"
 import { toast } from "@/components/ui/use-toast"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useIntersectionObserver } from '@/hooks/useParallaxScroll';
 
 // Define the schema for the contact form
 const formSchema = z.object({
@@ -34,6 +36,7 @@ const formSchema = z.object({
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const fadeRef = useIntersectionObserver();
   const recipientEmail = "oyeyemi8899@gmail.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -112,90 +115,109 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding">
-      <div className="container mx-auto">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          Contact Me
-        </motion.h2>
-        <motion.div
-          className="max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Email" type="email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Write your message here"
-                        className="resize-none"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2">
-                {isSubmitting ? (
-                  <>Sending...</>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-              <p className="text-xs text-center text-muted-foreground mt-2">
-                Your message will be sent directly to {recipientEmail}
-              </p>
-            </form>
-          </Form>
-        </motion.div>
+    <section id="contact" className="section-padding contact-section relative overflow-hidden">
+      {/* Soft gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/10"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(201,167,184,0.1),transparent_50%)]"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="fade-slide-up" ref={fadeRef}>
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-center mb-8 gradient-text"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Let's Create Something Beautiful Together
+          </motion.h2>
+          <motion.div
+            className="max-w-2xl mx-auto bg-card/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl shadow-primary/10 border border-primary/10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground font-medium">Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your Name" 
+                          {...field} 
+                          className="border-primary/20 focus:border-primary/40 bg-background/50 backdrop-blur-sm rounded-xl"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground font-medium">Email</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your Email" 
+                          type="email" 
+                          {...field} 
+                          className="border-primary/20 focus:border-primary/40 bg-background/50 backdrop-blur-sm rounded-xl"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground font-medium">Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Tell me about your project..."
+                          className="resize-none border-primary/20 focus:border-primary/40 bg-background/50 backdrop-blur-sm rounded-xl min-h-[120px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting} 
+                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground magnetic-hover shadow-lg hover:shadow-xl rounded-xl py-6 text-lg"
+                >
+                  {isSubmitting ? (
+                    <>Sending...</>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+                <p className="text-xs text-center text-muted-foreground mt-2">
+                  Your message will be sent directly to {recipientEmail}
+                </p>
+              </form>
+            </Form>
+          </motion.div>
+        </div>
 
         {/* Success Dialog */}
         <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
-          <DialogContent className="sm:max-w-md">
+          <DialogContent className="sm:max-w-md bg-card/95 backdrop-blur-sm border border-primary/20 rounded-2xl">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-green-500" />
+                <Check className="h-5 w-5 text-primary" />
                 Message Sent Successfully!
               </DialogTitle>
             </DialogHeader>
@@ -204,7 +226,10 @@ const ContactSection = () => {
               <p className="mt-2">I'll get back to you as soon as possible.</p>
             </div>
             <div className="flex justify-end">
-              <Button onClick={() => setShowSuccessDialog(false)}>
+              <Button 
+                onClick={() => setShowSuccessDialog(false)}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground magnetic-hover"
+              >
                 Close
               </Button>
             </div>

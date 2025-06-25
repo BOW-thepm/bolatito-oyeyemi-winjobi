@@ -51,20 +51,23 @@ const Footer = () => {
     });
   };
   
-  return <footer className="bg-designer-charcoal text-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Decorative elements */}
+  return (
+    <footer className="footer-section text-foreground dark:text-foreground relative overflow-hidden">
+      {/* Soft decorative elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 right-0 w-1/4 h-1/4 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-0 right-0 w-1/4 h-1/4 bg-secondary/10 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
       </div>
       
       {/* Back to top button */}
       <div className="container mx-auto px-4 relative">
-        <motion.button onClick={scrollToTop} className="absolute top-0 right-4 md:right-6 -translate-y-1/2 bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-designer-dark-yellow transition-colors z-10" whileHover={{
-        scale: 1.1
-      }} whileTap={{
-        scale: 0.9
-      }}>
+        <motion.button 
+          onClick={scrollToTop} 
+          className="absolute top-0 right-4 md:right-6 -translate-y-1/2 bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors z-10 magnetic-hover" 
+          whileHover={{ scale: 1.1 }} 
+          whileTap={{ scale: 0.9 }}
+        >
           <ArrowUp className="h-5 w-5" />
         </motion.button>
       </div>
@@ -73,47 +76,67 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Logo and intro */}
           <div className="lg:col-span-2">
-            <motion.a href="#hero" className="font-playfair text-3xl md:text-4xl font-bold flex items-center" whileHover={{
-            scale: 1.05
-          }}>
-              <span className="text-white">BOW</span>
+            <motion.a 
+              href="#hero" 
+              className="font-playfair text-3xl md:text-4xl font-bold flex items-center" 
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-foreground">BOW</span>
               <span className="text-primary relative">.</span>
             </motion.a>
             
-            <p className="mt-6 text-gray-400 max-w-md">
+            <p className="mt-6 text-muted-foreground max-w-md">
               Creating intuitive and engaging digital experiences through thoughtful design. Let's build something amazing together.
             </p>
           </div>
           
           {/* Navigation links */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Navigation</h3>
+            <h3 className="text-lg font-bold mb-4 text-foreground">Navigation</h3>
             <ul className="space-y-3">
-              {footerLinks.map(link => <li key={link.name}>
-                  <motion.a href={link.href} className="text-gray-400 hover:text-primary transition-colors inline-block" whileHover={{
-                x: 5
-              }}>
+              {footerLinks.map(link => (
+                <li key={link.name}>
+                  <motion.a 
+                    href={link.href} 
+                    className="text-muted-foreground hover:text-primary transition-colors inline-block" 
+                    whileHover={{ x: 5 }}
+                  >
                     {link.name}
                   </motion.a>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
           
           {/* Contact info */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Contact</h3>
+            <h3 className="text-lg font-bold mb-4 text-foreground">Contact</h3>
             <ul className="space-y-3">
-              <li className="text-gray-400">
+              <li className="text-muted-foreground">
                 <span className="block">Ibadan, Nigeria</span>
               </li>
               <li>
-                <a href="mailto:oyeyemi8899@gmail.com" className="text-gray-400 hover:text-primary transition-colors">oyeyemi8899@gmail.com</a>
+                <a 
+                  href="mailto:oyeyemi8899@gmail.com" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  oyeyemi8899@gmail.com
+                </a>
               </li>
             </ul>
             
             <div className="mt-8">
-              <Button variant="outline" className="border-gray-700 hover:border-primary hover:bg-primary/10 text-white group transition-all duration-300" asChild>
-                <a href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                className="border-primary/30 hover:border-primary/50 hover:bg-primary/10 text-foreground group transition-all duration-300 magnetic-hover" 
+                asChild
+              >
+                <a 
+                  href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2"
+                >
                   <span>Download Resume</span>
                 </a>
               </Button>
@@ -121,9 +144,9 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 pt-8 mt-8">
+        <div className="border-t border-border pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-gray-500 text-sm">
+            <p className="text-muted-foreground text-sm">
               &copy; {currentYear} UI/UX Designer Portfolio. All rights reserved.
             </p>
             
@@ -136,7 +159,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-primary transition-colors" 
+                    className="text-muted-foreground hover:text-primary transition-colors magnetic-hover" 
                     whileHover={{ y: -3 }}
                     aria-label={link.name}
                   >
@@ -146,14 +169,15 @@ const Footer = () => {
               })}
             </div>
             
-            <div className="flex space-x-4 text-sm text-gray-500">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <div className="flex space-x-4 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
 
 export default Footer;

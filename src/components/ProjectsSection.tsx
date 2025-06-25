@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useIntersectionObserver } from '@/hooks/useParallaxScroll';
 
 const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const fadeRef = useIntersectionObserver();
   
   const projects = [
     {
@@ -83,15 +85,15 @@ const ProjectsSection = () => {
   };
   
   return (
-    <section id="projects" className="section-padding py-24 lg:py-32 bg-neutral-900 relative overflow-hidden">
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/30 to-neutral-900/50"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(120,119,198,0.1),transparent_50%)]"></div>
+    <section id="projects" className="section-padding py-24 lg:py-32 featured-work-section relative overflow-hidden">
+      {/* Soft gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(174,198,207,0.1),transparent_50%)]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 fade-slide-up" ref={fadeRef}>
           <motion.span 
-            className="inline-block py-2 px-4 mb-6 bg-neutral-800/50 text-neutral-300 rounded-full text-sm font-medium tracking-wide border border-neutral-700/50"
+            className="inline-block py-3 px-6 mb-6 bg-card/80 backdrop-blur-sm text-primary rounded-full text-sm font-medium tracking-wide border border-primary/20 shadow-sm"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -99,16 +101,16 @@ const ProjectsSection = () => {
             Featured Work
           </motion.span>
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6 text-neutral-100"
+            className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Selected <span className="text-transparent bg-gradient-to-r from-neutral-300 to-neutral-500 bg-clip-text">Projects</span>
+            Selected <span className="gradient-text">Projects</span>
           </motion.h2>
           <motion.p 
-            className="text-neutral-400 max-w-2xl mx-auto text-lg leading-relaxed"
+            className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -135,7 +137,7 @@ const ProjectsSection = () => {
               onMouseLeave={() => setHoveredProject(null)}
             >
               <motion.div 
-                className="relative overflow-hidden rounded-2xl aspect-[4/5] shadow-2xl shadow-black/40"
+                className="relative overflow-hidden rounded-2xl aspect-[4/5] shadow-xl shadow-primary/10 bg-card border border-primary/10"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
@@ -150,9 +152,9 @@ const ProjectsSection = () => {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                 />
                 
-                {/* Dark Gradient Overlay */}
+                {/* Soft Gradient Overlay */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent"
                   animate={{ 
                     opacity: hoveredProject === project.id ? 1 : 0
                   }}
@@ -171,13 +173,13 @@ const ProjectsSection = () => {
                   <h3 className="text-white text-xl font-bold mb-2 font-serif leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-neutral-300 text-sm mb-4 leading-relaxed line-clamp-2">
+                  <p className="text-white/90 text-sm mb-4 leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                   
                   <Button 
                     variant="ghost" 
-                    className="text-white hover:text-neutral-200 hover:bg-white/10 p-0 gap-2 group/btn self-start border border-white/20 px-4 py-2 rounded-full backdrop-blur-sm"
+                    className="text-white hover:text-white hover:bg-white/20 p-0 gap-2 group/btn self-start border border-white/30 px-4 py-2 rounded-full backdrop-blur-sm magnetic-hover"
                     asChild
                   >
                     <a 
@@ -210,7 +212,7 @@ const ProjectsSection = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <Button className="bg-neutral-800 hover:bg-neutral-700 text-white text-lg px-10 py-6 h-auto rounded-full border border-neutral-600/50 shadow-2xl shadow-black/40 backdrop-blur-sm">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-6 h-auto rounded-full border border-primary/20 shadow-xl magnetic-hover backdrop-blur-sm">
               View All Projects
             </Button>
           </motion.div>
