@@ -62,10 +62,9 @@ const SkillBars = () => {
           className="group"
         >
           <div 
-            className="bg-white dark:bg-gray-800/50 p-6 rounded-2xl shadow-inner border border-primary/20 hover:shadow-lg transition-all duration-300"
+            className="bg-[#FDF3F2] dark:bg-gray-800/50 p-6 rounded-2xl shadow-inner border border-primary/10 hover:shadow-lg transition-all duration-300"
             style={{
-              background: 'linear-gradient(135deg, #FFF9F8 0%, #F8F0F0 100%)',
-              boxShadow: 'inset 8px 8px 16px rgba(201, 167, 184, 0.15), inset -8px -8px 16px rgba(255, 255, 255, 0.9), 0 4px 20px rgba(201, 167, 184, 0.1)'
+              boxShadow: 'inset 8px 8px 16px rgba(201, 167, 184, 0.1), inset -8px -8px 16px rgba(255, 255, 255, 0.8)'
             }}
           >
             <div className="flex justify-between items-center mb-4">
@@ -82,21 +81,18 @@ const SkillBars = () => {
             
             <div className="relative">
               <div className="flex justify-between items-center mb-2">
-                <div className="w-full bg-white/80 dark:bg-gray-700/50 rounded-full h-3 overflow-hidden shadow-inner">
+                <div className="w-full bg-white/50 dark:bg-gray-700/50 rounded-full h-3 overflow-hidden">
                   <motion.div
-                    className="h-full rounded-full relative"
-                    style={{
-                      background: 'linear-gradient(90deg, #C9A7B8 0%, #D4B4C4 50%, #C9A7B8 100%)',
-                    }}
+                    className="h-full bg-gradient-to-r from-primary to-secondary rounded-full relative"
                     initial={{ width: 0 }}
                     animate={{ width: `${animatedLevels[index]}%` }}
                     transition={{ duration: 1.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-white/30 rounded-full"
+                      className="absolute inset-0 bg-white/20 rounded-full"
                       animate={{ 
                         opacity: [0.3, 0.7, 0.3],
-                        scale: [1, 1.02, 1]
+                        scale: [1, 1.05, 1]
                       }}
                       transition={{ 
                         duration: 2, 
@@ -122,11 +118,9 @@ const SkillBars = () => {
               {Array.from({ length: 8 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="w-1 rounded-full"
-                  style={{ backgroundColor: '#C9A7B8' }}
+                  className="bg-primary/30 w-1 rounded-full"
                   animate={{
                     height: isVisible ? [4, Math.random() * 20 + 8, 4] : 4,
-                    opacity: [0.4, 0.8, 0.4]
                   }}
                   transition={{
                     duration: 1.5,
