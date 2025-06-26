@@ -2,16 +2,34 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, ExternalLink } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const HeroSection = () => {
+  const [displayText, setDisplayText] = useState('');
+  const fullText = 'Creating beautiful digital experiences';
+  
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100);
+    
+    return () => clearInterval(typingInterval);
+  }, []);
+
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       style={{
         backgroundImage: 'url("/lovable-uploads/f76d4434-0fa1-4170-ae2c-55081b620f9f.png")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center bottom',
         backgroundRepeat: 'no-repeat'
       }}
     >
@@ -32,27 +50,28 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white" 
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white min-h-[200px] md:min-h-[250px] flex flex-col justify-center" 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Creating <br />
-              <motion.span 
-                className="text-primary relative inline-block" 
-                animate={{ y: [0, -5, 0] }} 
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                beautiful
-              </motion.span>
-              <br className="md:hidden" /> digital experiences
+              <span className="text-primary relative inline-block mb-4">
+                {displayText}
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                  className="ml-1"
+                >
+                  |
+                </motion.span>
+              </span>
             </motion.h1>
             
             <motion.p 
               className="text-white/90 text-lg md:text-xl leading-relaxed" 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 2, duration: 0.8 }}
             >
               Hi, I'm a passionate UI/UX designer focused on crafting intuitive and engaging user experiences that solve real problems.
             </motion.p>
@@ -62,7 +81,7 @@ const HeroSection = () => {
             className="flex flex-wrap gap-4 mt-8 justify-center" 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.7, duration: 0.6 }}
+            transition={{ delay: 2.5, duration: 0.6 }}
           >
             <Button 
               size="lg" 
@@ -93,7 +112,7 @@ const HeroSection = () => {
             className="flex items-center gap-8 mt-12 text-white/90" 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
-            transition={{ delay: 0.9, duration: 0.6 }}
+            transition={{ delay: 3, duration: 0.6 }}
           >
             <motion.div className="flex flex-col" whileHover={{ scale: 1.05 }}>
               <span className="text-3xl md:text-4xl font-bold text-primary">1+</span>
@@ -113,7 +132,7 @@ const HeroSection = () => {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70 hover:text-primary transition-colors z-20" 
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
-        transition={{ delay: 1.2, duration: 0.6 }}
+        transition={{ delay: 3.5, duration: 0.6 }}
       >
         <span className="text-sm mb-2">Scroll Down</span>
         <motion.div 

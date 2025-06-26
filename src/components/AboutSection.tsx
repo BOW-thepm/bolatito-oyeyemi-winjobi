@@ -2,36 +2,10 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { BadgeCheck, Eye, Code, Palette, Monitor, Users, FileText, Lightbulb } from 'lucide-react';
+import SkillBars from './SkillBars';
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
-  
-  const skills = [
-    { 
-      name: "UI Design", 
-      icon: Eye, 
-      description: "Creating beautiful interfaces with attention to detail",
-      color: "bg-blue-500/10 text-blue-500 dark:bg-blue-400/10 dark:text-blue-400"
-    },
-    { 
-      name: "UX Research", 
-      icon: Users, 
-      description: "Understanding user needs through research and testing",
-      color: "bg-green-500/10 text-green-500 dark:bg-green-400/10 dark:text-green-400"
-    },
-    { 
-      name: "Prototyping", 
-      icon: Monitor, 
-      description: "Building interactive prototypes for validation",
-      color: "bg-purple-500/10 text-purple-500 dark:bg-purple-400/10 dark:text-purple-400"
-    },
-    { 
-      name: "Visual Design", 
-      icon: Palette, 
-      description: "Crafting cohesive visual systems and brand identities",
-      color: "bg-pink-500/10 text-pink-500 dark:bg-pink-400/10 dark:text-pink-400"
-    },
-  ];
   
   const tabContent = [
     {
@@ -47,18 +21,6 @@ const AboutSection = () => {
       content: "I hold a Bachelor's degree in Interactive Design from California College of Arts and have completed specialized courses in Human-Computer Interaction from Stanford University. I regularly attend industry conferences and workshops to stay current with design trends and methodologies."
     }
   ];
-  
-  const fadeInUpVariant = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.05 * i,
-        duration: 0.5,
-      },
-    }),
-  };
   
   return (
     <section id="about" className="section-padding py-24 lg:py-32 relative overflow-hidden">
@@ -247,26 +209,7 @@ const AboutSection = () => {
             </motion.p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUpVariant}
-                whileHover={{ y: -8 }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-foreground/5"
-              >
-                <div className={`${skill.color} p-3 rounded-xl w-14 h-14 flex items-center justify-center mb-6`}>
-                  <skill.icon className="w-7 h-7" />
-                </div>
-                <h4 className="text-xl font-bold mb-3">{skill.name}</h4>
-                <p className="text-foreground/60 text-sm">{skill.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          <SkillBars />
           
           <motion.div 
             className="mt-16 text-center"
