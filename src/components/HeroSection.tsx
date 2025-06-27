@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, ExternalLink } from 'lucide-react';
@@ -27,9 +26,9 @@ const HeroSection = () => {
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       style={{
-        backgroundImage: 'url("/lovable-uploads/f76d4434-0fa1-4170-ae2c-55081b620f9f.png")',
+        backgroundImage: 'url("/lovable-uploads/81889b66-1b2d-4eb8-acf6-3d94a52673f5.png")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center bottom',
+        backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat'
       }}
     >
@@ -44,18 +43,18 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-20">
         <div className="flex flex-col items-center justify-center text-center">
           <motion.div 
-            className="max-w-[700px] space-y-6"
+            className="max-w-[700px] space-y-4"
             initial={{ opacity: 0, y: 30 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white min-h-[200px] md:min-h-[250px] flex flex-col justify-center" 
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white min-h-[120px] md:min-h-[150px] flex flex-col justify-center" 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <span className="text-primary relative inline-block mb-4">
+              <span className="text-primary relative inline-block mb-2">
                 {displayText}
                 <motion.span
                   animate={{ opacity: [1, 0] }}
