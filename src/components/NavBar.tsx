@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { motion } from 'framer-motion';
 
 const NavBar = () => {
@@ -78,34 +77,30 @@ const NavBar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6 items-center">
-          <div className="flex space-x-6 items-center">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "text-foreground hover:text-primary font-medium transition-colors relative py-2",
-                  activeLink === link.href.substring(1) && "text-primary"
-                )}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => setActiveLink(link.href.substring(1))}
-              >
-                {link.name}
-                {activeLink === link.href.substring(1) && (
-                  <motion.div 
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"
-                    layoutId="navIndicator"
-                  />
-                )}
-              </motion.a>
-            ))}
-          </div>
-          <ThemeToggle />
+          {navLinks.map((link) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              className={cn(
+                "text-foreground hover:text-primary font-medium transition-colors relative py-2",
+                activeLink === link.href.substring(1) && "text-primary"
+              )}
+              whileHover={{ scale: 1.05 }}
+              onClick={() => setActiveLink(link.href.substring(1))}
+            >
+              {link.name}
+              {activeLink === link.href.substring(1) && (
+                <motion.div 
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"
+                  layoutId="navIndicator"
+                />
+              )}
+            </motion.a>
+          ))}
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden flex items-center space-x-4">
-          <ThemeToggle />
+        <div className="md:hidden">
           <button 
             className="text-foreground p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
