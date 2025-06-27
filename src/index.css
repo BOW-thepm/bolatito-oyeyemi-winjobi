@@ -7,49 +7,49 @@
 
 @layer base {
   :root {
-    --background: 15 20% 99%; /* Light BG #FFF9F8 */
-    --foreground: 0 0% 17%; /* Main text #2B2B2B */
+    --background: 15 25% 98%; /* Warmer light BG #FDF6F5 */
+    --foreground: 0 0% 15%; /* Softer main text #262626 */
 
-    --card: 15 25% 98%; /* Cards #FDF3F2 */
-    --card-foreground: 0 0% 17%;
+    --card: 15 30% 96%; /* Warmer cards #FAF0EF */
+    --card-foreground: 0 0% 15%;
 
-    --popover: 15 25% 98%;
-    --popover-foreground: 0 0% 17%;
+    --popover: 15 30% 96%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 324 20% 73%; /* Dusty Mauve #C9A7B8 */
+    --primary: 324 25% 68%; /* Enhanced Dusty Mauve #C49AB5 */
     --primary-foreground: 0 0% 100%; /* White on accent */
 
-    --secondary: 203 35% 74%; /* Powder Blue #AEC6CF */
+    --secondary: 203 40% 70%; /* Enhanced Powder Blue #A8C4D0 */
     --secondary-foreground: 0 0% 7%; /* Dark text on powder blue */
 
-    --muted: 15 20% 96%;
-    --muted-foreground: 0 0% 33%; /* Subtext #555555 */
+    --muted: 15 25% 94%; /* Warmer muted */
+    --muted-foreground: 0 0% 35%; /* Softer subtext #595959 */
 
-    --accent: 203 35% 74%; /* Powder Blue as accent */
+    --accent: 203 40% 70%; /* Enhanced Powder Blue as accent */
     --accent-foreground: 0 0% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 15 15% 90%;
-    --input: 15 15% 90%;
-    --ring: 324 20% 73%; /* Dusty Mauve for focus rings */
+    --border: 15 20% 88%; /* Warmer borders */
+    --input: 15 20% 88%;
+    --ring: 324 25% 68%; /* Enhanced Dusty Mauve for focus rings */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 15 20% 97%;
-    --sidebar-foreground: 0 0% 17%;
-    --sidebar-primary: 0 0% 17%;
+    --sidebar-background: 15 25% 95%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 0 0% 15%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 15 20% 95%;
-    --sidebar-accent-foreground: 0 0% 17%;
-    --sidebar-border: 15 15% 87%;
-    --sidebar-ring: 324 20% 73%;
+    --sidebar-accent: 15 25% 93%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 15 20% 85%;
+    --sidebar-ring: 324 25% 68%;
 
-    /* Custom section backgrounds */
-    --featured-work-bg: 324 25% 96%; /* #F6EBF0 */
-    --contact-bg: 20 15% 94%; /* #EFEAE7 */
-    --footer-bg: 20 20% 87%; /* #E0D6D3 */
+    /* Enhanced custom section backgrounds */
+    --featured-work-bg: 324 30% 94%; /* #F3E8ED */
+    --contact-bg: 20 20% 92%; /* #ECE5E2 */
+    --footer-bg: 20 25% 85%; /* #DDD2CE */
   }
 
   .dark {
@@ -62,16 +62,16 @@
     --popover: 300 15% 16%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 324 20% 73%; /* Dusty Mauve #C9A7B8 */
+    --primary: 324 25% 68%; /* Enhanced Dusty Mauve #C49AB5 */
     --primary-foreground: 0 0% 7%; /* Dark text on accent in dark mode */
 
-    --secondary: 203 35% 74%; /* Powder Blue #AEC6CF */
+    --secondary: 203 40% 70%; /* Enhanced Powder Blue #A8C4D0 */
     --secondary-foreground: 0 0% 7%;
 
     --muted: 300 10% 12%;
     --muted-foreground: 0 0% 73%; /* Subtext #BBBBBB */
 
-    --accent: 203 35% 74%;
+    --accent: 203 40% 70%;
     --accent-foreground: 0 0% 7%;
 
     --destructive: 0 62.8% 30.6%;
@@ -79,7 +79,7 @@
 
     --border: 300 10% 15%;
     --input: 300 10% 15%;
-    --ring: 324 20% 73%;
+    --ring: 324 25% 68%;
 
     /* Custom section backgrounds - dark theme */
     --featured-work-bg: 300 15% 20%; /* #342F35 */
@@ -94,6 +94,7 @@
 
   body {
     @apply bg-background text-foreground font-satoshi;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(15 30% 96%) 100%);
   }
   
   h1, h2, h3, h4, h5 {
@@ -137,16 +138,16 @@
     transform: translateY(-2px) scale(1.02);
   }
 
-  /* Section-specific backgrounds */
+  /* Enhanced section-specific backgrounds */
   .featured-work-section {
-    background-color: hsl(var(--featured-work-bg));
+    background: linear-gradient(135deg, hsl(var(--featured-work-bg)) 0%, hsl(324 35% 92%) 100%);
   }
 
   .contact-section {
-    background-color: hsl(var(--contact-bg));
+    background: linear-gradient(135deg, hsl(var(--contact-bg)) 0%, hsl(20 25% 90%) 100%);
   }
 
   .footer-section {
-    background-color: hsl(var(--footer-bg));
+    background: linear-gradient(135deg, hsl(var(--footer-bg)) 0%, hsl(20 30% 83%) 100%);
   }
 }
