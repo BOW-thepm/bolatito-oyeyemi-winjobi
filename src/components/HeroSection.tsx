@@ -26,9 +26,9 @@ const HeroSection = () => {
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       style={{
-        backgroundImage: 'url("/lovable-uploads/81889b66-1b2d-4eb8-acf6-3d94a52673f5.png")',
+        backgroundImage: 'url("/lovable-uploads/80e85810-43c5-48de-95b3-1c8dd18f9c7b.png")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center center',
+        backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat'
       }}
     >
