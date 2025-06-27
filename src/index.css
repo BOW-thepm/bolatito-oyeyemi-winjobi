@@ -7,49 +7,49 @@
 
 @layer base {
   :root {
-    --background: 20 25% 98%; /* Warm white #FEFAF9 */
-    --foreground: 15 15% 15%; /* Darker text #262220 */
+    --background: 15 20% 99%; /* Light BG #FFF9F8 */
+    --foreground: 0 0% 17%; /* Main text #2B2B2B */
 
-    --card: 20 30% 96%; /* Warm card background #F9F4F2 */
-    --card-foreground: 15 15% 15%;
+    --card: 15 25% 98%; /* Cards #FDF3F2 */
+    --card-foreground: 0 0% 17%;
 
-    --popover: 20 30% 96%;
-    --popover-foreground: 15 15% 15%;
+    --popover: 15 25% 98%;
+    --popover-foreground: 0 0% 17%;
 
-    --primary: 340 25% 65%; /* Warmer dusty rose #C49AA3 */
-    --primary-foreground: 0 0% 100%;
+    --primary: 324 20% 73%; /* Dusty Mauve #C9A7B8 */
+    --primary-foreground: 0 0% 100%; /* White on accent */
 
-    --secondary: 200 30% 70%; /* Softer blue #A8C4D4 */
-    --secondary-foreground: 15 15% 15%;
+    --secondary: 203 35% 74%; /* Powder Blue #AEC6CF */
+    --secondary-foreground: 0 0% 7%; /* Dark text on powder blue */
 
-    --muted: 20 20% 94%; /* Warmer muted #F2EDE9 */
-    --muted-foreground: 15 15% 45%; /* Better contrast #6B5F5A */
+    --muted: 15 20% 96%;
+    --muted-foreground: 0 0% 33%; /* Subtext #555555 */
 
-    --accent: 30 35% 88%; /* Warm peach accent #E8D5C4 */
-    --accent-foreground: 15 15% 15%;
+    --accent: 203 35% 74%; /* Powder Blue as accent */
+    --accent-foreground: 0 0% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 20 15% 88%; /* Warmer borders #E0D5CE */
-    --input: 20 15% 90%; /* Warmer input background #E5DAD3 */
-    --ring: 340 25% 65%; /* Match primary */
+    --border: 15 15% 90%;
+    --input: 15 15% 90%;
+    --ring: 324 20% 73%; /* Dusty Mauve for focus rings */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 20 25% 97%;
-    --sidebar-foreground: 15 15% 15%;
-    --sidebar-primary: 15 15% 15%;
+    --sidebar-background: 15 20% 97%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 0 0% 17%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 20 20% 93%;
-    --sidebar-accent-foreground: 15 15% 15%;
-    --sidebar-border: 20 15% 85%;
-    --sidebar-ring: 340 25% 65%;
+    --sidebar-accent: 15 20% 95%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 15 15% 87%;
+    --sidebar-ring: 324 20% 73%;
 
-    /* Enhanced section backgrounds with gradients */
-    --featured-work-bg: linear-gradient(135deg, #F7F0ED 0%, #F2E8E3 100%);
-    --contact-bg: linear-gradient(135deg, #F0E6E1 0%, #EBD9D2 100%);
-    --footer-bg: linear-gradient(135deg, #E8DDD6 0%, #DFD0C7 100%);
+    /* Custom section backgrounds */
+    --featured-work-bg: 324 25% 96%; /* #F6EBF0 */
+    --contact-bg: 20 15% 94%; /* #EFEAE7 */
+    --footer-bg: 20 20% 87%; /* #E0D6D3 */
   }
 
   .dark {
@@ -94,7 +94,6 @@
 
   body {
     @apply bg-background text-foreground font-satoshi;
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(20 20% 96%) 100%);
   }
   
   h1, h2, h3, h4, h5 {
@@ -107,8 +106,6 @@
   
   .project-card {
     @apply transition-all duration-300 hover:shadow-xl;
-    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(20 25% 94%) 100%);
-    border: 1px solid hsl(var(--border));
   }
   
   .gradient-text {
@@ -140,66 +137,16 @@
     transform: translateY(-2px) scale(1.02);
   }
 
-  /* Enhanced section-specific backgrounds */
+  /* Section-specific backgrounds */
   .featured-work-section {
-    background: var(--featured-work-bg);
-    position: relative;
-  }
-
-  .featured-work-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(196, 154, 163, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(168, 196, 212, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+    background-color: hsl(var(--featured-work-bg));
   }
 
   .contact-section {
-    background: var(--contact-bg);
-    position: relative;
-  }
-
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(196, 154, 163, 0.08) 0%, transparent 50%);
-    pointer-events: none;
+    background-color: hsl(var(--contact-bg));
   }
 
   .footer-section {
-    background: var(--footer-bg);
-    position: relative;
-  }
-
-  .footer-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(196, 154, 163, 0.05) 0%, transparent 100%);
-    pointer-events: none;
-  }
-
-  /* Enhanced card styling for light mode */
-  .light .project-card,
-  .light [class*="card"] {
-    box-shadow: 0 4px 20px rgba(196, 154, 163, 0.1),
-                0 1px 3px rgba(196, 154, 163, 0.2);
-  }
-
-  .light .project-card:hover,
-  .light [class*="card"]:hover {
-    box-shadow: 0 8px 30px rgba(196, 154, 163, 0.15),
-                0 4px 8px rgba(196, 154, 163, 0.25);
+    background-color: hsl(var(--footer-bg));
   }
 }
