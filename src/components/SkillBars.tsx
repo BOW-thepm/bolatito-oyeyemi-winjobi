@@ -62,8 +62,9 @@ const SkillBars = () => {
           className="group"
         >
           <div 
-            className="bg-[#FDF3F2] dark:bg-gray-800/50 p-6 rounded-2xl shadow-inner border border-primary/10 hover:shadow-lg transition-all duration-300"
+            className="p-6 rounded-2xl shadow-inner border border-primary/10 hover:shadow-lg transition-all duration-300"
             style={{
+              backgroundColor: '#c4aeba',
               boxShadow: 'inset 8px 8px 16px rgba(201, 167, 184, 0.1), inset -8px -8px 16px rgba(255, 255, 255, 0.8)'
             }}
           >
