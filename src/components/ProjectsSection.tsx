@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -202,21 +201,6 @@ const ProjectsSection = () => {
             </motion.div>
           ))}
         </motion.div>
-        
-        <div className="text-center mt-20">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-6 h-auto rounded-full border border-primary/20 shadow-xl magnetic-hover backdrop-blur-sm">
-              View All Projects
-            </Button>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
