@@ -62,9 +62,9 @@ const SkillBars = () => {
           className="group"
         >
           <div 
-            className="bg-[#FDF3F2] dark:bg-gray-800/50 p-6 rounded-2xl shadow-inner border border-primary/10 hover:shadow-lg transition-all duration-300"
+            className="bg-white/10 dark:bg-gray-800/20 backdrop-blur-lg p-6 rounded-2xl border border-white/20 dark:border-gray-700/30 hover:bg-white/15 dark:hover:bg-gray-800/25 hover:border-white/30 dark:hover:border-gray-600/40 transition-all duration-300 shadow-lg hover:shadow-xl"
             style={{
-              boxShadow: 'inset 8px 8px 16px rgba(201, 167, 184, 0.1), inset -8px -8px 16px rgba(255, 255, 255, 0.8)'
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
             }}
           >
             <div className="flex justify-between items-center mb-4">
@@ -81,9 +81,9 @@ const SkillBars = () => {
             
             <div className="relative">
               <div className="flex justify-between items-center mb-2">
-                <div className="w-full bg-white/50 dark:bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                <div className="w-full bg-white/20 dark:bg-gray-700/30 backdrop-blur-sm rounded-full h-3 overflow-hidden border border-white/10">
                   <motion.div
-                    className="h-full bg-gradient-to-r from-primary to-secondary rounded-full relative"
+                    className="h-full bg-gradient-to-r from-primary to-secondary rounded-full relative shadow-inner"
                     initial={{ width: 0 }}
                     animate={{ width: `${animatedLevels[index]}%` }}
                     transition={{ duration: 1.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
@@ -118,7 +118,7 @@ const SkillBars = () => {
               {Array.from({ length: 8 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="bg-primary/30 w-1 rounded-full"
+                  className="bg-primary/30 w-1 rounded-full backdrop-blur-sm"
                   animate={{
                     height: isVisible ? [4, Math.random() * 20 + 8, 4] : 4,
                   }}
