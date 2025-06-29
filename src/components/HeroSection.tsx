@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, ExternalLink } from 'lucide-react';
@@ -108,7 +109,7 @@ const HeroSection = () => {
           </motion.div>
           
           <motion.div 
-            className="flex items-center gap-8 mt-12 text-white/90" 
+            className="flex items-center gap-8 mt-16 text-white/90" 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ delay: 3, duration: 0.6 }}

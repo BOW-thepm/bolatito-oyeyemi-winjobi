@@ -1,186 +1,191 @@
 
 import { motion } from 'framer-motion';
-import { useIntersectionObserver } from '@/hooks/useParallaxScroll';
+import { 
+  Figma, 
+  MessageSquare, 
+  Users, 
+  Video, 
+  FileText, 
+  TestTube 
+} from 'lucide-react';
 
 const ToolsSection = () => {
-  const fadeRef = useIntersectionObserver();
-  
   const tools = [
-    { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-    { name: "Jira", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
-    { name: "Linear", logo: "https://asset.brandfetch.io/idw382q0ib/idZDJFLzOc.svg" },
-    { name: "Slack", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" },
-    { name: "Plane", logo: "https://plane.so/logo.svg" },
-    { name: "Discord", logo: "https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" },
-    { name: "Google Meet", logo: "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png" },
-    { name: "FigJam", logo: "https://help.figma.com/hc/article_attachments/4405269443863/figjam-logo.png" },
-    { name: "Microsoft Teams", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg" },
-    { name: "Zoom", logo: "https://d24cgw3uvb9a9h.cloudfront.net/static/93516/image/new/ZoomLogo_112x112.png" },
-    { name: "Google Forms", logo: "https://ssl.gstatic.com/docs/templates/thumbnails/forms-blank-googlecolors.png" },
-    { name: "UserTesting", logo: "https://assets-global.website-files.com/5af97a9c84ec1bc79d81b5f4/5b5c5e0bbcdce275960a7c7a_UserTesting_Icon.svg" }
+    { name: 'Figma', icon: Figma, category: 'Design' },
+    { name: 'Jira', icon: FileText, category: 'Project Management' },
+    { name: 'Linear', icon: FileText, category: 'Project Management' },
+    { name: 'Slack', icon: MessageSquare, category: 'Communication' },
+    { name: 'Plane', icon: FileText, category: 'Project Management' },
+    { name: 'Discord', icon: MessageSquare, category: 'Communication' },
+    { name: 'Google Meet', icon: Video, category: 'Communication' },
+    { name: 'FigJam', icon: Figma, category: 'Design' },
+    { name: 'Microsoft Teams', icon: Users, category: 'Communication' },
+    { name: 'Zoom', icon: Video, category: 'Communication' },
+    { name: 'Google Forms', icon: FileText, category: 'Research' },
+    { name: 'UserTesting', icon: TestTube, category: 'Research' },
   ];
 
-  const container = {
+  const containerVariants = {
     hidden: { opacity: 0 },
-    show: {
+    visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.2,
+        delayChildren: 0.3
       }
     }
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 30 },
-    show: {
-      opacity: 1,
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1, 
       y: 0,
+      scale: 1,
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
+        damping: 15,
+        duration: 0.6
       }
     }
   };
 
   return (
-    <section className="section-padding py-24 lg:py-32 bg-gradient-to-br from-background via-background to-primary/5">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 fade-slide-up" ref={fadeRef}>
-          <motion.span 
-            className="inline-block py-3 px-6 mb-6 bg-card/80 backdrop-blur-sm text-primary rounded-full text-sm font-medium tracking-wide border border-primary/20 shadow-sm"
-            initial={{ opacity: 0, y: -10 }}
+    <>
+      <style>
+        {`
+          .toolkit-scroll::-webkit-scrollbar {
+            display: none;
+          }
+          .toolkit-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          
+          .neumorphic-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+              inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 4px 12px rgba(0, 0, 0, 0.1),
+              0 2px 4px rgba(0, 0, 0, 0.06);
+          }
+          
+          .dark .neumorphic-card {
+            background: linear-gradient(145deg, rgba(201, 167, 184, 0.08), rgba(201, 167, 184, 0.03));
+            border: 1px solid rgba(201, 167, 184, 0.15);
+            box-shadow: 
+              inset 0 1px 0 rgba(201, 167, 184, 0.1),
+              0 4px 12px rgba(0, 0, 0, 0.2),
+              0 2px 4px rgba(0, 0, 0, 0.1);
+          }
+          
+          .card-glow {
+            box-shadow: 
+              inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 8px 25px rgba(201, 167, 184, 0.2),
+              0 4px 12px rgba(0, 0, 0, 0.1);
+          }
+          
+          .dark .card-glow {
+            box-shadow: 
+              inset 0 1px 0 rgba(201, 167, 184, 0.15),
+              0 8px 25px rgba(201, 167, 184, 0.3),
+              0 4px 12px rgba(0, 0, 0, 0.2);
+          }
+        `}
+      </style>
+      
+      <section className="section-padding bg-gradient-to-br from-background via-muted/30 to-background">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            Tools & Technologies
-          </motion.span>
-          <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            My <span className="gradient-text">Toolkit</span>
-          </motion.h2>
-          <motion.p 
-            className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            The essential tools I use to create exceptional digital experiences and streamline my design workflow.
-          </motion.p>
-        </div>
-
-        {/* Desktop: 3-column grid, Mobile: horizontal scroll with snap */}
-        <div className="hidden md:block">
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            {tools.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                variants={item}
-                className="group relative"
-              >
-                <div className="relative p-8 rounded-2xl bg-white/5 dark:bg-white/10 backdrop-blur-lg border border-white/10 dark:border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_10px_15px_-3px_rgba(201,167,184,0.3),0_4px_6px_-2px_rgba(201,167,184,0.2)] dark:hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_10px_15px_-3px_rgba(246,209,219,0.4),0_4px_6px_-2px_rgba(246,209,219,0.3)] transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                  
-                  {/* Subtle inner glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 dark:from-primary/10 dark:via-transparent dark:to-secondary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-                    <div className="w-16 h-16 flex items-center justify-center">
-                      <motion.img
-                        src={tool.logo}
-                        alt={`${tool.name} logo`}
-                        className="w-full h-full object-contain"
-                        whileHover={{ 
-                          scale: 1.1,
-                          transition: { type: "spring", stiffness: 400, damping: 17 }
-                        }}
-                        onError={(e) => {
-                          // Fallback to a simple icon if logo fails to load
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const fallback = document.createElement('div');
-                          fallback.className = 'w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold text-lg';
-                          fallback.textContent = tool.name.charAt(0);
-                          target.parentNode?.appendChild(fallback);
-                        }}
-                      />
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
-                      {tool.name}
-                    </h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 gradient-text">
+              My Toolkit
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              The tools and platforms I use to bring ideas to life, from design conception to final delivery
+            </p>
           </motion.div>
-        </div>
 
-        {/* Mobile: Horizontal scroll with snap */}
-        <div className="block md:hidden">
-          <motion.div 
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-4 -mx-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          {/* Desktop Grid */}
+          <motion.div
+            variants={containerVariants}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={container}
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="hidden md:grid grid-cols-3 lg:grid-cols-4 gap-6"
           >
-            {tools.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                variants={item}
-                className="group relative flex-shrink-0 snap-center"
-                style={{ width: '140px' }}
-              >
-                <div className="relative p-6 rounded-2xl bg-white/5 dark:bg-white/10 backdrop-blur-lg border border-white/10 dark:border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] overflow-hidden h-full">
-                  
-                  {/* Subtle inner glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 dark:from-primary/10 dark:via-transparent dark:to-secondary/10 rounded-2xl opacity-0 group-active:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-                    <div className="w-12 h-12 flex items-center justify-center">
-                      <img
-                        src={tool.logo}
-                        alt={`${tool.name} logo`}
-                        className="w-full h-full object-contain"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const fallback = document.createElement('div');
-                          fallback.className = 'w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold text-sm';
-                          fallback.textContent = tool.name.charAt(0);
-                          target.parentNode?.appendChild(fallback);
-                        }}
-                      />
-                    </div>
-                    <h3 className="text-sm font-semibold text-foreground leading-tight">
-                      {tool.name}
-                    </h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            {tools.map((tool, index) => {
+              const IconComponent = tool.icon;
+              return (
+                <motion.div
+                  key={tool.name}
+                  variants={cardVariants}
+                  whileHover={{ 
+                    y: -4,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
+                  className="neumorphic-card hover:card-glow rounded-2xl p-8 text-center transition-all duration-300 group cursor-pointer"
+                >
+                  <motion.div
+                    whileHover={{ 
+                      scale: 1.1,
+                      transition: { type: "spring", stiffness: 400, damping: 15 }
+                    }}
+                    className="mb-4 flex justify-center"
+                  >
+                    <IconComponent className="h-12 w-12 text-primary group-hover:text-primary/80 transition-colors" />
+                  </motion.div>
+                  <h3 className="font-semibold text-foreground mb-1">{tool.name}</h3>
+                  <p className="text-sm text-muted-foreground">{tool.category}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
-        </div>
-      </div>
 
-      <style jsx>{`
-        .overflow-x-auto::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-    </section>
+          {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="toolkit-scroll flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              {tools.map((tool, index) => {
+                const IconComponent = tool.icon;
+                return (
+                  <motion.div
+                    key={tool.name}
+                    variants={cardVariants}
+                    className="neumorphic-card rounded-2xl p-6 text-center flex-shrink-0 w-40 snap-center"
+                  >
+                    <div className="mb-3 flex justify-center">
+                      <IconComponent className="h-10 w-10 text-primary" />
+                    </div>
+                    <h3 className="font-semibold text-foreground text-sm mb-1">{tool.name}</h3>
+                    <p className="text-xs text-muted-foreground">{tool.category}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
