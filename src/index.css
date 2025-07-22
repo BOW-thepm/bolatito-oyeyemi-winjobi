@@ -46,10 +46,18 @@
     --sidebar-border: 15 15% 87%;
     --sidebar-ring: 324 20% 73%;
 
-    /* Custom section backgrounds */
-    --featured-work-bg: 324 25% 96%; /* #F6EBF0 */
-    --contact-bg: 20 15% 94%; /* #EFEAE7 */
-    --footer-bg: 20 20% 87%; /* #E0D6D3 */
+  /* Custom section backgrounds */
+  --featured-work-bg: 324 25% 96%; /* #F6EBF0 */
+  --contact-bg: 20 15% 94%; /* #EFEAE7 */
+  --footer-bg: 20 20% 87%; /* #E0D6D3 */
+  
+  /* Gallery specific colors */
+  --gallery-backdrop: 324 8% 98%; /* Very soft warm white */
+  --gallery-card: 0 0% 100%; /* Pure white for cards */
+  --gallery-overlay: 324 20% 73% / 0.9; /* Primary with transparency */
+  --gallery-border: 324 10% 85%; /* Subtle borders */
+  --gallery-shadow: 324 20% 73% / 0.1; /* Soft shadows */
+  --gallery-glow: 324 40% 85% / 0.3; /* Hover glow */
   }
 
   .dark {
@@ -85,6 +93,14 @@
     --featured-work-bg: 300 15% 20%; /* #342F35 */
     --contact-bg: 300 10% 22%; /* #3A353A */
     --footer-bg: 300 15% 18%; /* #2E292E */
+    
+    /* Gallery specific colors - dark theme */
+    --gallery-backdrop: 300 10% 8%; /* Deep dark background */
+    --gallery-card: 300 15% 12%; /* Dark cards */
+    --gallery-overlay: 324 20% 73% / 0.95; /* Primary overlay */
+    --gallery-border: 300 10% 20%; /* Dark borders */
+    --gallery-shadow: 0 0% 0% / 0.3; /* Deep shadows */
+    --gallery-glow: 324 40% 85% / 0.2; /* Soft glow */
   }
 
   * {
@@ -148,5 +164,77 @@
 
   .footer-section {
     background-color: hsl(var(--footer-bg));
+  }
+
+  /* Gallery styles */
+  .gallery-backdrop {
+    background: 
+      radial-gradient(circle at 20% 50%, hsl(var(--gallery-glow)) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--gallery-glow)) 0%, transparent 50%),
+      hsl(var(--gallery-backdrop));
+  }
+
+  .gallery-card {
+    background: hsl(var(--gallery-card));
+    border: 1px solid hsl(var(--gallery-border));
+    box-shadow: 
+      0 4px 20px hsl(var(--gallery-shadow)),
+      0 0 0 1px hsl(var(--gallery-border));
+  }
+
+  .gallery-card:hover {
+    box-shadow: 
+      0 20px 40px hsl(var(--gallery-shadow)),
+      0 0 0 1px hsl(var(--primary) / 0.3),
+      0 0 40px hsl(var(--gallery-glow));
+  }
+
+  .glass-morphism {
+    backdrop-filter: blur(20px);
+    background: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+
+  .floating-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .stagger-fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .stagger-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .magnetic-cursor {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(var(--primary));
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(2px);
+  }
+
+  .custom-cursor.hover {
+    width: 60px;
+    height: 60px;
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary));
   }
 }
