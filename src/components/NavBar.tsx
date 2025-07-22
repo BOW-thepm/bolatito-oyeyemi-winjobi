@@ -2,11 +2,13 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('hero');
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,11 +30,11 @@ const NavBar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#hero', isRoute: false },
+    { name: 'About', href: '#about', isRoute: false },
+    { name: 'Projects', href: '/projects', isRoute: true },
+    { name: 'Testimonials', href: '#testimonials', isRoute: false },
+    { name: 'Contact', href: '#contact', isRoute: false },
   ];
 
   return (
@@ -48,11 +50,11 @@ const NavBar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-        <motion.a 
-          href="#hero" 
+        <motion.div
           className="font-playfair relative z-10 group flex items-center"
           whileHover={{ scale: 1.05 }}
         >
+          <Link to="/" className="flex items-center">
           <div className="logo-container flex items-center">
             <div className="logo-box relative mr-3">
               <div className="logo-bg absolute inset-0 bg-primary rounded-md -rotate-3 shadow-lg opacity-30"></div>
@@ -73,30 +75,59 @@ const NavBar = () => {
             </div>
             <span className="text-xs sm:text-sm md:text-base font-medium opacity-80">Bolatito Oyeyemi Winjobi</span>
           </div>
-        </motion.a>
+          </Link>
+        </motion.div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6 items-center">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className={cn(
-                "text-foreground hover:text-primary font-medium transition-colors relative py-2",
-                activeLink === link.href.substring(1) && "text-primary"
-              )}
-              whileHover={{ scale: 1.05 }}
-              onClick={() => setActiveLink(link.href.substring(1))}
-            >
-              {link.name}
-              {activeLink === link.href.substring(1) && (
-                <motion.div 
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"
-                  layoutId="navIndicator"
-                />
-              )}
-            </motion.a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.isRoute 
+              ? location.pathname === link.href 
+              : activeLink === link.href.substring(1);
+            
+            if (link.isRoute) {
+              return (
+                <motion.div key={link.name} whileHover={{ scale: 1.05 }}>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      "text-foreground hover:text-primary font-medium transition-colors relative py-2",
+                      isActive && "text-primary"
+                    )}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.div 
+                        className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"
+                        layoutId="navIndicator"
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            }
+            
+            return (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "text-foreground hover:text-primary font-medium transition-colors relative py-2",
+                  isActive && "text-primary"
+                )}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => setActiveLink(link.href.substring(1))}
+              >
+                {link.name}
+                {isActive && (
+                  <motion.div 
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"
+                    layoutId="navIndicator"
+                  />
+                )}
+              </motion.a>
+            );
+          })}
         </div>
 
         {/* Mobile Navigation Toggle */}
@@ -143,22 +174,43 @@ const NavBar = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="container mx-auto py-6 flex flex-col space-y-6">
-          {navLinks.map((link, index) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className="text-foreground hover:text-primary font-medium px-6 py-3 rounded-md hover:bg-foreground/5 transition-colors"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                setActiveLink(link.href.substring(1));
-              }}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.3 }}
-            >
-              {link.name}
-            </motion.a>
-          ))}
+          {navLinks.map((link, index) => {
+            if (link.isRoute) {
+              return (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                >
+                  <Link
+                    to={link.href}
+                    className="text-foreground hover:text-primary font-medium px-6 py-3 rounded-md hover:bg-foreground/5 transition-colors block"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              );
+            }
+            
+            return (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className="text-foreground hover:text-primary font-medium px-6 py-3 rounded-md hover:bg-foreground/5 transition-colors"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setActiveLink(link.href.substring(1));
+                }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+              >
+                {link.name}
+              </motion.a>
+            );
+          })}
         </div>
       </motion.div>
     </motion.nav>
