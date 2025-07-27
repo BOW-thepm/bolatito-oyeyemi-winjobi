@@ -9,6 +9,10 @@ const AboutSection = () => {
   
   const tabContent = [
     {
+      title: "About Me",
+      content: "I'm Bolatito Oyeyemi Winjobi, a passionate Product Manager, UI/UX Designer, and Tester who believes that great design starts with understanding people. My journey in design began with a curiosity about how things work and evolved into a deep commitment to creating digital experiences that truly matter. I approach every project with empathy, strategic thinking, and an eye for detail — always asking 'how can we make this better for the user?'"
+    },
+    {
       title: "Skills",
       content: "I specialize in user research, wireframing, prototyping, interaction design, and usability testing — creating intuitive, accessible, and responsive interfaces that meet both user needs and business goals. With a strong foundation in design thinking and a collaborative mindset, I bridge the gap between strategy and execution to deliver seamless digital experiences."
     },
