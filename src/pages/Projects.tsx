@@ -174,86 +174,55 @@ const Projects = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-        {/* Enhanced ambient background */}
-        <div className="hero-ambient" />
-        
-        {/* Floating orbs */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="floating-orb top-1/4 left-1/4 w-64 h-64 bg-primary/20" style={{ animationDelay: '0s' }} />
-          <div className="floating-orb top-3/4 right-1/4 w-80 h-80 bg-secondary/15" style={{ animationDelay: '2s' }} />
-          <div className="floating-orb top-1/2 left-3/4 w-48 h-48 bg-accent/25" style={{ animationDelay: '4s' }} />
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div ref={heroRef} className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
         </div>
         
-        <div ref={heroRef} className="container mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="liquid-glow"
-          >
-            <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-bold leading-none mb-8">
-              <span className="block">Step Into the</span>
-              <span className="liquid-text block mt-4">Gallery of Solutions</span>
-            </h1>
-          </motion.div>
-          
+        <div className="container mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="mb-20"
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <p className="text-muted-foreground max-w-3xl mx-auto text-2xl md:text-3xl leading-relaxed mb-8 font-light">
-              Design. Strategy. Execution.
-            </p>
-            <motion.p 
-              className="text-muted-foreground/80 text-lg max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              Every pixel has a purpose. Every interaction tells a story. 
-              <br className="hidden md:block" />
-              Welcome to a curated collection of digital craftsmanship.
-            </motion.p>
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 text-foreground leading-none">
+              Step Into the{' '}
+              <span className="gradient-text block mt-2">Gallery of Solutions</span>
+            </h1>
           </motion.div>
-
-          {/* Enhanced scroll indicator */}
-          <motion.div
-            className="flex flex-col items-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
+          
+          <motion.p 
+            className="text-muted-foreground max-w-4xl mx-auto text-xl leading-relaxed mb-16"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.span 
-              className="text-sm text-muted-foreground font-medium tracking-wider uppercase"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
-              Explore Projects
-            </motion.span>
+            Design. Strategy. Execution. <br />
+            <span className="text-lg text-muted-foreground/80">Every pixel has a purpose.</span>
+          </motion.p>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="flex flex-col items-center gap-4 mt-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <span className="text-sm text-muted-foreground font-medium">Explore Projects</span>
             <motion.div
-              animate={{ 
-                y: [0, 12, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="p-4 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-pointer"
-              onClick={() => document.querySelector('.projects-content')?.scrollIntoView({ behavior: 'smooth' })}
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="p-3 rounded-full border border-primary/30 bg-primary/5"
             >
-              <ChevronDown className="w-6 h-6 text-primary" />
+              <ChevronDown className="w-5 h-5 text-primary" />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Filter Section */}
-      <section className="pb-8 px-4 projects-content" ref={sectionRef}>
+      <section className="pb-8 px-4" ref={sectionRef}>
         <div className="container mx-auto">
           <ProjectFilter 
             categories={categories}
