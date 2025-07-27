@@ -76,7 +76,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.3 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                  src="/lovable-uploads/0a217010-dbe6-4ed4-a63f-e6b4dbc0d1d5.png"
                   alt="Designer at work" 
                   className="rounded-lg object-cover h-[500px] w-full"
                 />

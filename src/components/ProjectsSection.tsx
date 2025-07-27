@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useParallaxScroll';
+import { Link } from 'react-router-dom';
 
 const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -200,6 +201,30 @@ const ProjectsSection = () => {
               </motion.div>
             </motion.div>
           ))}
+        </motion.div>
+        
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block"
+          >
+            <Button 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-8 py-6 text-lg"
+              asChild
+            >
+              <Link to="/projects">
+                View All Projects
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
     </section>
