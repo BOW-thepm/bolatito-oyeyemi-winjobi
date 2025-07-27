@@ -68,51 +68,30 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="relative">
-              <div className="absolute -top-5 -left-5 w-full h-full border-2 border-primary rounded-xl -rotate-2"></div>
+            <div className="relative max-w-md mx-auto">
               <motion.div 
-                className="relative z-10 rounded-xl overflow-hidden bg-clip-padding p-1 bg-gradient-to-r from-primary to-designer-dark-yellow"
+                className="relative rounded-2xl overflow-hidden shadow-2xl"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img 
-                  src="/lovable-uploads/0a217010-dbe6-4ed4-a63f-e6b4dbc0d1d5.png"
-                  alt="Designer at work" 
-                  className="rounded-lg object-cover h-[500px] w-full"
-                />
+                {/* Frame border */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary via-designer-dark-yellow to-primary p-[3px] rounded-2xl">
+                  <div className="w-full h-full bg-background rounded-2xl"></div>
+                </div>
+                
+                {/* Image */}
+                <div className="relative p-[3px]">
+                  <img 
+                    src="/lovable-uploads/d0b59ced-df13-458c-bb4f-615f56505133.png"
+                    alt="Bolatito Oyeyemi Winjobi - UI/UX Designer" 
+                    className="rounded-2xl object-cover h-[500px] w-full"
+                  />
+                  
+                  {/* Inner shadow for depth */}
+                  <div className="absolute inset-0 rounded-2xl shadow-inner pointer-events-none"></div>
+                </div>
               </motion.div>
             </div>
-            
-            <motion.div 
-              className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 shadow-2xl rounded-xl p-6 w-48"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="bg-designer-light-yellow rounded-full p-2 mb-3">
-                  <BadgeCheck className="h-6 w-6 text-designer-dark-yellow" />
-                </div>
-                <span className="block text-2xl font-bold text-primary">5+</span>
-                <span className="text-sm text-foreground/60">Years of Experience</span>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="absolute -top-8 -left-8 bg-white dark:bg-gray-800 shadow-2xl rounded-xl p-4 rotate-12"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ rotate: 0 }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground">UX</div>
-                <p className="font-semibold">Expert</p>
-              </div>
-            </motion.div>
           </motion.div>
           
           <motion.div
