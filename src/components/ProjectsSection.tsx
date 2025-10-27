@@ -19,9 +19,9 @@ const ProjectsSection = () => {
     },
     {
       id: 2,
-      title: "E-commerce Platform",
-      description: "Designing a seamless shopping experience for a fashion retailer with modern aesthetics.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      title: "JeanGenie",
+      description: "An intuitive e-commerce app designed to help women easily find perfectly fitting jeans.",
+      image: "/lovable-uploads/jeangenie-mockup.jpg",
       caseStudyUrl: "#"
     },
   ];
