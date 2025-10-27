@@ -24,51 +24,11 @@ const testimonials: Testimonial[] = [
     content: "I had the pleasure of working with Bow on the UI/UX design of our healthcare application, and I can confidently say that she is a talented and dedicated designer who brings both creativity and precision to her work. From day one, Bow showed a deep understanding of user-centered design principles and transformed complex healthcare workflows into intuitive, seamless experiences for our users. She was instrumental in shaping features like appointment booking, real-time waiting time tracking, location-based search, and medical history management. Her attention to detail, responsiveness to feedback, and collaborative spirit made the entire design process smooth and efficient. Bow doesn't just design interfaces-she designs with purpose, empathy, and a clear vision for user impact. I highly recommend her for any UI/UX role and would gladly work with her again in the future.",
     rating: 5,
     avatar: "/lovable-uploads/5a4177fc-16e5-4453-b8ee-7a09d6e86f15.png"
-  },
-  {
-    id: 1,
-    name: "Jane Cooper",
-    position: "Product Manager",
-    company: "Spotify",
-    content: "Bolatito created an exceptional product that exceeded our expectations. Her attention to detail and user-centered approach resulted in a design that our customers love.",
-    rating: 5,
-    avatar: "https://randomuser.me/api/portraits/women/12.jpg"
-  },
-  {
-    id: 2,
-    name: "Alex Morgan",
-    position: "CEO",
-    company: "TechFlow",
-    content: "Working with Bolatito was a game-changer for our product. Her intuitive designs and research-driven approach helped us increase user engagement by 45%.",
-    rating: 5,
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
-  },
-  {
-    id: 3,
-    name: "Sarah Johnson",
-    position: "Marketing Director",
-    company: "Notion",
-    content: "I was impressed by Bolatito's ability to translate complex requirements into clean, intuitive interfaces. She's not just a designer but a strategic partner.",
-    rating: 5,
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
   }
 ];
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 9000); // 9 seconds per testimonial
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const currentTestimonial = testimonials[currentIndex];
+  const currentTestimonial = testimonials[0];
 
   return (
     <section id="testimonials" className="py-20 bg-primary/5 overflow-hidden">
@@ -87,11 +47,7 @@ const TestimonialsSection = () => {
         </motion.div>
 
         <div className="flex justify-center">
-          <div 
-            className="max-w-4xl w-full relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
+          <div className="max-w-4xl w-full relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial.id}
@@ -149,22 +105,6 @@ const TestimonialsSection = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Progress indicators */}
-            <div className="flex justify-center mt-8 space-x-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={cn(
-                    "w-3 h-3 rounded-full transition-all duration-300",
-                    index === currentIndex 
-                      ? "bg-primary scale-110" 
-                      : "bg-primary/30 hover:bg-primary/50"
-                  )}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>
