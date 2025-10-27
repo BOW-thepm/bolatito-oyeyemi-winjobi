@@ -135,21 +135,26 @@ const ProjectsSection = () => {
                     {project.description}
                   </p>
                   
-                  <a 
-                    href={project.caseStudyUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-white hover:text-white hover:bg-white/20 border border-white/30 px-4 py-2 rounded-full backdrop-blur-sm transition-all duration-300"
-                    onClick={(e) => e.stopPropagation()}
+                  <Button 
+                    variant="ghost" 
+                    className="text-white hover:text-white hover:bg-white/20 p-0 gap-2 group/btn self-start border border-white/30 px-4 py-2 rounded-full backdrop-blur-sm magnetic-hover"
+                    asChild
                   >
-                    View Case Study 
-                    <motion.div
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                    <a 
+                      href={project.caseStudyUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
                     >
-                      <ArrowRight size={16} />
-                    </motion.div>
-                  </a>
+                      View Case Study 
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <ArrowRight size={16} />
+                      </motion.div>
+                    </a>
+                  </Button>
                 </motion.div>
               </motion.div>
             </motion.div>
