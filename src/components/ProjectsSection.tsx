@@ -22,7 +22,7 @@ const ProjectsSection = () => {
       title: "JeanGenie",
       description: "An intuitive e-commerce app designed to help women easily find perfectly fitting jeans.",
       image: "/lovable-uploads/jeangenie-mockup.jpg",
-      caseStudyUrl: "#"
+      caseStudyUrl: "https://www.behance.net/gallery/217619951/JeanGenie-UiUx-Casestudy"
     },
   ];
   
