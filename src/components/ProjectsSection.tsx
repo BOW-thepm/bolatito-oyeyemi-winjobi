@@ -24,48 +24,6 @@ const ProjectsSection = () => {
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       caseStudyUrl: "#"
     },
-    {
-      id: 3,
-      title: "Healthcare Portal",
-      description: "Creating an accessible healthcare management system for patients and providers.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      caseStudyUrl: "#"
-    },
-    {
-      id: 4,
-      title: "Smart Home App",
-      description: "Designing an intuitive interface for controlling home devices with elegant interactions.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      caseStudyUrl: "#"
-    },
-    {
-      id: 5,
-      title: "Financial Dashboard",
-      description: "Modern investment platform with sophisticated data visualization and user experience.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      caseStudyUrl: "#"
-    },
-    {
-      id: 6,
-      title: "Travel Experience",
-      description: "Immersive travel booking platform with focus on storytelling and visual appeal.",
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      caseStudyUrl: "#"
-    },
-    {
-      id: 7,
-      title: "Educational Platform",
-      description: "Interactive learning environment designed for modern students and educators.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      caseStudyUrl: "#"
-    },
-    {
-      id: 8,
-      title: "Brand Identity System",
-      description: "Comprehensive visual identity design for a contemporary lifestyle brand.",
-      image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      caseStudyUrl: "#"
-    },
   ];
   
   // Animation variants
@@ -121,7 +79,7 @@ const ProjectsSection = () => {
         </div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
           variants={container}
           initial="hidden"
           whileInView="show"
