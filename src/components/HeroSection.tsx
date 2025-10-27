@@ -114,7 +114,7 @@ const HeroSection = () => {
             transition={{ delay: 3, duration: 0.6 }}
           >
             <motion.div className="flex flex-col" whileHover={{ scale: 1.05 }}>
-              <span className="text-3xl md:text-4xl font-bold text-primary">1+</span>
+              <span className="text-3xl md:text-4xl font-bold text-primary">2+</span>
               <span className="text-sm">Years Experience</span>
             </motion.div>
             <div className="h-12 w-px bg-white/30"></div>

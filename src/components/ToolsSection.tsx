@@ -6,7 +6,11 @@ import {
   Users, 
   Video, 
   FileText, 
-  TestTube 
+  TestTube,
+  Pen,
+  Phone,
+  Brain,
+  Layout
 } from 'lucide-react';
 
 const ToolsSection = () => {
@@ -23,6 +27,10 @@ const ToolsSection = () => {
     { name: 'Zoom', icon: Video, category: 'Communication' },
     { name: 'Google Forms', icon: FileText, category: 'Research' },
     { name: 'UserTesting', icon: TestTube, category: 'Research' },
+    { name: 'Sketch', icon: Pen, category: 'Design' },
+    { name: 'DingTalk', icon: Phone, category: 'Communication' },
+    { name: 'X-Mind', icon: Brain, category: 'Research' },
+    { name: 'Draw.io', icon: Layout, category: 'Design' },
   ];
 
   const containerVariants = {
