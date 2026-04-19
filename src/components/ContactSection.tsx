@@ -181,11 +181,10 @@ const ContactSection = () => {
             >
               {/* LIA in modal */}
               <motion.div
-                className="absolute top-4 right-16 w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full shadow-lg flex items-center justify-center"
+                className="absolute top-4 right-16 w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full shadow-lg flex items-center justify-center animate-pulse"
                 initial={{ x: -100, y: 100, opacity: 0 }}
                 animate={{ x: 0, y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                animate-pulse
               >
                 <motion.div
                   animate={{ 

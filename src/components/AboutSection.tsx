@@ -161,7 +161,11 @@ const AboutSection = () => {
               </motion.div>
               
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 gap-2">
+                <Button
+                  variant="outline"
+                  className="border-primary text-primary hover:bg-primary/5 gap-2"
+                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                >
                   <Lightbulb className="h-4 w-4" />
                   My Process
                 </Button>
@@ -206,11 +210,14 @@ const AboutSection = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-block"
             >
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="border-primary text-primary hover:bg-primary/5 px-6"
+                asChild
               >
-                View My Full Skillset
+                <a href="https://www.behance.net/bowthetechpm" target="_blank" rel="noopener noreferrer">
+                  View My Full Skillset
+                </a>
               </Button>
             </motion.div>
           </motion.div>
