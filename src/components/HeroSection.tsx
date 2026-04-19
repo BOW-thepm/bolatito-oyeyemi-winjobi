@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle, ExternalLink } from 'lucide-react';
+import { ArrowDownCircle, ArrowUpRight, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
-  const fullText = 'Creating beautiful digital experiences';
-  
+  const fullText = 'digital experiences';
+
   useEffect(() => {
     let currentIndex = 0;
     const typingInterval = setInterval(() => {
@@ -16,137 +16,184 @@ const HeroSection = () => {
       } else {
         clearInterval(typingInterval);
       }
-    }, 100);
-    
+    }, 90);
+
     return () => clearInterval(typingInterval);
   }, []);
 
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section 
-      id="hero" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
-      style={{
-        backgroundImage: 'url("/lovable-uploads/80e85810-43c5-48de-95b3-1c8dd18f9c7b.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat'
-      }}
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 bg-background"
     >
-      {/* Dark overlay for text contrast */}
-      <div 
-        className="absolute inset-0 z-10"
-        style={{
-          background: 'linear-gradient(rgba(28, 26, 29, 0.6), rgba(28, 26, 29, 0.6))'
-        }}
-      />
-      
-      <div className="container mx-auto px-4 md:px-8 relative z-20">
-        <div className="flex flex-col items-center justify-center text-center">
-          <motion.div 
-            className="max-w-[700px] space-y-4"
-            initial={{ opacity: 0, y: 30 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
+      {/* Animated gradient blobs */}
+      <div className="absolute inset-0 -z-0">
+        <div
+          className="blob blob-drift"
+          style={{
+            width: '520px',
+            height: '520px',
+            top: '-120px',
+            left: '-120px',
+            background: 'hsl(var(--primary) / 0.55)',
+          }}
+        />
+        <div
+          className="blob blob-drift"
+          style={{
+            width: '460px',
+            height: '460px',
+            bottom: '-140px',
+            right: '-100px',
+            background: 'hsl(var(--secondary) / 0.5)',
+            animationDelay: '-6s',
+          }}
+        />
+        <div
+          className="blob blob-drift"
+          style={{
+            width: '320px',
+            height: '320px',
+            top: '40%',
+            left: '55%',
+            background: 'hsl(var(--accent) / 0.35)',
+            animationDelay: '-12s',
+          }}
+        />
+      </div>
+
+      {/* Dotted grid */}
+      <div className="absolute inset-0 dot-grid opacity-60 -z-0" />
+
+      {/* Noise texture */}
+      <div className="noise-overlay" />
+
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/60 bg-card/60 backdrop-blur-md text-xs md:text-sm text-muted-foreground mb-8"
           >
-            <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white min-h-[120px] md:min-h-[150px] flex flex-col justify-center" 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              <span className="text-primary relative inline-block mb-2">
-                {displayText}
-                <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-                  className="ml-1"
-                >
-                  |
-                </motion.span>
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-white/90 text-lg md:text-xl leading-relaxed" 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              transition={{ delay: 2, duration: 0.8 }}
-            >
-              Hi, I'm a passionate UI/UX designer focused on crafting intuitive and engaging user experiences that solve real problems.
-            </motion.p>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            Available for select projects · 2026
           </motion.div>
-          
-          <motion.div 
-            className="flex flex-wrap gap-4 mt-8 justify-center" 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 2.5, duration: 0.6 }}
+
+          {/* Headline */}
+          <motion.h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] text-foreground"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
           >
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg px-8 py-3" 
-              onClick={() => window.open('https://www.behance.net/bowthetechpm', '_blank', 'noopener,noreferrer')}
+            Crafting beautiful
+            <br />
+            <span className="italic font-light text-muted-foreground">human-centered </span>
+            <span className="gradient-text">
+              {displayText}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
+                className="ml-1 text-primary"
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h1>
+
+          {/* Sub */}
+          <motion.p
+            className="mt-8 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            I'm <span className="text-foreground font-medium">Bolatito</span> — a UI/UX designer
+            shaping intuitive, intentional interfaces that solve real problems.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-wrap gap-3 mt-10 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <Button
+              size="lg"
+              className="group bg-foreground hover:bg-foreground/90 text-background rounded-full px-7 h-12 transition-all duration-300"
+              onClick={() =>
+                window.open('https://www.behance.net/bowthetechpm', '_blank', 'noopener,noreferrer')
+              }
             >
               <span>View My Work</span>
-              <ExternalLink className="ml-2 h-4 w-4" />
+              <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
-            
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:scale-105 backdrop-blur-sm rounded-lg px-8 py-3"
+
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={scrollToContact}
+              className="group rounded-full px-7 h-12 border-border bg-card/40 backdrop-blur-md hover:bg-card transition-all duration-300"
             >
-              <span>Contact Me</span>
-              <motion.span 
-                className="ml-2" 
-                animate={{ x: [0, 5, 0] }} 
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
+              <Sparkles className="mr-1 h-4 w-4 text-primary" />
+              <span>Let's talk</span>
             </Button>
           </motion.div>
-          
-          <motion.div 
-            className="flex items-center gap-8 mt-16 text-white/90" 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ delay: 3, duration: 0.6 }}
+
+          {/* Stats */}
+          <motion.div
+            className="flex items-center gap-10 md:gap-14 mt-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
           >
-            <motion.div className="flex flex-col" whileHover={{ scale: 1.05 }}>
-              <span className="text-3xl md:text-4xl font-bold text-primary">2+</span>
-              <span className="text-sm">Years Experience</span>
-            </motion.div>
-            <div className="h-12 w-px bg-white/30"></div>
-            <motion.div className="flex flex-col" whileHover={{ scale: 1.05 }}>
-              <span className="text-3xl md:text-4xl font-bold text-primary">10+</span>
-              <span className="text-sm">Projects Completed</span>
-            </motion.div>
+            <div className="flex flex-col items-start">
+              <span className="text-3xl md:text-4xl font-bold text-foreground">2+</span>
+              <span className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-1">
+                Years
+              </span>
+            </div>
+            <div className="h-10 w-px bg-border"></div>
+            <div className="flex flex-col items-start">
+              <span className="text-3xl md:text-4xl font-bold text-foreground">10+</span>
+              <span className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-1">
+                Projects
+              </span>
+            </div>
+            <div className="h-10 w-px bg-border hidden sm:block"></div>
+            <div className="hidden sm:flex flex-col items-start">
+              <span className="text-3xl md:text-4xl font-bold text-foreground">∞</span>
+              <span className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-1">
+                Curiosity
+              </span>
+            </div>
           </motion.div>
         </div>
       </div>
-      
-      <motion.a 
-        href="#about" 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70 hover:text-primary transition-colors z-20 mt-12 md:mt-16" 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        transition={{ delay: 3.5, duration: 0.6 }}
-        style={{ marginTop: '64px' }}
+
+      <motion.a
+        href="#about"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground hover:text-primary transition-colors z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
       >
-        <span className="text-sm mb-2">Scroll Down</span>
-        <motion.div 
-          animate={{ 
-            y: [0, -8, 0],
-          }} 
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity, 
-            repeatType: "loop",
-            ease: "easeInOut"
-          }}
+        <span className="text-[10px] tracking-[0.2em] uppercase mb-2">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ArrowDownCircle className="h-6 w-6" />
+          <ArrowDownCircle className="h-5 w-5" />
         </motion.div>
       </motion.a>
     </section>
