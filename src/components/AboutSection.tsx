@@ -1,226 +1,138 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { BadgeCheck, Eye, Code, Palette, Monitor, Users, FileText, Lightbulb } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import SkillBars from './SkillBars';
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
-  
+
   const tabContent = [
     {
-      title: "About Me",
-      content: "I'm Bolatito Oyeyemi Winjobi, a passionate Product Manager, UI/UX Designer, and Tester who believes that great design starts with understanding people. My journey in design began with a curiosity about how things work and evolved into a deep commitment to creating digital experiences that truly matter. I approach every project with empathy, strategic thinking, and an eye for detail — always asking 'how can we make this better for the user?'"
+      title: 'About',
+      content:
+        "I'm Bolatito Oyeyemi Winjobi — a product designer who believes great design starts with understanding people. I approach every project with empathy, strategic thinking, and care for the smallest detail.",
     },
     {
-      title: "Skills",
-      content: "I specialize in user research, wireframing, prototyping, interaction design, and usability testing — creating intuitive, accessible, and responsive interfaces that meet both user needs and business goals. With a strong foundation in design thinking and a collaborative mindset, I bridge the gap between strategy and execution to deliver seamless digital experiences."
+      title: 'Skills',
+      content:
+        'User research, wireframing, prototyping, interaction design and usability testing — building intuitive, accessible, responsive interfaces that meet user needs and business goals.',
     },
     {
-      title: "Experience",
-      content: "With over a year of experience in UI/UX design and product development, I've worked at the intersection of user needs and business vision — crafting experiences that are not only functional but truly human. I've designed for healthcare, e-commerce, personal projcets, partnering with developers, and stakeholders to bring ideas to life. Whether leading user research, mapping flows, or building responsive interfaces, I bring a product-thinking mindset to every phase of the design process."
+      title: 'Experience',
+      content:
+        "Two+ years designing across healthcare, e-commerce and personal projects. I partner closely with developers and stakeholders, bringing a product-thinking mindset to every phase of the work.",
     },
     {
-      title: "Education",
-      content: "I hold a Bachelor's degree in Interactive Design from California College of Arts and have completed specialized courses in Human-Computer Interaction from Stanford University. I regularly attend industry conferences and workshops to stay current with design trends and methodologies."
-    }
+      title: 'Education',
+      content:
+        "Bachelor's in Interactive Design from California College of Arts, plus continued study in Human-Computer Interaction. I attend industry workshops to keep current with methodology.",
+    },
   ];
-  
+
   return (
-    <section id="about" className="section-padding py-24 lg:py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-1/3 h-2/3 bg-designer-light-yellow/20 dark:bg-designer-dark-yellow/10 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <motion.span 
-            className="inline-block py-1 px-3 mb-4 bg-designer-light-yellow text-designer-dark-yellow rounded-full text-sm font-medium"
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
-          >
-            About Me
-          </motion.span>
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Passionate about creating <span className="gradient-text">meaningful</span> experiences
-          </motion.h2>
-          <motion.p 
-            className="text-foreground/70 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            I combine research, design thinking, and creative problem-solving to craft digital experiences that are both beautiful and functional.
-          </motion.p>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-24">
-          <motion.div 
-            className="lg:col-span-5 relative"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative max-w-md mx-auto">
-              <motion.div 
-                className="relative rounded-2xl overflow-hidden shadow-2xl"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Frame border */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary via-designer-dark-yellow to-primary p-[3px] rounded-2xl">
-                  <div className="w-full h-full bg-background rounded-2xl"></div>
-                </div>
-                
-                {/* Image */}
-                <div className="relative p-[3px]">
-                  <img 
-                    src="/lovable-uploads/d0b59ced-df13-458c-bb4f-615f56505133.png"
-                    alt="Bolatito Oyeyemi Winjobi - UI/UX Designer" 
-                    className="rounded-2xl object-cover h-[500px] w-full"
-                  />
-                  
-                  {/* Inner shadow for depth */}
-                  <div className="absolute inset-0 rounded-2xl shadow-inner pointer-events-none"></div>
-                </div>
-              </motion.div>
+    <section id="about" className="section-padding relative bg-background">
+      <div className="container mx-auto px-6 md:px-10">
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-baseline justify-between border-b border-border pb-4 mb-16"
+        >
+          <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+            (01) About
+          </span>
+          <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground hidden sm:block">
+            Designer · Researcher
+          </span>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] max-w-5xl text-foreground"
+        >
+          Designing with <span className="italic font-light text-muted-foreground">empathy</span>,
+          shipping with <span className="italic font-light text-muted-foreground">intent</span>.
+        </motion.h2>
+
+        {/* Tabbed content */}
+        <div className="mt-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="lg:col-span-4">
+            <div className="flex flex-col">
+              {tabContent.map((tab, index) => (
+                <button
+                  key={tab.title}
+                  onClick={() => setActiveTab(index)}
+                  className={`text-left py-4 border-t border-border flex items-baseline justify-between transition-colors ${
+                    activeTab === index
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  <span className="text-lg font-medium">{tab.title}</span>
+                  <span className="text-[10px] tracking-[0.2em] uppercase">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </button>
+              ))}
+              <div className="border-t border-border" />
             </div>
-          </motion.div>
-          
-          <motion.div
-            className="lg:col-span-7"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">My Design Philosophy</h3>
-            
-            <div className="mb-8">
-              <div className="flex border-b border-foreground/10 mb-6">
-                {tabContent.map((tab, index) => (
-                  <button
-                    key={index}
-                    className={`py-3 px-6 font-medium relative ${activeTab === index ? 'text-primary' : 'text-foreground/60 hover:text-foreground'}`}
-                    onClick={() => setActiveTab(index)}
+          </div>
+
+          <div className="lg:col-span-8">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              <p className="text-xl md:text-2xl leading-relaxed text-foreground/80 max-w-2xl font-light">
+                {tabContent[activeTab].content}
+              </p>
+
+              <div className="mt-12 flex flex-wrap gap-3">
+                <Button
+                  className="rounded-full h-12 px-6 bg-foreground text-background hover:bg-foreground/90"
+                  asChild
+                >
+                  <a
+                    href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    {tab.title}
-                    {activeTab === index && (
-                      <motion.div
-                        layoutId="activeTabIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
-              
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="text-foreground/70 leading-relaxed"
-              >
-                <p className="mb-6">{tabContent[activeTab].content}</p>
-                
-                {activeTab === 1 && (
-                  <p className="mb-6">
-                    Every screen I design is driven by empathy, shaped by data, and refined through collaboration because great design isn't just how it looks, but how effortlessly it works.
-                  </p>
-                )}
-                
-                {activeTab !== 1 && (
-                  <p className="mb-6">
-                    I believe that great design is about solving real problems. My approach blends aesthetics with functionality to create interfaces that are not just beautiful but also intuitive and accessible.
-                  </p>
-                )}
-              </motion.div>
-            </div>
-            
-            <div className="flex gap-4 flex-wrap">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-primary hover:bg-designer-dark-yellow text-primary-foreground gap-2" asChild>
-                  <a href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view" target="_blank" rel="noopener noreferrer">
                     <FileText className="h-4 w-4" />
-                    Download Resume
+                    Download résumé
                   </a>
                 </Button>
-              </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   variant="outline"
-                  className="border-primary text-primary hover:bg-primary/5 gap-2"
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() =>
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                  className="rounded-full h-12 px-6 border-border bg-transparent hover:bg-secondary"
                 >
-                  <Lightbulb className="h-4 w-4" />
-                  My Process
+                  See process
                 </Button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-        
-        <div className="mt-24">
-          <div className="text-center mb-12">
-            <motion.h3 
-              className="text-2xl md:text-3xl font-bold mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              My Skills & Expertise
-            </motion.h3>
-            <motion.p
-              className="text-foreground/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              I've developed a diverse skillset that allows me to tackle design challenges from multiple perspectives.
-            </motion.p>
-          </div>
-          
-          <SkillBars />
-          
-          <motion.div 
-            className="mt-16 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/5 px-6"
-                asChild
-              >
-                <a href="https://www.behance.net/bowthetechpm" target="_blank" rel="noopener noreferrer">
-                  View My Full Skillset
-                </a>
-              </Button>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Skills */}
+        <div className="mt-32 pt-16 border-t border-border">
+          <div className="flex items-baseline justify-between mb-12">
+            <h3 className="text-2xl md:text-3xl font-medium text-foreground">Skills & expertise</h3>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+              (Proficiency)
+            </span>
+          </div>
+          <SkillBars />
         </div>
       </div>
     </section>

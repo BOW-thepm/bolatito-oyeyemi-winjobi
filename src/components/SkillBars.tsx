@@ -1,6 +1,4 @@
-
 import { motion } from 'framer-motion';
-import { Progress } from '@/components/ui/progress';
 import { useEffect, useState } from 'react';
 
 interface Skill {
@@ -20,117 +18,45 @@ const skills: Skill[] = [
 
 const SkillBars = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [animatedLevels, setAnimatedLevels] = useState<number[]>(new Array(skills.length).fill(0));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Animate skill levels
-          skills.forEach((skill, index) => {
-            setTimeout(() => {
-              setAnimatedLevels(prev => {
-                const newLevels = [...prev];
-                newLevels[index] = skill.level;
-                return newLevels;
-              });
-            }, index * 200);
-          });
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
-
-    const skillsSection = document.getElementById('skills-section');
-    if (skillsSection) {
-      observer.observe(skillsSection);
-    }
-
+    const el = document.getElementById('skills-section');
+    if (el) observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div id="skills-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="skills-section" className="divide-y divide-border border-y border-border">
       {skills.map((skill, index) => (
         <motion.div
           key={skill.name}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: index * 0.1, duration: 0.6 }}
-          whileHover={{ y: -8, scale: 1.02 }}
-          className="group"
+          transition={{ delay: index * 0.06, duration: 0.5 }}
+          className="grid grid-cols-12 items-center gap-4 py-5 group"
         >
-          <div 
-            className="bg-white/10 dark:bg-gray-800/20 backdrop-blur-lg p-6 rounded-2xl border border-white/20 dark:border-gray-700/30 hover:bg-white/15 dark:hover:bg-gray-800/25 hover:border-white/30 dark:hover:border-gray-600/40 transition-all duration-300 shadow-lg hover:shadow-xl"
-            style={{
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-            }}
-          >
-            <div className="flex justify-between items-center mb-4">
-              <h4 className="text-lg font-semibold text-foreground">{skill.name}</h4>
-              <motion.span 
-                className="text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1 + index * 0.1 }}
-              >
-                {skill.description}
-              </motion.span>
-            </div>
-            
-            <div className="relative">
-              <div className="flex justify-between items-center mb-2">
-                <div className="w-full bg-white/20 dark:bg-gray-700/30 backdrop-blur-sm rounded-full h-3 overflow-hidden border border-white/10">
-                  <motion.div
-                    className="h-full bg-gradient-to-r from-primary to-secondary rounded-full relative shadow-inner"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${animatedLevels[index]}%` }}
-                    transition={{ duration: 1.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-white/20 rounded-full"
-                      animate={{ 
-                        opacity: [0.3, 0.7, 0.3],
-                        scale: [1, 1.05, 1]
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity,
-                        delay: 1 + index * 0.2
-                      }}
-                    />
-                  </motion.div>
-                </div>
-                <motion.span 
-                  className="ml-3 text-sm font-bold text-primary min-w-[40px] text-right"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5 + index * 0.1 }}
-                >
-                  {animatedLevels[index]}%
-                </motion.span>
-              </div>
-            </div>
-            
-            {/* Frequency visualization */}
-            <div className="flex items-end justify-center mt-4 h-8 gap-1">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="bg-primary/30 w-1 rounded-full backdrop-blur-sm"
-                  animate={{
-                    height: isVisible ? [4, Math.random() * 20 + 8, 4] : 4,
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: (index * 0.2) + (i * 0.1),
-                    ease: "easeInOut",
-                  }}
-                />
-              ))}
-            </div>
+          <div className="col-span-5 md:col-span-3 text-base md:text-lg font-medium text-foreground">
+            {skill.name}
+          </div>
+          <div className="col-span-2 md:col-span-2 text-xs tracking-[0.2em] uppercase text-muted-foreground">
+            {skill.description}
+          </div>
+          <div className="col-span-3 md:col-span-6 h-px bg-border relative overflow-hidden">
+            <motion.div
+              className="absolute inset-y-0 left-0 bg-foreground"
+              initial={{ width: 0 }}
+              animate={isVisible ? { width: `${skill.level}%` } : { width: 0 }}
+              transition={{ duration: 1.2, delay: 0.2 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+          <div className="col-span-2 md:col-span-1 text-right text-sm tabular-nums text-muted-foreground">
+            {skill.level}
           </div>
         </motion.div>
       ))}
