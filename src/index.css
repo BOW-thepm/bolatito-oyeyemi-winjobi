@@ -7,100 +7,98 @@
 
 @layer base {
   :root {
-    --background: 15 20% 99%; /* Light BG #FFF9F8 */
-    --foreground: 0 0% 17%; /* Main text #2B2B2B */
+    /* Warm minimalist neutrals */
+    --background: 30 20% 98%;          /* #FAF8F5 */
+    --foreground: 0 0% 9%;             /* near black */
 
-    --card: 15 25% 98%; /* Cards #FDF3F2 */
-    --card-foreground: 0 0% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
 
-    --popover: 15 25% 98%;
-    --popover-foreground: 0 0% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 324 20% 73%; /* Dusty Mauve #C9A7B8 */
-    --primary-foreground: 0 0% 100%; /* White on accent */
+    --primary: 0 0% 9%;                /* monochrome primary */
+    --primary-foreground: 30 20% 98%;
 
-    --secondary: 203 35% 74%; /* Powder Blue #AEC6CF */
-    --secondary-foreground: 0 0% 7%; /* Dark text on powder blue */
+    --secondary: 30 15% 94%;
+    --secondary-foreground: 0 0% 9%;
 
-    --muted: 15 20% 96%;
-    --muted-foreground: 0 0% 33%; /* Subtext #555555 */
+    --muted: 30 15% 95%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 203 35% 74%; /* Powder Blue as accent */
-    --accent-foreground: 0 0% 7%;
+    --accent: 324 22% 70%;             /* single mauve accent */
+    --accent-foreground: 0 0% 9%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 15 15% 90%;
-    --input: 15 15% 90%;
-    --ring: 324 20% 73%; /* Dusty Mauve for focus rings */
+    --border: 30 10% 90%;
+    --input: 30 10% 90%;
+    --ring: 0 0% 9%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 15 20% 97%;
-    --sidebar-foreground: 0 0% 17%;
-    --sidebar-primary: 0 0% 17%;
+    --sidebar-background: 30 20% 97%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 0 0% 9%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 15 20% 95%;
-    --sidebar-accent-foreground: 0 0% 17%;
-    --sidebar-border: 15 15% 87%;
-    --sidebar-ring: 324 20% 73%;
+    --sidebar-accent: 30 15% 95%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 30 10% 88%;
+    --sidebar-ring: 0 0% 9%;
 
-  /* Custom section backgrounds */
-  --featured-work-bg: 324 25% 96%; /* #F6EBF0 */
-  --contact-bg: 20 15% 94%; /* #EFEAE7 */
-  --footer-bg: 20 20% 87%; /* #E0D6D3 */
-  
-  /* Gallery specific colors */
-  --gallery-backdrop: 324 8% 98%; /* Very soft warm white */
-  --gallery-card: 0 0% 100%; /* Pure white for cards */
-  --gallery-overlay: 324 20% 73% / 0.9; /* Primary with transparency */
-  --gallery-border: 324 10% 85%; /* Subtle borders */
-  --gallery-shadow: 324 20% 73% / 0.1; /* Soft shadows */
-  --gallery-glow: 324 40% 85% / 0.3; /* Hover glow */
+    /* Unified section tones — all very close to background */
+    --featured-work-bg: 30 18% 96%;
+    --contact-bg: 30 18% 97%;
+    --footer-bg: 30 16% 95%;
+
+    --gallery-backdrop: 30 18% 97%;
+    --gallery-card: 0 0% 100%;
+    --gallery-overlay: 0 0% 9% / 0.85;
+    --gallery-border: 30 10% 88%;
+    --gallery-shadow: 0 0% 0% / 0.06;
+    --gallery-glow: 30 10% 90% / 0.4;
   }
 
   .dark {
-    --background: 300 10% 11%; /* Dark BG #1C1A1D */
-    --foreground: 0 0% 95%; /* Main text #F1F1F1 */
+    --background: 30 6% 8%;            /* near black */
+    --foreground: 30 10% 96%;
 
-    --card: 300 15% 16%; /* Cards #2A262B */
-    --card-foreground: 0 0% 95%;
+    --card: 30 6% 11%;
+    --card-foreground: 30 10% 96%;
 
-    --popover: 300 15% 16%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 30 6% 11%;
+    --popover-foreground: 30 10% 96%;
 
-    --primary: 324 20% 73%; /* Dusty Mauve #C9A7B8 */
-    --primary-foreground: 0 0% 7%; /* Dark text on accent in dark mode */
+    --primary: 30 10% 96%;             /* invert for dark */
+    --primary-foreground: 30 6% 8%;
 
-    --secondary: 203 35% 74%; /* Powder Blue #AEC6CF */
-    --secondary-foreground: 0 0% 7%;
+    --secondary: 30 6% 14%;
+    --secondary-foreground: 30 10% 96%;
 
-    --muted: 300 10% 12%;
-    --muted-foreground: 0 0% 73%; /* Subtext #BBBBBB */
+    --muted: 30 6% 13%;
+    --muted-foreground: 30 8% 65%;
 
-    --accent: 203 35% 74%;
-    --accent-foreground: 0 0% 7%;
+    --accent: 324 22% 70%;
+    --accent-foreground: 30 6% 8%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 300 10% 15%;
-    --input: 300 10% 15%;
-    --ring: 324 20% 73%;
+    --border: 30 6% 18%;
+    --input: 30 6% 18%;
+    --ring: 30 10% 96%;
 
-    /* Custom section backgrounds - dark theme */
-    --featured-work-bg: 300 15% 20%; /* #342F35 */
-    --contact-bg: 300 10% 22%; /* #3A353A */
-    --footer-bg: 300 15% 18%; /* #2E292E */
-    
-    /* Gallery specific colors - dark theme */
-    --gallery-backdrop: 300 10% 8%; /* Deep dark background */
-    --gallery-card: 300 15% 12%; /* Dark cards */
-    --gallery-overlay: 324 20% 73% / 0.95; /* Primary overlay */
-    --gallery-border: 300 10% 20%; /* Dark borders */
-    --gallery-shadow: 0 0% 0% / 0.3; /* Deep shadows */
-    --gallery-glow: 324 40% 85% / 0.2; /* Soft glow */
+    --featured-work-bg: 30 6% 10%;
+    --contact-bg: 30 6% 9%;
+    --footer-bg: 30 6% 11%;
+
+    --gallery-backdrop: 30 6% 9%;
+    --gallery-card: 30 6% 12%;
+    --gallery-overlay: 30 10% 96% / 0.9;
+    --gallery-border: 30 6% 18%;
+    --gallery-shadow: 0 0% 0% / 0.4;
+    --gallery-glow: 30 10% 30% / 0.25;
   }
 
   * {
