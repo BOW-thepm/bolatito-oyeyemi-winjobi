@@ -125,42 +125,64 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding contact-section relative overflow-hidden">
-      {/* Soft gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/10"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(201,167,184,0.1),transparent_50%)]"></div>
-      
-      <div className="container mx-auto relative z-10">
-        <div className="fade-slide-up" ref={fadeRef}>
+    <section id="contact" className="section-padding relative bg-background">
+      <div className="container mx-auto px-6 md:px-10 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-baseline justify-between border-b border-border pb-4 mb-16"
+        >
+          <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+            (05) Contact
+          </span>
+          <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground hidden sm:block">
+            Let's talk
+          </span>
+        </motion.div>
+
+        <div className="fade-slide-up max-w-5xl" ref={fadeRef}>
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-center mb-8 gradient-text"
-            initial={{ opacity: 0, y: -20 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Have an idea?{' '}
+            <span className="italic font-light text-muted-foreground">
+              Let's build it.
+            </span>
+          </motion.h2>
+
+          <motion.div
+            className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-end"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Let's Create Something Beautiful Together
-          </motion.h2>
-          
-          <motion.div
-            className="max-w-2xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            <p className="text-lg text-muted-foreground mb-8">
-              Ready to bring your vision to life? Let's chat about your next project!
+            <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
+              Open to freelance projects, collaborations and full-time roles.
+              Reach out via the form, or email me directly at{' '}
+              <a
+                href="mailto:oyeyemi8899@gmail.com"
+                className="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+              >
+                oyeyemi8899@gmail.com
+              </a>
+              .
             </p>
-            <motion.div
-              className="flex items-center justify-center gap-2 text-sm text-primary/70 mb-8"
-              animate={{ 
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Sparkles className="h-4 w-4" />
-              <span>Meet LIA, my AI assistant - click the floating icon to get started!</span>
-              <Sparkles className="h-4 w-4" />
-            </motion.div>
+
+            <div className="flex md:justify-end">
+              <Button
+                size="lg"
+                onClick={() => setShowContactModal(true)}
+                className="rounded-full h-12 px-6 bg-foreground text-background hover:bg-foreground/90"
+              >
+                <Send className="h-4 w-4" />
+                Start a conversation
+              </Button>
+            </div>
           </motion.div>
         </div>
 
