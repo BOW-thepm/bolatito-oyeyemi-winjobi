@@ -1,199 +1,63 @@
-
 import { motion } from 'framer-motion';
-import { 
-  Figma, 
-  MessageSquare, 
-  Users, 
-  Video, 
-  FileText, 
-  TestTube,
-  Pen,
-  Phone,
-  Brain,
-  Layout
-} from 'lucide-react';
 
 const ToolsSection = () => {
   const tools = [
-    { name: 'Figma', icon: Figma, category: 'Design' },
-    { name: 'Jira', icon: FileText, category: 'Project Management' },
-    { name: 'Linear', icon: FileText, category: 'Project Management' },
-    { name: 'Slack', icon: MessageSquare, category: 'Communication' },
-    { name: 'Plane', icon: FileText, category: 'Project Management' },
-    { name: 'Discord', icon: MessageSquare, category: 'Communication' },
-    { name: 'Google Meet', icon: Video, category: 'Communication' },
-    { name: 'FigJam', icon: Figma, category: 'Design' },
-    { name: 'Microsoft Teams', icon: Users, category: 'Communication' },
-    { name: 'Zoom', icon: Video, category: 'Communication' },
-    { name: 'Google Forms', icon: FileText, category: 'Research' },
-    { name: 'UserTesting', icon: TestTube, category: 'Research' },
-    { name: 'Sketch', icon: Pen, category: 'Design' },
-    { name: 'DingTalk', icon: Phone, category: 'Communication' },
-    { name: 'X-Mind', icon: Brain, category: 'Research' },
-    { name: 'Draw.io', icon: Layout, category: 'Design' },
+    'Figma', 'FigJam', 'Sketch', 'Draw.io',
+    'Jira', 'Linear', 'Plane', 'Notion',
+    'Slack', 'Discord', 'Zoom', 'Google Meet',
+    'Microsoft Teams', 'DingTalk',
+    'Google Forms', 'UserTesting', 'X-Mind',
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      scale: 0.9
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        duration: 0.6
-      }
-    }
-  };
-
   return (
-    <>
-      <style>
-        {`
-          .toolkit-scroll::-webkit-scrollbar {
-            display: none;
-          }
-          .toolkit-scroll {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          
-          .neumorphic-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1),
-              0 4px 12px rgba(0, 0, 0, 0.1),
-              0 2px 4px rgba(0, 0, 0, 0.06);
-          }
-          
-          .dark .neumorphic-card {
-            background: linear-gradient(145deg, rgba(201, 167, 184, 0.08), rgba(201, 167, 184, 0.03));
-            border: 1px solid rgba(201, 167, 184, 0.15);
-            box-shadow: 
-              inset 0 1px 0 rgba(201, 167, 184, 0.1),
-              0 4px 12px rgba(0, 0, 0, 0.2),
-              0 2px 4px rgba(0, 0, 0, 0.1);
-          }
-          
-          .card-glow {
-            box-shadow: 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1),
-              0 8px 25px rgba(201, 167, 184, 0.2),
-              0 4px 12px rgba(0, 0, 0, 0.1);
-          }
-          
-          .dark .card-glow {
-            box-shadow: 
-              inset 0 1px 0 rgba(201, 167, 184, 0.15),
-              0 8px 25px rgba(201, 167, 184, 0.3),
-              0 4px 12px rgba(0, 0, 0, 0.2);
-          }
-        `}
-      </style>
-      
-      <section className="section-padding bg-gradient-to-br from-background via-muted/30 to-background">
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 gradient-text">
-              My Toolkit
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              The tools and platforms I use to bring ideas to life, from design conception to final delivery
-            </p>
-          </motion.div>
+    <section className="section-padding relative bg-background">
+      <div className="container mx-auto px-6 md:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-baseline justify-between border-b border-border pb-4 mb-16"
+        >
+          <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+            (02) Toolkit
+          </span>
+          <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground hidden sm:block">
+            Daily drivers
+          </span>
+        </motion.div>
 
-          {/* Desktop Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="hidden md:grid grid-cols-3 lg:grid-cols-4 gap-6"
-          >
-            {tools.map((tool, index) => {
-              const IconComponent = tool.icon;
-              return (
-                <motion.div
-                  key={tool.name}
-                  variants={cardVariants}
-                  whileHover={{ 
-                    y: -4,
-                    transition: { type: "spring", stiffness: 300, damping: 20 }
-                  }}
-                  className="neumorphic-card hover:card-glow rounded-2xl p-8 text-center transition-all duration-300 group cursor-pointer"
-                >
-                  <motion.div
-                    whileHover={{ 
-                      scale: 1.1,
-                      transition: { type: "spring", stiffness: 400, damping: 15 }
-                    }}
-                    className="mb-4 flex justify-center"
-                  >
-                    <IconComponent className="h-12 w-12 text-primary group-hover:text-primary/80 transition-colors" />
-                  </motion.div>
-                  <h3 className="font-semibold text-foreground mb-1">{tool.name}</h3>
-                  <p className="text-sm text-muted-foreground">{tool.category}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] max-w-3xl mb-20 text-foreground"
+        >
+          Tools that shape <span className="italic font-light text-muted-foreground">the work</span>.
+        </motion.h2>
 
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-border border border-border">
+          {tools.map((tool, i) => (
             <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
+              key={tool}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="toolkit-scroll flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
-              style={{ scrollSnapType: 'x mandatory' }}
+              transition={{ duration: 0.4, delay: i * 0.03 }}
+              className="bg-background hover:bg-secondary transition-colors px-6 py-10 flex items-end justify-between group"
             >
-              {tools.map((tool, index) => {
-                const IconComponent = tool.icon;
-                return (
-                  <motion.div
-                    key={tool.name}
-                    variants={cardVariants}
-                    className="neumorphic-card rounded-2xl p-6 text-center flex-shrink-0 w-40 snap-center"
-                  >
-                    <div className="mb-3 flex justify-center">
-                      <IconComponent className="h-10 w-10 text-primary" />
-                    </div>
-                    <h3 className="font-semibold text-foreground text-sm mb-1">{tool.name}</h3>
-                    <p className="text-xs text-muted-foreground">{tool.category}</p>
-                  </motion.div>
-                );
-              })}
+              <span className="text-sm md:text-base font-medium text-foreground">
+                {tool}
+              </span>
+              <span className="text-[10px] text-muted-foreground tabular-nums">
+                {String(i + 1).padStart(2, '0')}
+              </span>
             </motion.div>
-          </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

@@ -1,26 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle, ArrowUpRight, Sparkles } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 
 const HeroSection = () => {
-  const [displayText, setDisplayText] = useState('');
-  const fullText = 'digital experiences';
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setDisplayText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 90);
-
-    return () => clearInterval(typingInterval);
-  }, []);
-
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -28,174 +10,123 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 bg-background"
+      className="min-h-screen flex flex-col justify-between relative overflow-hidden pt-32 pb-12 bg-background"
     >
-      {/* Animated gradient blobs */}
-      <div className="absolute inset-0 -z-0">
-        <div
-          className="blob blob-drift"
-          style={{
-            width: '520px',
-            height: '520px',
-            top: '-120px',
-            left: '-120px',
-            background: 'hsl(var(--primary) / 0.55)',
-          }}
-        />
-        <div
-          className="blob blob-drift"
-          style={{
-            width: '460px',
-            height: '460px',
-            bottom: '-140px',
-            right: '-100px',
-            background: 'hsl(var(--secondary) / 0.5)',
-            animationDelay: '-6s',
-          }}
-        />
-        <div
-          className="blob blob-drift"
-          style={{
-            width: '320px',
-            height: '320px',
-            top: '40%',
-            left: '55%',
-            background: 'hsl(var(--accent) / 0.35)',
-            animationDelay: '-12s',
-          }}
-        />
+      {/* Top meta row */}
+      <div className="container mx-auto px-6 md:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-between text-xs tracking-[0.2em] uppercase text-muted-foreground"
+        >
+          <span>Portfolio · 2026</span>
+          <span className="hidden sm:inline-flex items-center gap-2">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-foreground opacity-50 animate-ping" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground" />
+            </span>
+            Available for select work
+          </span>
+        </motion.div>
       </div>
 
-      {/* Dotted grid */}
-      <div className="absolute inset-0 dot-grid opacity-60 -z-0" />
-
-      {/* Noise texture */}
-      <div className="noise-overlay" />
-
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/60 bg-card/60 backdrop-blur-md text-xs md:text-sm text-muted-foreground mb-8"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            Available for select projects · 2026
-          </motion.div>
-
-          {/* Headline */}
+      {/* Main */}
+      <div className="container mx-auto px-6 md:px-10 flex-1 flex items-center">
+        <div className="w-full">
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] text-foreground"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-bold tracking-tight leading-[0.95] text-foreground text-[14vw] md:text-[10vw] lg:text-[9rem] xl:text-[10rem]"
           >
-            Crafting beautiful
+            Bolatito
             <br />
-            <span className="italic font-light text-muted-foreground">human-centered </span>
-            <span className="gradient-text">
-              {displayText}
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
-                className="ml-1 text-primary"
-              >
-                |
-              </motion.span>
-            </span>
+            <span className="italic font-light text-muted-foreground">Winjobi</span>
           </motion.h1>
 
-          {/* Sub */}
-          <motion.p
-            className="mt-8 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            I'm <span className="text-foreground font-medium">Bolatito</span> — a UI/UX designer
-            shaping intuitive, intentional interfaces that solve real problems.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            className="flex flex-wrap gap-3 mt-10 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <Button
-              size="lg"
-              className="group bg-foreground hover:bg-foreground/90 text-background rounded-full px-7 h-12 transition-all duration-300"
-              onClick={() =>
-                window.open('https://www.behance.net/bowthetechpm', '_blank', 'noopener,noreferrer')
-              }
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="md:col-span-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md"
             >
-              <span>View My Work</span>
-              <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Button>
+              Independent product designer crafting calm, considered interfaces
+              for ambitious teams.
+            </motion.p>
 
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={scrollToContact}
-              className="group rounded-full px-7 h-12 border-border bg-card/40 backdrop-blur-md hover:bg-card transition-all duration-300"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.55 }}
+              className="md:col-span-6 flex flex-wrap gap-3 md:justify-end"
             >
-              <Sparkles className="mr-1 h-4 w-4 text-primary" />
-              <span>Let's talk</span>
-            </Button>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            className="flex items-center gap-10 md:gap-14 mt-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            <div className="flex flex-col items-start">
-              <span className="text-3xl md:text-4xl font-bold text-foreground">2+</span>
-              <span className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-1">
-                Years
-              </span>
-            </div>
-            <div className="h-10 w-px bg-border"></div>
-            <div className="flex flex-col items-start">
-              <span className="text-3xl md:text-4xl font-bold text-foreground">10+</span>
-              <span className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-1">
-                Projects
-              </span>
-            </div>
-            <div className="h-10 w-px bg-border hidden sm:block"></div>
-            <div className="hidden sm:flex flex-col items-start">
-              <span className="text-3xl md:text-4xl font-bold text-foreground">∞</span>
-              <span className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-1">
-                Curiosity
-              </span>
-            </div>
-          </motion.div>
+              <Button
+                size="lg"
+                onClick={scrollToContact}
+                className="group rounded-full h-12 px-6 bg-foreground text-background hover:bg-foreground/90"
+              >
+                Start a project
+                <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="rounded-full h-12 px-6 border-border bg-transparent hover:bg-secondary"
+              >
+                <a
+                  href="https://www.behance.net/bowthetechpm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View work
+                </a>
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      <motion.a
-        href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground hover:text-primary transition-colors z-10"
+      {/* Bottom row */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.9 }}
+        className="container mx-auto px-6 md:px-10 mt-16"
       >
-        <span className="text-[10px] tracking-[0.2em] uppercase mb-2">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ArrowDownCircle className="h-5 w-5" />
-        </motion.div>
-      </motion.a>
+        <div className="border-t border-border pt-6 flex flex-wrap items-end justify-between gap-6">
+          <div className="flex items-end gap-10 md:gap-16">
+            <div>
+              <div className="text-3xl md:text-4xl font-medium text-foreground">02</div>
+              <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-1">
+                Years
+              </div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-medium text-foreground">10+</div>
+              <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-1">
+                Projects
+              </div>
+            </div>
+            <div className="hidden sm:block">
+              <div className="text-3xl md:text-4xl font-medium text-foreground">UI · UX</div>
+              <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-1">
+                Discipline
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="#about"
+            className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors group"
+          >
+            Scroll
+            <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+          </a>
+        </div>
+      </motion.div>
     </section>
   );
 };
