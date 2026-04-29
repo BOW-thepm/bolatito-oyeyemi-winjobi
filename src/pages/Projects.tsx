@@ -74,8 +74,36 @@ const Projects = () => {
               </button>
             );
           })}
-          <span className="ml-auto text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
-            {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+          <span className="ml-auto flex items-center gap-3">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+              {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+            </span>
+            <span className="flex items-center gap-1 border-l border-border pl-3">
+              <button
+                onClick={() => setViewMode('grid')}
+                aria-label="Grid view"
+                aria-pressed={viewMode === 'grid'}
+                className={`p-1.5 rounded-md transition-colors ${
+                  viewMode === 'grid'
+                    ? 'bg-foreground text-background'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <LayoutGrid size={14} />
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                aria-label="List view"
+                aria-pressed={viewMode === 'list'}
+                className={`p-1.5 rounded-md transition-colors ${
+                  viewMode === 'list'
+                    ? 'bg-foreground text-background'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <List size={14} />
+              </button>
+            </span>
           </span>
         </div>
       </section>
