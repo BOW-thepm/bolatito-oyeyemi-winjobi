@@ -3,34 +3,16 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { projects as allProjects } from '@/data/projects';
 
 const ProjectsSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
-  const projects = [
-    {
-      id: 1,
-      number: '01',
-      title: 'TODO++',
-      description:
-        'A hardware-based to-do list designed for users who want a dedicated task management device.',
-      tag: 'Hardware · UX',
-      year: '2024',
-      image: '/lovable-uploads/dde561b4-ffa1-4856-80c1-0961939c864f.png',
-      caseStudyUrl: 'https://www.behance.net/gallery/226627939/TODO',
-    },
-    {
-      id: 2,
-      number: '02',
-      title: 'JeanGenie',
-      description:
-        'An intuitive e-commerce app designed to help women easily find perfectly fitting jeans.',
-      tag: 'E-commerce · UI',
-      year: '2024',
-      image: '/lovable-uploads/jeangenie-mockup.jpg',
-      caseStudyUrl: 'https://www.behance.net/gallery/217619951/JeanGenie-UiUx-Casestudy',
-    },
-  ];
+  const projects = allProjects.slice(0, 2).map((p, i) => ({
+    ...p,
+    number: String(i + 1).padStart(2, '0'),
+    tag: p.tags.slice(0, 2).join(' · '),
+  }));
 
   return (
     <section id="projects" className="section-padding relative bg-background">
@@ -62,12 +44,16 @@ const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {projects.map((project) => (
-            <motion.a
+            <motion.div
               key={project.id}
-              href={project.caseStudyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               onMouseEnter={() => setHovered(project.id)}
+              onMouseLeave={() => setHovered(null)}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link to={`/projects/${project.slug}`} className="group block">
               onMouseLeave={() => setHovered(null)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
