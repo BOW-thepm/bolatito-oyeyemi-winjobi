@@ -54,13 +54,6 @@ const ProjectsSection = () => {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link to={`/projects/${project.slug}`} className="group block">
-              onMouseLeave={() => setHovered(null)}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="group block"
-            >
               <div className="relative overflow-hidden bg-secondary aspect-[4/5] mb-6">
                 <motion.img
                   src={project.image}
@@ -87,7 +80,8 @@ const ProjectsSection = () => {
               <p className="mt-3 text-muted-foreground max-w-md leading-relaxed">
                 {project.description}
               </p>
-            </motion.a>
+              </Link>
+            </motion.div>
           ))}
         </div>
 
