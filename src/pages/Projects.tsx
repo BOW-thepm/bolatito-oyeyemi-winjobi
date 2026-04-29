@@ -149,7 +149,7 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Gallery
+            Projects
           </motion.h1>
           
           <div className="flex items-center gap-3">
@@ -187,50 +187,14 @@ const Projects = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <h1 className="text-6xl md:text-8xl font-bold mb-8 text-foreground leading-none">
-              Step Into the{' '}
-              <span className="gradient-text block mt-2">Gallery of Solutions</span>
+              Projects
             </h1>
           </motion.div>
-          
-          <motion.p 
-            className="text-muted-foreground max-w-4xl mx-auto text-xl leading-relaxed mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Design. Strategy. Execution. <br />
-            <span className="text-lg text-muted-foreground/80">Every pixel has a purpose.</span>
-          </motion.p>
-
-          {/* Scroll indicator */}
-          <motion.div
-            className="flex flex-col items-center gap-4 mt-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            <span className="text-sm text-muted-foreground font-medium">Explore Projects</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="p-3 rounded-full border border-primary/30 bg-primary/5"
-            >
-              <ChevronDown className="w-5 h-5 text-primary" />
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Filter Section */}
-      <section className="pb-8 px-4" ref={sectionRef}>
-        <div className="container mx-auto">
-          <ProjectFilter 
-            categories={categories}
-            activeFilter={activeFilter}
-            onFilterChange={setActiveFilter}
-          />
-        </div>
-      </section>
+      {/* Projects Grid */}
+      <section className="pb-24 px-4" ref={sectionRef}>
 
       {/* Projects Grid */}
       <section className="pb-24 px-4">

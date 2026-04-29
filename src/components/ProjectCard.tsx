@@ -55,26 +55,15 @@ export const ProjectCard = ({ project, index, onQuickView }: ProjectCardProps) =
             alt={project.title}
             className="w-full h-full object-cover"
             animate={{ 
-              scale: isHovered ? 1.08 : 1,
-              filter: isHovered ? 'brightness(0.7)' : 'brightness(1)'
+              scale: isHovered ? 1.04 : 1,
             }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           />
-          
-          {/* Shimmer effect on hover */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            style={{ transform: 'translateX(-100%) translateY(-100%) rotate(45deg)' }}
-            animate={isHovered ? {
-              transform: 'translateX(100%) translateY(100%) rotate(45deg)'
-            } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
         </div>
 
-        {/* Gradient Overlay */}
+        {/* Subtle Overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.4 }}
