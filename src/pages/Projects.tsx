@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, LayoutGrid, List } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { projects } from '@/data/projects';
 
 const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
 
+type ViewMode = 'grid' | 'list';
+
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
 
   const filteredProjects =
     activeFilter === 'All' ? projects : projects.filter((p) => p.category === activeFilter);
