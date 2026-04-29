@@ -85,19 +85,19 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                 alt={project.title}
                 className="w-full h-64 md:h-80 object-cover rounded-t-3xl"
               />
-              
-              {/* Close button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={onClose}
-                className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm rounded-full w-10 h-10 p-0"
-              >
-                <X className="w-5 h-5" />
-              </Button>
 
               {/* Gradient overlay on image */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-t-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-t-3xl pointer-events-none" />
+
+              {/* Close button */}
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close"
+                className="absolute top-4 right-4 z-10 bg-white/30 hover:bg-white/50 text-white border border-white/40 backdrop-blur-sm rounded-full w-10 h-10 flex items-center justify-center transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
             {/* Content */}

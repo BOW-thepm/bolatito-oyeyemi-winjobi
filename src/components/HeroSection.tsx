@@ -26,7 +26,7 @@ const HeroSection = () => {
               <span className="absolute inline-flex h-full w-full rounded-full bg-foreground opacity-50 animate-ping" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground" />
             </span>
-            Available for select work
+            Available for hire
           </span>
         </motion.div>
       </div>
@@ -38,11 +38,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-bold tracking-tight leading-[0.95] text-foreground text-[14vw] md:text-[10vw] lg:text-[9rem] xl:text-[10rem]"
+            className="font-bold tracking-tight leading-[0.95] text-foreground text-[12vw] md:text-[8vw] lg:text-[7rem] xl:text-[8rem]"
           >
-            Bolatito
+            Product
             <br />
-            <span className="italic font-light text-muted-foreground">Winjobi</span>
+            <span className="italic font-light text-muted-foreground">/functional designer</span>
           </motion.h1>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
@@ -52,8 +52,8 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="md:col-span-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md"
             >
-              Independent product designer crafting calm, considered interfaces
-              for ambitious teams.
+              Helping startups and brands build functional, scalable, and
+              visually polished digital products.
             </motion.p>
 
             <motion.div

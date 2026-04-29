@@ -13,7 +13,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="fixed bottom-8 left-8 z-50">
+    <div className="fixed bottom-8 right-8 z-50">
       <AnimatePresence>
         {showCelebration && (
           <motion.div
@@ -72,11 +72,11 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               initial={{ opacity: 0, scale: 0.8, x: 10 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.8, x: 10 }}
-              className="absolute -top-16 left-full ml-4 bg-white/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-2xl shadow-lg border border-primary/20 whitespace-nowrap"
+              className="absolute -top-16 right-full mr-4 bg-white/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-2xl shadow-lg border border-primary/20 whitespace-nowrap"
             >
               <div className="text-sm font-medium">Hi! I'm LIA ✨</div>
               <div className="text-xs text-muted-foreground">Click to send a message!</div>
-              <div className="absolute top-1/2 -left-2 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-white/95 transform -translate-y-1/2"></div>
+              <div className="absolute top-1/2 -right-2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-white/95 transform -translate-y-1/2"></div>
             </motion.div>
           )}
         </AnimatePresence>

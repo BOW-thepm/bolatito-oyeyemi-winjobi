@@ -14,16 +14,6 @@ const AboutSection = () => {
         "I'm Bolatito Oyeyemi Winjobi — a product designer who believes great design starts with understanding people. I approach every project with empathy, strategic thinking, and care for the smallest detail.",
     },
     {
-      title: 'Skills',
-      content:
-        'User research, wireframing, prototyping, interaction design and usability testing — building intuitive, accessible, responsive interfaces that meet user needs and business goals.',
-    },
-    {
-      title: 'Experience',
-      content:
-        "Two+ years designing across healthcare, e-commerce and personal projects. I partner closely with developers and stakeholders, bringing a product-thinking mindset to every phase of the work.",
-    },
-    {
       title: 'Education',
       content:
         "Bachelor's in Interactive Design from California College of Arts, plus continued study in Human-Computer Interaction. I attend industry workshops to keep current with methodology.",
