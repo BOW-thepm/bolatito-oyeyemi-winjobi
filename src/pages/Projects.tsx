@@ -195,9 +195,6 @@ const Projects = () => {
 
       {/* Projects Grid */}
       <section className="pb-24 px-4" ref={sectionRef}>
-
-      {/* Projects Grid */}
-      <section className="pb-24 px-4">
         <div className="container mx-auto">
           {viewMode === 'grid' ? (
             <motion.div 
