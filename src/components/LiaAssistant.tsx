@@ -104,9 +104,9 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
             className="absolute inset-0 rounded-full"
             animate={{
               background: [
-                'radial-gradient(circle, rgba(201,167,184,0.3) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(174,198,207,0.3) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(201,167,184,0.3) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(91,46,145,0.3) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(155,124,194,0.3) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(91,46,145,0.3) 0%, transparent 70%)',
               ]
             }}
             transition={{ duration: 2, repeat: Infinity }}
