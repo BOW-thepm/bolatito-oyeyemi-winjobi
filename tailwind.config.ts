@@ -64,31 +64,31 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				// Brand colors for direct use
-				'dusty-rose': {
-					DEFAULT: '#D28E8E',
-					50: '#F5EAEA',
-					100: '#EDDBDB',
-					200: '#DFBDBD',
-					300: '#D19E9E',
-					400: '#C47F7F',
-					500: '#D28E8E',
-					600: '#B67171',
-					700: '#9A5454',
-					800: '#7E3737',
-					900: '#621A1A'
+				'deep-purple': {
+					DEFAULT: '#5B2E91',
+					50: '#EDE6F5',
+					100: '#DDD0EB',
+					200: '#BCA6D6',
+					300: '#9B7CC2',
+					400: '#7A52AE',
+					500: '#5B2E91',
+					600: '#4E257D',
+					700: '#411C69',
+					800: '#341355',
+					900: '#270A41'
 				},
-				'sage-green': {
-					DEFAULT: '#B9C4B5',
-					50: '#F0F2EF',
-					100: '#E5E9E2',
-					200: '#D5DBD1',
-					300: '#C5CCC0',
-					400: '#B5BFAF',
-					500: '#B9C4B5',
-					600: '#A0AC9B',
-					700: '#879481',
-					800: '#6E7C67',
-					900: '#55644D'
+				'powder-blue': {
+					DEFAULT: '#AEC6CF',
+					50: '#F2F6F8',
+					100: '#E5EDF1',
+					200: '#D8E4E9',
+					300: '#CBDBE2',
+					400: '#BED2DA',
+					500: '#AEC6CF',
+					600: '#9BB5BE',
+					700: '#88A4AD',
+					800: '#75939C',
+					900: '#62828B'
 				}
 			},
 			borderRadius: {
