@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
           className="max-w-5xl"
         >
-          <p className="text-2xl md:text-4xl lg:text-5xl font-light leading-[1.25] tracking-tight text-foreground">
+          <p className="text-[24px] font-light leading-[1.4] tracking-tight text-foreground">
             <span className="text-muted-foreground">“</span>
             {testimonial.content}
             <span className="text-muted-foreground">”</span>
