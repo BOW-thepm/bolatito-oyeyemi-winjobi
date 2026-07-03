@@ -57,11 +57,11 @@ const NavBar = () => {
           <Link to="/" className="flex items-center">
           <div className="logo-container flex items-center">
             <div className="logo-box relative mr-3">
-              <div className="logo-bg absolute inset-0 bg-primary rounded-md -rotate-3 shadow-lg opacity-30"></div>
+              <div className="logo-bg absolute inset-0 bg-deep-purple-100 rounded-md -rotate-3 shadow-lg"></div>
               <div className="logo-text relative px-3 py-1 font-bold text-2xl md:text-3xl">
                 <span className="gradient-text">BOW</span>
-                <motion.span 
-                  className="absolute -top-1 -right-1 h-2 w-2 bg-primary rounded-full"
+                <motion.span
+                  className="absolute -top-1 -right-1 h-2 w-2 bg-deep-purple-500 rounded-full"
                   animate={{ 
                     scale: [1, 1.5, 1],
                     opacity: [1, 0.5, 1]
