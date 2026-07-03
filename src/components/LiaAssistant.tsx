@@ -86,7 +86,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
           onClick={onMessageClick}
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
-          className="relative w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+          className="relative w-16 h-16 bg-deep-purple-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
