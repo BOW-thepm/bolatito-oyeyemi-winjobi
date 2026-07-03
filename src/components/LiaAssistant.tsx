@@ -30,7 +30,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               }}
               transition={{ duration: 0.8 }}
             >
-              <ThumbsUp className="h-6 w-6 text-primary" />
+              <ThumbsUp className="h-6 w-6 text-deep-purple-500" />
             </motion.div>
             <motion.div
               animate={{ 
@@ -39,7 +39,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Heart className="h-5 w-5 text-red-400" />
+              <Heart className="h-5 w-5 text-deep-purple-400" />
             </motion.div>
             <motion.div
               animate={{ 
@@ -48,7 +48,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              <Sparkles className="h-5 w-5 text-yellow-400" />
+              <Sparkles className="h-5 w-5 text-deep-purple-300" />
             </motion.div>
           </motion.div>
         )}
