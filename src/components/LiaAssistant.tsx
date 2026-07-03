@@ -30,7 +30,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               }}
               transition={{ duration: 0.8 }}
             >
-              <ThumbsUp className="h-6 w-6 text-primary" />
+              <ThumbsUp className="h-6 w-6 text-deep-purple-500" />
             </motion.div>
             <motion.div
               animate={{ 
@@ -39,7 +39,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Heart className="h-5 w-5 text-red-400" />
+              <Heart className="h-5 w-5 text-deep-purple-400" />
             </motion.div>
             <motion.div
               animate={{ 
@@ -48,7 +48,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              <Sparkles className="h-5 w-5 text-yellow-400" />
+              <Sparkles className="h-5 w-5 text-deep-purple-300" />
             </motion.div>
           </motion.div>
         )}
@@ -72,7 +72,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
               initial={{ opacity: 0, scale: 0.8, x: 10 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.8, x: 10 }}
-              className="absolute -top-16 right-full mr-4 bg-white/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-2xl shadow-lg border border-primary/20 whitespace-nowrap"
+              className="absolute -top-16 right-full mr-4 bg-white/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-2xl shadow-lg border border-deep-purple-300/20 whitespace-nowrap"
             >
               <div className="text-sm font-medium">Hi! I'm LIA ✨</div>
               <div className="text-xs text-muted-foreground">Click to send a message!</div>
@@ -86,7 +86,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
           onClick={onMessageClick}
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
-          className="relative w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+          className="relative w-16 h-16 bg-deep-purple-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -104,9 +104,9 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
             className="absolute inset-0 rounded-full"
             animate={{
               background: [
-                'radial-gradient(circle, rgba(201,167,184,0.3) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(174,198,207,0.3) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(201,167,184,0.3) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(91,46,145,0.3) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(155,124,194,0.3) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(91,46,145,0.3) 0%, transparent 70%)',
               ]
             }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -114,7 +114,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
 
           {/* Pulse ring */}
           <motion.div
-            className="absolute inset-0 rounded-full border-2 border-primary/30"
+            className="absolute inset-0 rounded-full border-2 border-deep-purple-400/30"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.5, 0, 0.5],
