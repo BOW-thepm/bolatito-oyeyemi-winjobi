@@ -65,18 +65,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				// Feminine brand colors
-				'dusty-mauve': {
-					DEFAULT: '#C9A7B8',
-					50: '#F7F2F5',
-					100: '#F0E5EA',
-					200: '#E6CCD5',
-					300: '#DCB2C0',
-					400: '#D2A0B0',
-					500: '#C9A7B8',
-					600: '#B794A5',
-					700: '#A58192',
-					800: '#936E7F',
-					900: '#815B6C'
+				'deep-purple': {
+					DEFAULT: '#5B2E91',
+					50: '#EDE6F5',
+					100: '#DDD0EB',
+					200: '#BCA6D6',
+					300: '#9B7CC2',
+					400: '#7A52AE',
+					500: '#5B2E91',
+					600: '#4E257D',
+					700: '#411C69',
+					800: '#341355',
+					900: '#270A41'
 				},
 				'powder-blue': {
 					DEFAULT: '#AEC6CF',
