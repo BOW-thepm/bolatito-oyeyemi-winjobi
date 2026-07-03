@@ -114,7 +114,7 @@ const LiaAssistant = ({ onMessageClick, showCelebration, onCelebrationComplete }
 
           {/* Pulse ring */}
           <motion.div
-            className="absolute inset-0 rounded-full border-2 border-primary/30"
+            className="absolute inset-0 rounded-full border-2 border-deep-purple-400/30"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.5, 0, 0.5],
