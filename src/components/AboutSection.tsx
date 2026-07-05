@@ -82,16 +82,50 @@ const AboutSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              <div className="space-y-6">
-                {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
-                  <p
-                    key={i}
-                    className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              {activeTab === 1 ? (
+                <div className="space-y-10">
+                  <div className="border-l-2 border-accent pl-6">
+                    <h4 className="text-[10px] tracking-[0.25em] uppercase text-accent mb-3">
+                      Formal Education
+                    </h4>
+                    <p className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light">
+                      B.Sc. Biotechnology — (IUSEBA)
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-accent pl-6">
+                    <h4 className="text-[10px] tracking-[0.25em] uppercase text-accent mb-3">
+                      Professional Training & Certifications
+                    </h4>
+                    <ul className="space-y-2">
+                      {[
+                        'Product Design — HerTechTrail Academy',
+                        'Product Design Certificate of Proficiency — HNG Tech',
+                        'Product Management Pro — HerTechTrail Academy',
+                        'Product Management Starter — HerTechTrail Academy',
+                        'Product Management Certificate of Proficiency — HNG Tech',
+                      ].map((item, i) => (
+                        <li
+                          key={i}
+                          className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              )}
 
               <div className="mt-12 flex flex-wrap gap-3">
                 <Button
