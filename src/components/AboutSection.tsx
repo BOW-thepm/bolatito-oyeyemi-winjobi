@@ -86,7 +86,7 @@ const AboutSection = () => {
                 {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-xl md:text-2xl leading-relaxed text-foreground/80 max-w-2xl font-light"
+                    className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light"
                   >
                     {paragraph}
                   </p>
