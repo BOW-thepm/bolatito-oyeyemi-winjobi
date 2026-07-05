@@ -11,7 +11,7 @@ const AboutSection = () => {
     {
       title: 'About',
       content:
-        "I'm a Product Manager turned Product Designer with a passion for building products that solve real problems and create meaningful impact. My background in product management taught me to think strategically—understanding market needs, defining product direction, prioritizing opportunities, and aligning business goals with user expectations. Transitioning into product design allowed me to transform that strategic thinking into tangible experiences that people genuinely enjoy using.\n\nToday, I approach every project by combining product strategy, systems thinking, and human-centered design. I believe great products aren't created by beautiful interfaces alone—they're built by deeply understanding users, identifying the right problems, validating assumptions, and designing solutions that are intuitive, scalable, and commercially successful.\n\nWhether I'm simplifying a complex workflow, designing a new product from the ground up, or improving an existing experience, my goal remains the same: create products that feel effortless for users while delivering measurable value for the business. I enjoy collaborating across product, engineering, and leadership teams to turn ideas into products people trust, love, and continue to use.",
+        "I'm a Product Manager turned Product Designer who combines product strategy with human-centered design to build products that solve real problems and create meaningful impact. My background in product management shaped my ability to understand market needs, define product direction, and align business goals with user expectations—skills I now translate into intuitive, scalable digital experiences.\n\nI approach every project with strategic thinking, systems design, and empathy, believing that great products are built by understanding users, identifying the right problems, and crafting thoughtful solutions—not just beautiful interfaces.\n\nWhether I'm simplifying complex workflows, designing new products, or improving existing experiences, my goal is to create products that feel effortless to use while delivering measurable business value. I thrive in cross-functional teams, collaborating closely with product, engineering, and stakeholders to turn ideas into experiences people trust and enjoy.",
     },
     {
       title: 'Education',
@@ -82,9 +82,16 @@ const AboutSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              <p className="text-xl md:text-2xl leading-relaxed text-foreground/80 max-w-2xl font-light">
-                {tabContent[activeTab].content}
-              </p>
+              <div className="space-y-6">
+                {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-xl md:text-2xl leading-relaxed text-foreground/80 max-w-2xl font-light"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
 
               <div className="mt-12 flex flex-wrap gap-3">
                 <Button
