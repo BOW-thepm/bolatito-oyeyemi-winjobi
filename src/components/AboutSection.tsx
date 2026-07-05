@@ -11,7 +11,7 @@ const AboutSection = () => {
     {
       title: 'About',
       content:
-        "I'm Bolatito Oyeyemi Winjobi — a product designer who believes great design starts with understanding people. I approach every project with empathy, strategic thinking, and care for the smallest detail.",
+        "I'm a Product Manager turned Product Designer with a passion for building products that solve real problems and create meaningful impact. My background in product management taught me to think strategically—understanding market needs, defining product direction, prioritizing opportunities, and aligning business goals with user expectations. Transitioning into product design allowed me to transform that strategic thinking into tangible experiences that people genuinely enjoy using.\n\nToday, I approach every project by combining product strategy, systems thinking, and human-centered design. I believe great products aren't created by beautiful interfaces alone—they're built by deeply understanding users, identifying the right problems, validating assumptions, and designing solutions that are intuitive, scalable, and commercially successful.\n\nWhether I'm simplifying a complex workflow, designing a new product from the ground up, or improving an existing experience, my goal remains the same: create products that feel effortless for users while delivering measurable value for the business. I enjoy collaborating across product, engineering, and leadership teams to turn ideas into products people trust, love, and continue to use.",
     },
     {
       title: 'Education',
