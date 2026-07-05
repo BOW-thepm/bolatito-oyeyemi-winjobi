@@ -82,9 +82,16 @@ const AboutSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              <p className="text-xl md:text-2xl leading-relaxed text-foreground/80 max-w-2xl font-light">
-                {tabContent[activeTab].content}
-              </p>
+              <div className="space-y-6">
+                {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-xl md:text-2xl leading-relaxed text-foreground/80 max-w-2xl font-light"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
 
               <div className="mt-12 flex flex-wrap gap-3">
                 <Button
