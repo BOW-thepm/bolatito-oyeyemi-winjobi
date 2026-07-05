@@ -16,7 +16,7 @@ const AboutSection = () => {
     {
       title: 'Education',
       content:
-        "Bachelor's in Interactive Design from California College of Arts, plus continued study in Human-Computer Interaction. I attend industry workshops to keep current with methodology.",
+        "Formal Education\n\nB.Sc. Biotechnology — (IUSEBA)\n\nProfessional Training & Certifications\n\nProduct Design — HerTechTrail Academy\n\nProduct Design Certificate of Proficiency — HNG Tech\n\nProduct Management Pro — HerTechTrail Academy\n\nProduct Management Starter — HerTechTrail Academy\n\nProduct Management Certificate of Proficiency — HNG Tech",
     },
   ];
 
