@@ -1,18 +1,19 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { FileText } from 'lucide-react';
+import { FileText, ChevronDown, ChevronUp } from 'lucide-react';
 import SkillBars from './SkillBars';
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [aboutExpanded, setAboutExpanded] = useState(false);
 
-  const tabContent = [
-    {
-      title: 'About',
-      content:
-        "I'm a Product Manager turned Product Designer who combines product strategy with human-centered design to build products that solve real problems and create meaningful impact. My background in product management shaped my ability to understand market needs, define product direction, and align business goals with user expectations—skills I now translate into intuitive, scalable digital experiences.\n\nI approach every project with strategic thinking, systems design, and empathy, believing that great products are built by understanding users, identifying the right problems, and crafting thoughtful solutions—not just beautiful interfaces.\n\nWhether I'm simplifying complex workflows, designing new products, or improving existing experiences, my goal is to create products that feel effortless to use while delivering measurable business value. I thrive in cross-functional teams, collaborating closely with product, engineering, and stakeholders to turn ideas into experiences people trust and enjoy.",
-    },
+  const aboutParagraphs = [
+    "I didn't start my career as a Product Designer—I started by understanding products. My journey began in Product Management, where I learned that building successful products isn't about adding more features; it's about understanding people, asking the right questions, balancing business goals with user needs, and making intentional decisions. That experience continues to shape how I design today.",
+    "For me, product design goes beyond creating beautiful interfaces. Design is a way of solving problems. Every screen, interaction, and workflow should have a purpose, reduce friction, and help users accomplish their goals with confidence. I enjoy breaking down complex challenges into experiences that feel simple, intuitive, and valuable.",
+    "One of my favorite parts of the design process is collaboration. I enjoy working closely with product managers, engineers, QA testers, marketers, and other stakeholders because the best products are rarely designed in isolation. Different perspectives lead to better ideas, stronger decisions, and products that truly serve both users and the business.",
+    "I'm driven by curiosity and continuous improvement. I ask questions, challenge assumptions, validate ideas, and iterate until we arrive at solutions that create real impact. At the end of the day, my goal isn't just to design interfaces—it's to help build products that people genuinely enjoy using and businesses are proud to grow.",
+  ];
     {
       title: 'Education',
       content:
