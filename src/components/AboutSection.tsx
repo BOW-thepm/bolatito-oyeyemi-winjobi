@@ -88,7 +88,7 @@ const AboutSection = () => {
                     <h4 className="text-[10px] tracking-[0.25em] uppercase text-accent mb-3">
                       Formal Education
                     </h4>
-                    <p className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light">
+                    <p className="text-base leading-relaxed text-foreground/80 font-light">
                       B.Sc. Biotechnology — (IUSEBA)
                     </p>
                   </div>
@@ -106,7 +106,7 @@ const AboutSection = () => {
                       ].map((item, i) => (
                         <li
                           key={i}
-                          className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light"
+                          className="text-base leading-relaxed text-foreground/80 font-light"
                         >
                           {item}
                         </li>
@@ -119,7 +119,7 @@ const AboutSection = () => {
                   {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light"
+                      className="text-base leading-relaxed text-foreground/80 font-light"
                     >
                       {paragraph}
                     </p>
