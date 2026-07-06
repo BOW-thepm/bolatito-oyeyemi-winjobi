@@ -14,12 +14,10 @@ const AboutSection = () => {
     "One of my favorite parts of the design process is collaboration. I enjoy working closely with product managers, engineers, QA testers, marketers, and other stakeholders because the best products are rarely designed in isolation. Different perspectives lead to better ideas, stronger decisions, and products that truly serve both users and the business.",
     "I'm driven by curiosity and continuous improvement. I ask questions, challenge assumptions, validate ideas, and iterate until we arrive at solutions that create real impact. At the end of the day, my goal isn't just to design interfaces—it's to help build products that people genuinely enjoy using and businesses are proud to grow.",
   ];
-    {
-      title: 'Education',
-      content:
-        "Formal Education\n\nB.Sc. Biotechnology — (IUSEBA)\n\nProfessional Training & Certifications\n\nProduct Design — HerTechTrail Academy\n\nProduct Design Certificate of Proficiency — HNG Tech\n\nProduct Management Pro — HerTechTrail Academy\n\nProduct Management Starter — HerTechTrail Academy\n\nProduct Management Certificate of Proficiency — HNG Tech",
-    },
-  ];
+
+  const visibleParagraphs = aboutExpanded ? aboutParagraphs : aboutParagraphs.slice(0, 2);
+
+  const tabLabels = ['About', 'Education'];
 
   return (
     <section id="about" className="section-padding relative bg-background">
@@ -56,9 +54,9 @@ const AboutSection = () => {
         <div className="mt-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-4">
             <div className="flex flex-col">
-              {tabContent.map((tab, index) => (
+              {tabLabels.map((label, index) => (
                 <button
-                  key={tab.title}
+                  key={label}
                   onClick={() => setActiveTab(index)}
                   className={`text-left py-4 border-t border-border flex items-baseline justify-between transition-colors ${
                     activeTab === index
@@ -66,7 +64,7 @@ const AboutSection = () => {
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  <span className="text-lg font-medium">{tab.title}</span>
+                  <span className="text-lg font-medium">{label}</span>
                   <span className="text-[10px] tracking-[0.2em] uppercase">
                     {String(index + 1).padStart(2, '0')}
                   </span>
@@ -117,7 +115,7 @@ const AboutSection = () => {
                 </div>
               ) : (
                 <div className="space-y-6">
-                  {tabContent[activeTab].content.split('\n\n').map((paragraph, i) => (
+                  {visibleParagraphs.map((paragraph, i) => (
                     <p
                       key={i}
                       className="text-lg leading-relaxed text-foreground/80 font-light"
@@ -125,6 +123,20 @@ const AboutSection = () => {
                       {paragraph}
                     </p>
                   ))}
+                  <button
+                    onClick={() => setAboutExpanded((prev) => !prev)}
+                    className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:text-accent/80 transition-colors mt-2"
+                  >
+                    {aboutExpanded ? (
+                      <>
+                        See less <ChevronUp className="h-4 w-4" />
+                      </>
+                    ) : (
+                      <>
+                        See more <ChevronDown className="h-4 w-4" />
+                      </>
+                    )}
+                  </button>
                 </div>
               )}
 
