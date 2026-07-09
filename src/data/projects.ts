@@ -17,6 +17,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 7,
+    slug: "feetz",
+    title: "Feetz",
+    description:
+      "A bold e-commerce platform for street-comfort footwear, blending editorial storytelling with a streamlined shopping experience.",
+    fullDescription:
+      "Feetz is a modern e-commerce platform designed for a streetwear-inspired footwear brand. The experience pairs bold product visuals with a clean, conversion-focused shopping flow, making it easy for customers to explore collections, discover new drops, and complete purchases with confidence.",
+    image: "/lovable-uploads/feetz-mockup.png",
+    caseStudyUrl: "#",
+    tags: ["E-commerce", "Web Design", "UX/UI", "Brand Experience"],
+    year: "2025",
+    category: "E-commerce",
+    challenge:
+      "The brand needed a digital storefront that felt as expressive as the footwear itself, without sacrificing clarity or checkout performance.",
+    solution:
+      "A high-contrast, editorial homepage with prominent product hero shots, clear category navigation, and a minimal purchase path that keeps the product center stage.",
+    outcome:
+      "The new storefront improved product discovery and created a cohesive brand experience across desktop and mobile.",
+  },
+  {
     id: 1,
     slug: "todo-plus-plus",
     title: "TODO++",
