@@ -40,23 +40,23 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    slug: "ecommerce-platform",
-    title: "E-commerce Platform",
+    slug: "refucare",
+    title: "RefuCare",
     description:
-      "Designing a seamless shopping experience for a fashion retailer with modern aesthetics.",
+      "A mobile healthcare app that helps newcomers to Canada find, book, and navigate clinics with ease.",
     fullDescription:
-      "A comprehensive e-commerce platform redesign focusing on user experience, conversion optimization, and brand storytelling.",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
+      "RefuCare is a mobile healthcare companion designed to simplify clinic discovery and appointment booking for newcomers navigating an unfamiliar healthcare system. The app combines clear information architecture, accessible UI patterns, and local-aware features to reduce friction and anxiety.",
+    image: refucareMockup.url,
     caseStudyUrl: "#",
-    tags: ["E-commerce", "Web Design", "UX Strategy", "Conversion Optimization"],
-    year: "2023",
-    category: "Web Design",
+    tags: ["Mobile App", "Healthcare", "UX/UI", "Accessibility"],
+    year: "2024",
+    category: "Healthcare",
     challenge:
-      "A premium fashion retailer was losing customers in the discovery and checkout flows despite strong brand recognition.",
+      "Newcomers to Canada often struggle to understand how the healthcare system works, where to find clinics, and how to book appointments.",
     solution:
-      "We built a cohesive design system, refined product storytelling, and streamlined checkout into three predictable steps.",
-    outcome: "Conversion lifted by 40% within the first quarter post-launch.",
+      "A mobile-first experience centered around quick clinic discovery, transparent information about services and walk-in policies, and simple booking flows.",
+    outcome:
+      "The prototype received strong validation from target users, with booking tasks completed significantly faster than existing alternatives.",
   },
   {
     id: 3,
