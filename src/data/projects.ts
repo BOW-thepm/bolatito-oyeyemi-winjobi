@@ -1,5 +1,3 @@
-import refucareMockup from "@/assets/refucare-mockup.png.asset.json";
-
 export interface Project {
   id: number;
   slug: string;
