@@ -1,3 +1,5 @@
+import cosmicDefenderAsset from "@/assets/cosmic-defender-mockup.png.asset.json";
+
 export interface Project {
   id: number;
   slug: string;
@@ -15,6 +17,7 @@ export interface Project {
   gallery?: string[];
   detailImage?: string;
 }
+
 
 
 export const projects: Project[] = [
