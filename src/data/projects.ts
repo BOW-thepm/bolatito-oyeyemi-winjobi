@@ -22,6 +22,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 8,
+    slug: "cosmic-defender",
+    title: "Cosmic Defender",
+    description:
+      "A browser-based arcade shooter that pairs neon-soaked visuals with fast, responsive gameplay.",
+    fullDescription:
+      "Cosmic Defender is a browser-based arcade shooter that brings retro sci-fi energy to modern web gameplay. The interface leans into bold neon typography, high-contrast HUD elements, and clear navigation so players can jump straight into the action.",
+    image: cosmicDefenderAsset.url,
+    caseStudyUrl: "#",
+    tags: ["Web Game", "Game Design", "UI Design", "Interaction Design"],
+    year: "2026",
+    category: "Web Game",
+    challenge:
+      "Browser games often feel cluttered or visually flat. The goal was to make a web game feel as immersive and polished as a native title.",
+    solution:
+      "A dark, cinematic UI with glowing accents, readable arcade type, and a modular menu system that keeps the focus on gameplay.",
+    outcome:
+      "The game delivered an engaging, high-energy experience that performed smoothly across browsers and screen sizes.",
+  },
+  {
     id: 7,
     slug: "feetz",
     title: "Feetz",
@@ -41,6 +61,7 @@ export const projects: Project[] = [
     outcome:
       "The new storefront improved product discovery and created a cohesive brand experience across desktop and mobile.",
   },
+
   {
     id: 1,
     slug: "todo-plus-plus",
