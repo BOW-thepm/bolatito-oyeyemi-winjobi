@@ -1,5 +1,3 @@
-import cosmicDefenderAsset from "@/assets/cosmic-defender-mockup.png.asset.json";
-
 export interface Project {
   id: number;
   slug: string;
@@ -29,7 +27,7 @@ export const projects: Project[] = [
       "A browser-based arcade shooter that pairs neon-soaked visuals with fast, responsive gameplay.",
     fullDescription:
       "Cosmic Defender is a browser-based arcade shooter that brings retro sci-fi energy to modern web gameplay. The interface leans into bold neon typography, high-contrast HUD elements, and clear navigation so players can jump straight into the action.",
-    image: cosmicDefenderAsset.url,
+    image: "/lovable-uploads/cosmic-defender-mockup.png",
     caseStudyUrl: "#",
     tags: ["Web Game", "Game Design", "UI Design", "Interaction Design"],
     year: "2026",
