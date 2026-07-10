@@ -59,7 +59,26 @@ export const projects: Project[] = [
     outcome:
       "The new storefront improved product discovery and created a cohesive brand experience across desktop and mobile.",
   },
-
+  {
+    id: 9,
+    slug: "paydayhub",
+    title: "PaydayHub",
+    description:
+      "A fintech loan platform that makes applying for low-interest loans fast, transparent, and accessible.",
+    fullDescription:
+      "PaydayHub is a fintech loan platform designed to simplify access to credit. The experience combines a clean, trustworthy interface with a streamlined application flow, helping users understand loan options, check eligibility, and apply with confidence.",
+    image: "/lovable-uploads/paydayhub-mockup.png",
+    caseStudyUrl: "#",
+    tags: ["Fintech", "Web Design", "UX/UI", "Loan Services"],
+    year: "2025",
+    category: "Fintech",
+    challenge:
+      "Loan applications often feel intimidating or opaque, leaving users uncertain about rates, eligibility, and timelines.",
+    solution:
+      "A calm, approachable landing experience with clear product tiers, transparent language, and a focused application path that reduces friction.",
+    outcome:
+      "The platform improved application completion and built trust with users seeking fast, low-interest financial support.",
+  },
   {
     id: 1,
     slug: "todo-plus-plus",
