@@ -75,9 +75,9 @@ const ProjectDetail = () => {
         >
           <div className="aspect-[16/10] overflow-hidden bg-secondary rounded-sm">
             <img
-              src={project.image}
+              src={project.detailImage || project.image}
               alt={project.title}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
         </motion.div>
