@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
+import ProjectGallery from '@/components/ProjectGallery';
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -65,23 +66,15 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Hero image */}
-      <section className="px-6 md:px-10 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="container mx-auto max-w-6xl"
-        >
-          <div className="aspect-[16/10] overflow-hidden bg-secondary rounded-sm">
-            <img
-              src={project.detailImage || project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </motion.div>
-      </section>
+      {/* Album / gallery */}
+      <ProjectGallery
+        images={
+          project.gallery && project.gallery.length > 0
+            ? project.gallery
+            : [project.detailImage || project.image]
+        }
+        title={project.title}
+      />
 
       {/* Meta strip */}
       <section className="px-6 md:px-10 mb-24">
