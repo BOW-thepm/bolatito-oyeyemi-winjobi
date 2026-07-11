@@ -109,6 +109,10 @@ export const projects: Project[] = [
       "RefuCare is a mobile healthcare companion designed to simplify clinic discovery and appointment booking for newcomers navigating an unfamiliar healthcare system. The app combines clear information architecture, accessible UI patterns, and local-aware features to reduce friction and anxiety.",
     image: "/lovable-uploads/refucare-mockup.png",
     detailImage: "/lovable-uploads/refucare-hero.png",
+    gallery: [
+      "/lovable-uploads/refucare-hero.png",
+      "/lovable-uploads/refucare-mockup.png",
+    ],
     caseStudyUrl: "#",
     tags: ["Mobile App", "Healthcare", "UX/UI", "Accessibility"],
     year: "2024",
