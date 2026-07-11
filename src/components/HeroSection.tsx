@@ -99,7 +99,7 @@ const HeroSection = () => {
         <div className="border-t border-border pt-6 flex flex-wrap items-end justify-between gap-6">
           <div className="flex items-end gap-10 md:gap-16">
             <div>
-              <div className="text-3xl md:text-4xl font-medium text-foreground">02</div>
+              <div className="text-3xl md:text-4xl font-medium text-foreground">03</div>
               <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-1">
                 Years
               </div>
