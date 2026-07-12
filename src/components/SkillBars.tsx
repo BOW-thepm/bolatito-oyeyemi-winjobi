@@ -39,24 +39,44 @@ const SkillBars = () => {
           initial={{ opacity: 0, y: 12 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: index * 0.06, duration: 0.5 }}
-          className="grid grid-cols-12 items-center gap-4 py-5 group"
+          className="py-5 group"
         >
-          <div className="col-span-5 md:col-span-3 text-base md:text-lg font-medium text-foreground">
-            {skill.name}
+          {/* Mobile: stacked */}
+          <div className="md:hidden">
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-base font-medium text-foreground">{skill.name}</span>
+              <span className="text-sm tabular-nums text-muted-foreground">{skill.level}</span>
+            </div>
+            <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">
+              {skill.description}
+            </div>
+            <div className="h-px bg-border relative overflow-hidden">
+              <motion.div
+                className="absolute inset-y-0 left-0 bg-foreground"
+                initial={{ width: 0 }}
+                animate={isVisible ? { width: `${skill.level}%` } : { width: 0 }}
+                transition={{ duration: 1.2, delay: 0.2 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </div>
           </div>
-          <div className="col-span-2 md:col-span-2 text-xs tracking-[0.2em] uppercase text-muted-foreground">
-            {skill.description}
-          </div>
-          <div className="col-span-3 md:col-span-6 h-px bg-border relative overflow-hidden">
-            <motion.div
-              className="absolute inset-y-0 left-0 bg-foreground"
-              initial={{ width: 0 }}
-              animate={isVisible ? { width: `${skill.level}%` } : { width: 0 }}
-              transition={{ duration: 1.2, delay: 0.2 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-          <div className="col-span-2 md:col-span-1 text-right text-sm tabular-nums text-muted-foreground">
-            {skill.level}
+
+          {/* Desktop: grid */}
+          <div className="hidden md:grid grid-cols-12 items-center gap-4">
+            <div className="col-span-3 text-lg font-medium text-foreground">{skill.name}</div>
+            <div className="col-span-2 text-xs tracking-[0.2em] uppercase text-muted-foreground">
+              {skill.description}
+            </div>
+            <div className="col-span-6 h-px bg-border relative overflow-hidden">
+              <motion.div
+                className="absolute inset-y-0 left-0 bg-foreground"
+                initial={{ width: 0 }}
+                animate={isVisible ? { width: `${skill.level}%` } : { width: 0 }}
+                transition={{ duration: 1.2, delay: 0.2 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </div>
+            <div className="col-span-1 text-right text-sm tabular-nums text-muted-foreground">
+              {skill.level}
+            </div>
           </div>
         </motion.div>
       ))}
