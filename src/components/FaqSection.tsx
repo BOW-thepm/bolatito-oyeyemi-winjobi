@@ -12,12 +12,12 @@ const faqs = [
     a: 'I focus on product design for web and mobile — SaaS dashboards, fintech, healthcare, e-commerce, and brand-driven marketing sites. If a problem is worth solving and the team is thoughtful, I want to hear about it.',
   },
   {
-    q: 'How do you usually work with clients?',
-    a: 'I embed with product and engineering teams as either a lead designer or a design partner. Engagements typically start with a discovery sprint, followed by iterative design cycles with weekly reviews and clear handoff to devs.',
+    q: 'How do you collaborate with Product Managers and Engineers?',
+    a: 'Design is a team sport. I work closely with product managers to define requirements and success metrics while partnering with engineers throughout implementation to ensure designs are technically feasible and accurately translated into production. I stay involved beyond handoff through design QA and iteration.',
   },
   {
-    q: 'What is your typical turnaround time?',
-    a: 'A focused MVP takes 3–6 weeks. Larger platform work runs 8–12 weeks. I share realistic scope after our first call — no vague estimates or padded timelines.',
+    q: 'What design principles guide your work?',
+    a: 'I believe great products are built through intentional design decisions rather than visual trends. My work emphasizes usability, accessibility, scalability, clear information architecture, thoughtful interaction design, and systems thinking—ensuring every interface has purpose and every interaction feels natural.',
   },
   {
     q: 'Do you work with early-stage startups?',
@@ -28,8 +28,8 @@ const faqs = [
     a: 'A short brief about the problem, who it is for, and what success looks like. Existing assets, research, or a working prototype help but are not required. We figure out the rest together.',
   },
   {
-    q: 'How do we start?',
-    a: 'Send me a message through the contact section below. I usually reply within 24 hours with a few questions and a suggested next step.',
+    q: 'How do you measure whether a design is successful?',
+    a: "Success isn't measured by aesthetics alone. I evaluate designs based on how effectively they solve user problems, reduce friction, improve task completion, support business objectives, and create experiences that users can navigate confidently with minimal effort.",
   },
 ];
 
