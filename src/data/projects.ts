@@ -20,6 +20,46 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 10,
+    slug: "msc-admin",
+    title: "MSC Admin",
+    description:
+      "A clean, scalable admin dashboard for e-commerce operations — managing products, transactions, users, and analytics in one place.",
+    fullDescription:
+      "MSC Admin is an e-commerce dashboard designed to streamline back-office operations for merchants. It brings product management, transaction tracking, user analytics, and store settings into a single, intuitive interface with clear visual hierarchy and data-driven decision-making.",
+    image: "/lovable-uploads/msc-admin-mockup.jpg",
+    caseStudyUrl: "#",
+    tags: ["E-commerce", "Dashboard", "UX/UI", "Admin Panel"],
+    year: "2026",
+    category: "E-commerce",
+    challenge:
+      "E-commerce operators often juggle multiple tools and spreadsheets to manage inventory, sales, users, and performance — leading to fragmented workflows and slow decisions.",
+    solution:
+      "A unified dashboard with a structured sidebar, at-a-glance metric cards, and visual data charts that make it easy to track products, revenue, users, and growth trends.",
+    outcome:
+      "The dashboard reduced the time spent navigating between tools and gave managers a clearer, faster view of daily business performance.",
+  },
+  {
+    id: 11,
+    slug: "msc-h5",
+    title: "MSC H5",
+    description:
+      "A mobile-first pharmacy commerce experience that makes ordering medication cheaper, faster, and simpler.",
+    fullDescription:
+      "MSC H5 is a mobile commerce experience built for pharmacies and distributors, letting users browse featured products, compare prices, and complete orders in a few taps. The interface pairs a calm teal identity with clear product hierarchy, bulk-purchase promotions, and a frictionless product-detail-to-checkout flow.",
+    image: "/lovable-uploads/msc-h5-mockup.jpg",
+    caseStudyUrl: "#",
+    tags: ["E-commerce", "Mobile App", "UX/UI", "Healthcare"],
+    year: "2026",
+    category: "E-commerce",
+    challenge:
+      "Pharmacy buyers needed a faster way to find medication, understand pricing, and place bulk orders on mobile without wading through dense catalogues.",
+    solution:
+      "A focused mobile storefront with category filters, featured product cards, transparent pricing, and a product detail page that keeps quantity, description, and checkout actions in one view.",
+    outcome:
+      "Ordering became noticeably quicker for repeat buyers, with clearer pricing and a smoother path from discovery to purchase.",
+  },
+  {
     id: 8,
     slug: "cosmic-defender",
     title: "Cosmic Defender",
@@ -124,110 +164,6 @@ export const projects: Project[] = [
     outcome:
       "The prototype received strong validation from target users, with booking tasks completed significantly faster than existing alternatives.",
   },
-  {
-    id: 3,
-    slug: "healthcare-portal",
-    title: "Healthcare Portal",
-    description:
-      "Creating an accessible healthcare management system for patients and providers.",
-    fullDescription:
-      "A patient-centered healthcare portal designed to improve communication between patients and healthcare providers.",
-    image:
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
-    caseStudyUrl: "#",
-    tags: ["Healthcare", "Accessibility", "Data Visualization", "User Testing"],
-    year: "2023",
-    category: "Healthcare",
-    challenge:
-      "Patients struggled to find clear information about appointments, results, and prescriptions across fragmented systems.",
-    solution:
-      "A unified portal meeting WCAG 2.1 AA, with calm typography, plain-language summaries, and clear next-steps for every interaction.",
-    outcome:
-      "Support tickets dropped 30% and patient satisfaction scores rose meaningfully.",
-  },
-  {
-    id: 4,
-    slug: "smart-home-app",
-    title: "Smart Home App",
-    description:
-      "Designing an intuitive interface for controlling home devices with elegant interactions.",
-    fullDescription:
-      "An IoT control application that simplifies smart home management through intuitive design and thoughtful user flows.",
-    image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
-    caseStudyUrl: "#",
-    tags: ["IoT", "Mobile Design", "Interaction Design", "Smart Systems"],
-    year: "2023",
-    category: "Mobile",
-    challenge:
-      "Users had to juggle multiple manufacturer apps just to control a single room.",
-    solution:
-      "A context-aware interface that learns routines and surfaces the right controls at the right time.",
-    outcome: "60% increase in daily active engagement after three months.",
-  },
-  {
-    id: 5,
-    slug: "financial-dashboard",
-    title: "Financial Dashboard",
-    description:
-      "Modern investment platform with sophisticated data visualization and user experience.",
-    fullDescription:
-      "A comprehensive financial dashboard that transforms complex investment data into actionable insights.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
-    caseStudyUrl: "#",
-    tags: ["Fintech", "Data Visualization", "Dashboard Design", "Analytics"],
-    year: "2022",
-    category: "Fintech",
-    challenge:
-      "Novice and expert investors needed the same data, but framed for very different mental models.",
-    solution:
-      "A layered dashboard with progressive disclosure, educational tooltips, and a clear hierarchy of decisions.",
-    outcome:
-      "Average session time increased while support requests for ‘what does this mean’ dropped by half.",
-  },
-  {
-    id: 10,
-    slug: "msc-admin",
-    title: "MSC Admin",
-    description:
-      "A clean, scalable admin dashboard for e-commerce operations — managing products, transactions, users, and analytics in one place.",
-    fullDescription:
-      "MSC Admin is an e-commerce dashboard designed to streamline back-office operations for merchants. It brings product management, transaction tracking, user analytics, and store settings into a single, intuitive interface with clear visual hierarchy and data-driven decision-making.",
-    image: "/lovable-uploads/msc-admin-mockup.jpg",
-    caseStudyUrl: "#",
-    tags: ["E-commerce", "Dashboard", "UX/UI", "Admin Panel"],
-    year: "2026",
-    category: "E-commerce",
-    challenge:
-      "E-commerce operators often juggle multiple tools and spreadsheets to manage inventory, sales, users, and performance — leading to fragmented workflows and slow decisions.",
-    solution:
-      "A unified dashboard with a structured sidebar, at-a-glance metric cards, and visual data charts that make it easy to track products, revenue, users, and growth trends.",
-    outcome:
-      "The dashboard reduced the time spent navigating between tools and gave managers a clearer, faster view of daily business performance.",
-  },
-  {
-    id: 6,
-    slug: "travel-experience",
-    title: "Travel Experience",
-    description:
-      "Immersive travel booking platform with focus on storytelling and visual appeal.",
-    fullDescription:
-      "A travel platform that reimagines the booking experience through immersive storytelling and beautiful visual design.",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
-    caseStudyUrl: "#",
-    tags: ["Travel", "Storytelling", "Visual Design", "Interactive Media"],
-    year: "2022",
-    category: "Travel",
-    challenge:
-      "Booking platforms felt transactional, stripping the romance out of planning a trip.",
-    solution:
-      "Editorial destination guides, 360° previews, and quietly placed booking actions woven into the story.",
-    outcome: "Booking completion rates rose by 35%.",
-  },
-
-
 ];
 
 export const getProjectBySlug = (slug: string) =>
