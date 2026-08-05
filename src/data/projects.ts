@@ -187,7 +187,7 @@ export const projects: Project[] = [
       "Average session time increased while support requests for ‘what does this mean’ dropped by half.",
   },
   {
-    id: 6,
+    id: 10,
     slug: "msc-admin",
     title: "MSC Admin",
     description:
@@ -206,6 +206,27 @@ export const projects: Project[] = [
     outcome:
       "The dashboard reduced the time spent navigating between tools and gave managers a clearer, faster view of daily business performance.",
   },
+  {
+    id: 6,
+    slug: "travel-experience",
+    title: "Travel Experience",
+    description:
+      "Immersive travel booking platform with focus on storytelling and visual appeal.",
+    fullDescription:
+      "A travel platform that reimagines the booking experience through immersive storytelling and beautiful visual design.",
+    image:
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
+    caseStudyUrl: "#",
+    tags: ["Travel", "Storytelling", "Visual Design", "Interactive Media"],
+    year: "2022",
+    category: "Travel",
+    challenge:
+      "Booking platforms felt transactional, stripping the romance out of planning a trip.",
+    solution:
+      "Editorial destination guides, 360° previews, and quietly placed booking actions woven into the story.",
+    outcome: "Booking completion rates rose by 35%.",
+  },
+
 
 ];
 
