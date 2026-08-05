@@ -61,6 +61,13 @@ const ToolsSection = () => {
         >
           {Array.from({ length: totalCells }).map((_, i) => {
             const tool = tools[i];
+            const isLastColDefault = (i + 1) % 2 === 0;
+            const isLastColSm = (i + 1) % 3 === 0;
+            const isLastColLg = (i + 1) % 6 === 0;
+            const isLastRowDefault = i >= totalCells - 2;
+            const isLastRowSm = i >= totalCells - 3;
+            const isLastRowLg = i >= totalCells - 6;
+
             return (
               <motion.div
                 key={tool ?? `empty-${i}`}
@@ -68,25 +75,16 @@ const ToolsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.03 }}
-                className={`relative flex items-center justify-between p-5 md:p-6 min-h-[88px] md:min-h-[104px] border-r border-b border-border last:border-r-0 ${
-                  i >= totalCells - 6 ? 'border-b-0' : ''
-                } ${
-                  // Remove right border on last item of each row on large screens
-                  (i + 1) % 6 === 0 ? 'lg:border-r-0' : ''
-                } ${
-                  // Remove right border on last item of each row on medium screens
-                  (i + 1) % 3 === 0 ? 'sm:border-r-0' : ''
-                } ${
-                  // Remove right border on last item of each row on small screens
-                  (i + 1) % 2 === 0 ? 'border-r-0' : ''
-                } ${
-                  // Remove bottom border on last row for each breakpoint
-                  i >= totalCells - 6 ? 'lg:border-b-0' : ''
-                } ${
-                  i >= totalCells - 3 ? 'sm:border-b-0' : ''
-                } ${
-                  i >= totalCells - 2 ? 'border-b-0' : ''
-                } group ${tool ? 'hover:bg-secondary/40 transition-colors' : ''}`}
+                className={[
+                  'relative flex items-center justify-between p-5 md:p-6 min-h-[88px] md:min-h-[104px] border-r border-b border-border',
+                  isLastColDefault ? 'border-r-0' : '',
+                  isLastColSm ? 'sm:border-r-0' : '',
+                  isLastColLg ? 'lg:border-r-0' : '',
+                  isLastRowDefault ? 'border-b-0' : '',
+                  isLastRowSm ? 'sm:border-b-0' : '',
+                  isLastRowLg ? 'lg:border-b-0' : '',
+                  tool ? 'group hover:bg-secondary/40 transition-colors' : '',
+                ].join(' ')}
               >
                 {tool ? (
                   <>
