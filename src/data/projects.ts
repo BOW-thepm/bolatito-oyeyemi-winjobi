@@ -188,24 +188,25 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    slug: "travel-experience",
-    title: "Travel Experience",
+    slug: "msc-admin",
+    title: "MSC Admin",
     description:
-      "Immersive travel booking platform with focus on storytelling and visual appeal.",
+      "A clean, scalable admin dashboard for e-commerce operations — managing products, transactions, users, and analytics in one place.",
     fullDescription:
-      "A travel platform that reimagines the booking experience through immersive storytelling and beautiful visual design.",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
+      "MSC Admin is an e-commerce dashboard designed to streamline back-office operations for merchants. It brings product management, transaction tracking, user analytics, and store settings into a single, intuitive interface with clear visual hierarchy and data-driven decision-making.",
+    image: "/lovable-uploads/msc-admin-mockup.jpg",
     caseStudyUrl: "#",
-    tags: ["Travel", "Storytelling", "Visual Design", "Interactive Media"],
-    year: "2022",
-    category: "Travel",
+    tags: ["E-commerce", "Dashboard", "UX/UI", "Admin Panel"],
+    year: "2026",
+    category: "E-commerce",
     challenge:
-      "Booking platforms felt transactional, stripping the romance out of planning a trip.",
+      "E-commerce operators often juggle multiple tools and spreadsheets to manage inventory, sales, users, and performance — leading to fragmented workflows and slow decisions.",
     solution:
-      "Editorial destination guides, 360° previews, and quietly placed booking actions woven into the story.",
-    outcome: "Booking completion rates rose by 35%.",
+      "A unified dashboard with a structured sidebar, at-a-glance metric cards, and visual data charts that make it easy to track products, revenue, users, and growth trends.",
+    outcome:
+      "The dashboard reduced the time spent navigating between tools and gave managers a clearer, faster view of daily business performance.",
   },
+
 ];
 
 export const getProjectBySlug = (slug: string) =>
