@@ -21,44 +21,30 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 10,
-    slug: "msc-admin",
-    title: "MSC Admin",
+    slug: "msc",
+    title: "MSC",
     description:
-      "A clean, scalable admin dashboard for e-commerce operations — managing products, transactions, users, and analytics in one place.",
+      "An end-to-end commerce suite for pharmacy retail — the MSC H5 mobile storefront and the MSC Admin operations dashboard.",
     fullDescription:
-      "MSC Admin is an e-commerce dashboard designed to streamline back-office operations for merchants. It brings product management, transaction tracking, user analytics, and store settings into a single, intuitive interface with clear visual hierarchy and data-driven decision-making.",
-    image: "/lovable-uploads/msc-admin-mockup.jpg",
-    caseStudyUrl: "#",
-    tags: ["E-commerce", "Dashboard", "UX/UI", "Admin Panel"],
-    year: "2026",
-    category: "E-commerce",
-    challenge:
-      "E-commerce operators often juggle multiple tools and spreadsheets to manage inventory, sales, users, and performance — leading to fragmented workflows and slow decisions.",
-    solution:
-      "A unified dashboard with a structured sidebar, at-a-glance metric cards, and visual data charts that make it easy to track products, revenue, users, and growth trends.",
-    outcome:
-      "The dashboard reduced the time spent navigating between tools and gave managers a clearer, faster view of daily business performance.",
-  },
-  {
-    id: 11,
-    slug: "msc-h5",
-    title: "MSC H5",
-    description:
-      "A mobile-first pharmacy commerce experience that makes ordering medication cheaper, faster, and simpler.",
-    fullDescription:
-      "MSC H5 is a mobile commerce experience built for pharmacies and distributors, letting users browse featured products, compare prices, and complete orders in a few taps. The interface pairs a calm teal identity with clear product hierarchy, bulk-purchase promotions, and a frictionless product-detail-to-checkout flow.",
+      "MSC is a two-part commerce ecosystem for pharmacy retail. MSC H5 is the mobile-first storefront where buyers browse featured products, compare prices, and complete orders in a few taps. MSC Admin is the back-office dashboard where operators manage products, transactions, users, and analytics. Together they form one continuous experience — the same visual language, data model, and product logic across customer-facing and internal surfaces.",
     image: "/lovable-uploads/msc-h5-mockup.jpg",
+    detailImage: "/lovable-uploads/msc-h5-mockup.jpg",
+    gallery: [
+      "/lovable-uploads/msc-h5-mockup.jpg",
+      "/lovable-uploads/msc-admin-mockup.jpg",
+    ],
     caseStudyUrl: "#",
-    tags: ["E-commerce", "Mobile App", "UX/UI", "Healthcare"],
+    tags: ["E-commerce", "Mobile App", "Dashboard", "UX/UI"],
     year: "2026",
     category: "E-commerce",
     challenge:
-      "Pharmacy buyers needed a faster way to find medication, understand pricing, and place bulk orders on mobile without wading through dense catalogues.",
+      "Pharmacy buyers needed a faster way to find medication and place bulk orders on mobile, while operators juggled spreadsheets and disconnected tools to manage inventory, sales, and performance.",
     solution:
-      "A focused mobile storefront with category filters, featured product cards, transparent pricing, and a product detail page that keeps quantity, description, and checkout actions in one view.",
+      "One design system across two surfaces: a focused mobile storefront with category filters, transparent pricing, and a tight product-to-checkout flow, paired with a unified admin dashboard of metric cards, charts, and structured navigation.",
     outcome:
-      "Ordering became noticeably quicker for repeat buyers, with clearer pricing and a smoother path from discovery to purchase.",
+      "Ordering became quicker for repeat buyers and operators gained a single, clearer view of daily business performance — with both products reading as one coherent brand.",
   },
+
   {
     id: 8,
     slug: "cosmic-defender",
