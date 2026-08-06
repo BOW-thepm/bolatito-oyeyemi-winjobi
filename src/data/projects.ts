@@ -26,11 +26,13 @@ export const projects: Project[] = [
     description:
       "An end-to-end commerce suite for pharmacy retail — the MSC H5 mobile storefront and the MSC Admin operations dashboard.",
     fullDescription:
-      "MSC is a two-part commerce ecosystem for pharmacy retail. MSC H5 is the mobile-first storefront where buyers browse featured products, compare prices, and complete orders in a few taps. MSC Admin is the back-office dashboard where operators manage products, transactions, users, and analytics. Together they form one continuous experience — the same visual language, data model, and product logic across customer-facing and internal surfaces.",
+      "MSC is a multi-surface commerce ecosystem for pharmacy retail. MSC H5 is the mobile-first storefront, MSC PC is the desktop B2B marketplace for structured pharmaceutical procurement, MSC Buyer Center is the buyer-side dashboard for orders and business management, and MSC Admin is the back-office dashboard for products, transactions, users, and analytics. Together they form one continuous experience — the same visual language, data model, and product logic across every surface.",
     image: "/lovable-uploads/msc-h5-mockup.jpg",
     detailImage: "/lovable-uploads/msc-h5-mockup.jpg",
     gallery: [
       "/lovable-uploads/msc-h5-mockup.jpg",
+      "/lovable-uploads/msc-pc-mockup.jpg",
+      "/lovable-uploads/msc-buyer-center-mockup.jpg",
       "/lovable-uploads/msc-admin-mockup.jpg",
     ],
     caseStudyUrl: "#",
