@@ -42,44 +42,35 @@ const ProjectsSection = () => {
           A small body of <span className="italic font-light text-muted-foreground">considered work</span>.
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        <div className="border-t border-border">
           {projects.map((project) => (
             <motion.div
               key={project.id}
               onMouseEnter={() => setHovered(project.id)}
               onMouseLeave={() => setHovered(null)}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="border-b border-border"
             >
-              <Link to={`/projects/${project.slug}`} className="group block">
-              <div className="relative overflow-hidden bg-secondary aspect-[4/5] mb-6">
-                <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                  animate={{ scale: hovered === project.id ? 1.04 : 1 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </div>
-
-              <div className="flex items-baseline justify-between gap-4">
-                <div>
-                  <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">
-                    {project.number} · {project.tag}
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-medium text-foreground flex items-center gap-2">
-                    {project.title}
-                    <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </h3>
-                </div>
-                <span className="text-sm text-muted-foreground tabular-nums">{project.year}</span>
-              </div>
-
-              <p className="mt-3 text-muted-foreground max-w-md leading-relaxed">
-                {project.description}
-              </p>
+              <Link
+                to={`/projects/${project.slug}`}
+                className="group flex items-baseline gap-6 py-7 md:py-9 transition-colors"
+              >
+                <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground w-8 shrink-0">
+                  {project.number}
+                </span>
+                <h3 className="text-3xl md:text-5xl font-light tracking-tight text-foreground flex items-center gap-3 transition-transform duration-500 ease-out group-hover:translate-x-2">
+                  {project.title}
+                  <ArrowUpRight className="h-5 w-5 md:h-6 md:w-6 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                </h3>
+                <span className="ml-auto hidden sm:block text-[10px] tracking-[0.25em] uppercase text-muted-foreground text-right">
+                  {project.tag}
+                </span>
+                <span className="text-sm text-muted-foreground tabular-nums w-12 text-right shrink-0">
+                  {project.year}
+                </span>
               </Link>
             </motion.div>
           ))}
