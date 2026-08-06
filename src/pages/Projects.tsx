@@ -3,11 +3,13 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { projects } from '@/data/projects';
+import ProjectHoverPreview from '@/components/ProjectHoverPreview';
 
 const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [hovered, setHovered] = useState<number | null>(null);
 
   const filteredProjects =
     activeFilter === 'All' ? projects : projects.filter((p) => p.category === activeFilter);
@@ -80,11 +82,12 @@ const Projects = () => {
       {/* Grid */}
       <section className="pb-32 px-6 md:px-10">
         <div className="container mx-auto max-w-6xl">
-          <motion.div layout className="border-t border-border">
+          <motion.div layout className="border-t border-border" onMouseLeave={() => setHovered(null)}>
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
+                onMouseEnter={() => setHovered(project.id)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -92,16 +95,18 @@ const Projects = () => {
                   delay: index * 0.05,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="border-b border-border"
+                className={`border-b border-border transition-opacity duration-300 ${
+                  hovered !== null && hovered !== project.id ? 'opacity-40' : 'opacity-100'
+                }`}
               >
                 <Link
                   to={`/projects/${project.slug}`}
                   className="group flex items-baseline gap-6 py-7 md:py-9"
                 >
-                  <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground w-8 shrink-0">
+                  <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground w-8 shrink-0 transition-colors duration-300 group-hover:text-accent">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-3xl md:text-5xl font-light tracking-tight text-foreground flex items-center gap-3 transition-transform duration-500 ease-out group-hover:translate-x-2">
+                  <h3 className="text-3xl md:text-5xl font-light tracking-tight text-foreground flex items-center gap-3 transition-all duration-500 ease-out group-hover:translate-x-2 group-hover:text-accent group-hover:italic">
                     {project.title}
                     <ArrowUpRight className="h-5 w-5 md:h-6 md:w-6 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                   </h3>
@@ -115,6 +120,11 @@ const Projects = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          <ProjectHoverPreview
+            src={filteredProjects.find((p) => p.id === hovered)?.image}
+            title={filteredProjects.find((p) => p.id === hovered)?.title}
+          />
         </div>
       </section>
     </div>
