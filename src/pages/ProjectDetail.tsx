@@ -4,15 +4,77 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
+import { useEffect, useState, useRef } from 'react';
+
+const sectionLabels = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'gallery', label: 'Gallery' },
+  { id: 'challenge', label: 'Challenge' },
+  { id: 'approach', label: 'Approach' },
+  { id: 'outcome', label: 'Outcome' },
+];
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
+  const [activeSection, setActiveSection] = useState('overview');
+  const observersRef = useRef<IntersectionObserver[]>([]);
 
   if (!project) return <Navigate to="/projects" replace />;
 
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(currentIndex + 1) % projects.length];
+
+  useEffect(() => {
+    // Clean up any previous observers stored in ref
+    observersRef.current.forEach((obs) => obs.disconnect());
+    observersRef.current = [];
+
+    const visibleRatios = new Map<string, number>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visibleRatios.set(entry.target.id, entry.intersectionRatio);
+        });
+
+        // Pick the section with the highest visible ratio
+        let bestId = 'overview';
+        let bestRatio = 0;
+        visibleRatios.forEach((ratio, id) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        });
+
+        setActiveSection(bestId);
+      },
+      {
+        root: null,
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+        rootMargin: '-10% 0px -40% 0px',
+      }
+    );
+
+    observersRef.current.push(observer);
+
+    sectionLabels.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      observersRef.current.forEach((obs) => obs.disconnect());
+    };
+  }, [project.slug]);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -32,8 +94,37 @@ const ProjectDetail = () => {
         </div>
       </nav>
 
+      {/* Right-hand vertical reading progress indicator */}
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-center gap-3">
+        <div className="relative h-48 w-px bg-border/60">
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 w-1 rounded-full bg-primary"
+            layoutId="reading-progress"
+            initial={false}
+            animate={{
+              top: `${(sectionLabels.findIndex((s) => s.id === activeSection) / (sectionLabels.length - 1)) * 100}%`,
+              height: `${100 / sectionLabels.length}%`,
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          />
+        </div>
+        <div className="flex flex-col gap-3">
+          {sectionLabels.map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className={`text-[10px] tracking-wider uppercase text-right transition-colors duration-300 hover:text-primary ${
+                activeSection === id ? 'text-primary font-medium' : 'text-muted-foreground'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6 md:px-10">
+      <section id="overview" className="pt-32 pb-16 px-6 md:px-10">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,14 +158,16 @@ const ProjectDetail = () => {
       </section>
 
       {/* Album / gallery */}
-      <ProjectGallery
-        images={
-          project.gallery && project.gallery.length > 0
-            ? project.gallery
-            : [project.detailImage || project.image]
-        }
-        title={project.title}
-      />
+      <div id="gallery">
+        <ProjectGallery
+          images={
+            project.gallery && project.gallery.length > 0
+              ? project.gallery
+              : [project.detailImage || project.image]
+          }
+          title={project.title}
+        />
+      </div>
 
       {/* Meta strip */}
       <section className="px-6 md:px-10 mb-24">
@@ -87,7 +180,13 @@ const ProjectDetail = () => {
             <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Category</div>
             <div className="text-foreground">{project.category}</div>
           </div>
-          <div className="col-span-2">
+          {project.team && (
+            <div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Team</div>
+              <div className="text-foreground">{project.team}</div>
+            </div>
+          )}
+          <div className="col-span-2 md:col-span-1">
             <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Disciplines</div>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((t) => (
@@ -104,19 +203,19 @@ const ProjectDetail = () => {
       <section className="px-6 md:px-10 pb-24">
         <div className="container mx-auto max-w-3xl space-y-16">
           {project.challenge && (
-            <div>
+            <div id="challenge">
               <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">The challenge</div>
               <p className="text-xl md:text-2xl leading-relaxed text-foreground">{project.challenge}</p>
             </div>
           )}
           {project.solution && (
-            <div>
+            <div id="approach">
               <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">The approach</div>
               <p className="text-xl md:text-2xl leading-relaxed text-foreground">{project.solution}</p>
             </div>
           )}
           {project.outcome && (
-            <div>
+            <div id="outcome">
               <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">The outcome</div>
               <p className="text-xl md:text-2xl leading-relaxed text-foreground">{project.outcome}</p>
             </div>
