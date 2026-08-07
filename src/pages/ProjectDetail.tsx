@@ -95,33 +95,36 @@ const ProjectDetail = () => {
       </nav>
 
       {/* Right-hand vertical reading progress indicator */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-center gap-3">
-        <div className="relative h-48 w-px bg-border/60">
-          <motion.div
-            className="absolute left-1/2 -translate-x-1/2 w-1 rounded-full bg-primary"
-            layoutId="reading-progress"
-            initial={false}
-            animate={{
-              top: `${(sectionLabels.findIndex((s) => s.id === activeSection) / (sectionLabels.length - 1)) * 100}%`,
-              height: `${100 / sectionLabels.length}%`,
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          {sectionLabels.map(({ id, label }) => (
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-end gap-6">
+        {sectionLabels.map(({ id, label }) => {
+          const isActive = activeSection === id;
+          return (
             <button
               key={id}
               onClick={() => scrollToSection(id)}
-              className={`text-[10px] tracking-wider uppercase text-right transition-colors duration-300 hover:text-primary ${
-                activeSection === id ? 'text-primary font-medium' : 'text-muted-foreground'
-              }`}
+              className="group flex items-center justify-end gap-3 focus:outline-none"
+              aria-label={label}
             >
-              {label}
+              <motion.span
+                initial={false}
+                animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 8 }}
+                transition={{ duration: 0.25 }}
+                className="pointer-events-none rounded-full bg-secondary px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-deep-purple"
+              >
+                {label}
+              </motion.span>
+              <motion.span
+                animate={{ scale: isActive ? 1.25 : 1 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className={`h-2 w-2 rounded-full transition-colors duration-300 ${
+                  isActive ? 'bg-deep-purple' : 'bg-muted-foreground/40 group-hover:bg-deep-purple/50'
+                }`}
+              />
             </button>
-          ))}
-        </div>
+          );
+        })}
       </div>
+
 
       {/* Hero */}
       <section id="overview" className="pt-32 pb-16 px-6 md:px-10">
@@ -199,47 +202,8 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          {/* Horizontal reading indicator for the meta strip */}
-          <div className="relative mt-8">
-            {/* Track */}
-            <div className="absolute top-[5px] left-0 right-0 h-px bg-border/60" />
-            {/* Active progress fill */}
-            <motion.div
-              className="absolute top-[5px] left-0 h-px bg-deep-purple"
-              initial={false}
-              animate={{
-                width: `${(sectionLabels.findIndex((s) => s.id === activeSection) / (sectionLabels.length - 1)) * 100}%`,
-              }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
-            <div className="relative flex justify-between items-start">
-              {sectionLabels.map(({ id, label }) => {
-                const isActive = activeSection === id;
-                return (
-                  <button
-                    key={id}
-                    onClick={() => scrollToSection(id)}
-                    className="group relative flex flex-col items-center gap-3 focus:outline-none"
-                  >
-                    <motion.div
-                      className={`w-2.5 h-2.5 rounded-full border-2 transition-colors duration-300 ${
-                        isActive ? 'bg-deep-purple border-deep-purple' : 'bg-background border-border/80 group-hover:border-deep-purple/50'
-                      }`}
-                      animate={{ scale: isActive ? 1.45 : 1 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                    />
-                    <span
-                      className={`text-[10px] tracking-wider uppercase transition-colors duration-300 ${
-                        isActive ? 'text-deep-purple font-medium' : 'text-muted-foreground group-hover:text-foreground'
-                      }`}
-                    >
-                      {label}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+
+
         </div>
       </section>
 
