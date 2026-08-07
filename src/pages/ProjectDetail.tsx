@@ -171,29 +171,71 @@ const ProjectDetail = () => {
 
       {/* Meta strip */}
       <section className="px-6 md:px-10 mb-24">
-        <div className="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-border py-8">
-          <div>
-            <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Year</div>
-            <div className="text-foreground">{project.year}</div>
-          </div>
-          <div>
-            <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Category</div>
-            <div className="text-foreground">{project.category}</div>
-          </div>
-          {project.team && (
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-border py-8">
             <div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Team</div>
-              <div className="text-foreground">{project.team}</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Year</div>
+              <div className="text-foreground">{project.year}</div>
             </div>
-          )}
-          <div className="col-span-2 md:col-span-1">
-            <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Disciplines</div>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((t) => (
-                <span key={t} className="text-xs px-3 py-1 rounded-full border border-border text-foreground/80">
-                  {t}
-                </span>
-              ))}
+            <div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Category</div>
+              <div className="text-foreground">{project.category}</div>
+            </div>
+            {project.team && (
+              <div>
+                <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Team</div>
+                <div className="text-foreground">{project.team}</div>
+              </div>
+            )}
+            <div className="col-span-2 md:col-span-1">
+              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Disciplines</div>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((t) => (
+                  <span key={t} className="text-xs px-3 py-1 rounded-full border border-border text-foreground/80">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Horizontal reading indicator for the meta strip */}
+          <div className="relative mt-6">
+            <div className="absolute top-1/2 left-0 right-0 h-px bg-border/60 -translate-y-1/2" />
+            <div className="relative flex justify-between items-center">
+              {sectionLabels.map(({ id, label }, index) => {
+                const isActive = activeSection === id;
+                return (
+                  <button
+                    key={id}
+                    onClick={() => scrollToSection(id)}
+                    className="group relative flex flex-col items-center gap-3 focus:outline-none"
+                  >
+                    <motion.div
+                      className="w-2 h-2 rounded-full border border-border/60 transition-colors duration-300"
+                      animate={{
+                        backgroundColor: isActive ? '#5B2E91' : 'transparent',
+                        borderColor: isActive ? '#5B2E91' : 'rgba(0,0,0,0.15)',
+                        scale: isActive ? 1.5 : 1,
+                      }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    />
+                    <span
+                      className={`text-[10px] tracking-wider uppercase transition-colors duration-300 ${
+                        isActive ? 'text-primary font-medium' : 'text-muted-foreground group-hover:text-foreground'
+                      }`}
+                    >
+                      {label}
+                    </span>
+                    {index < sectionLabels.length - 1 && (
+                      <div
+                        className="absolute top-1 left-1/2 h-px bg-primary/30 origin-left"
+                        style={{ width: '100%' }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
