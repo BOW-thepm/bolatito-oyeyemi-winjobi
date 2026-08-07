@@ -38,16 +38,18 @@ export const projects: Project[] = [
       "/lovable-uploads/msc-admin-mockup.jpg",
     ],
     caseStudyUrl: "#",
-    tags: ["E-commerce", "Mobile App", "Dashboard", "UX/UI"],
+    tags: ["Mobile App", "Desktop", "Dashboard", "UX/UI"],
     year: "2026",
     category: "E-commerce",
+    team: "1 PM, 1 UX, 5 Devs, 2 Stakeholders",
     challenge:
       "Pharmacy buyers needed a faster way to find medication and place bulk orders on mobile, while operators juggled spreadsheets and disconnected tools to manage inventory, sales, and performance.",
     solution:
-      "One design system across two surfaces: a focused mobile storefront with category filters, transparent pricing, and a tight product-to-checkout flow, paired with a unified admin dashboard of metric cards, charts, and structured navigation.",
+      "One design system across multiple surfaces: a focused mobile storefront with category filters, transparent pricing, and a tight product-to-checkout flow, paired with a unified admin dashboard of metric cards, charts, and structured navigation.",
     outcome:
-      "Ordering became quicker for repeat buyers and operators gained a single, clearer view of daily business performance — with both products reading as one coherent brand.",
+      "Ordering became quicker for repeat buyers and operators gained a single, clearer view of daily business performance — with all products reading as one coherent brand.",
   },
+
 
   {
     id: 8,
