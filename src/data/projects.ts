@@ -14,7 +14,9 @@ export interface Project {
   outcome?: string;
   gallery?: string[];
   detailImage?: string;
+  team?: string;
 }
+
 
 
 
