@@ -200,10 +200,20 @@ const ProjectDetail = () => {
           </div>
 
           {/* Horizontal reading indicator for the meta strip */}
-          <div className="relative mt-6">
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-border/60 -translate-y-1/2" />
-            <div className="relative flex justify-between items-center">
-              {sectionLabels.map(({ id, label }, index) => {
+          <div className="relative mt-8">
+            {/* Track */}
+            <div className="absolute top-[5px] left-0 right-0 h-px bg-border/60" />
+            {/* Active progress fill */}
+            <motion.div
+              className="absolute top-[5px] left-0 h-px bg-deep-purple"
+              initial={false}
+              animate={{
+                width: `${(sectionLabels.findIndex((s) => s.id === activeSection) / (sectionLabels.length - 1)) * 100}%`,
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+            <div className="relative flex justify-between items-start">
+              {sectionLabels.map(({ id, label }) => {
                 const isActive = activeSection === id;
                 return (
                   <button
@@ -212,27 +222,19 @@ const ProjectDetail = () => {
                     className="group relative flex flex-col items-center gap-3 focus:outline-none"
                   >
                     <motion.div
-                      className="w-2 h-2 rounded-full border border-border/60 transition-colors duration-300"
-                      animate={{
-                        backgroundColor: isActive ? '#5B2E91' : 'transparent',
-                        borderColor: isActive ? '#5B2E91' : 'rgba(0,0,0,0.15)',
-                        scale: isActive ? 1.5 : 1,
-                      }}
+                      className={`w-2.5 h-2.5 rounded-full border-2 transition-colors duration-300 ${
+                        isActive ? 'bg-deep-purple border-deep-purple' : 'bg-background border-border/80 group-hover:border-deep-purple/50'
+                      }`}
+                      animate={{ scale: isActive ? 1.45 : 1 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                     />
                     <span
                       className={`text-[10px] tracking-wider uppercase transition-colors duration-300 ${
-                        isActive ? 'text-primary font-medium' : 'text-muted-foreground group-hover:text-foreground'
+                        isActive ? 'text-deep-purple font-medium' : 'text-muted-foreground group-hover:text-foreground'
                       }`}
                     >
                       {label}
                     </span>
-                    {index < sectionLabels.length - 1 && (
-                      <div
-                        className="absolute top-1 left-1/2 h-px bg-primary/30 origin-left"
-                        style={{ width: '100%' }}
-                      />
-                    )}
                   </button>
                 );
               })}
