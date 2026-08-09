@@ -146,7 +146,7 @@ const AboutSection = () => {
                   asChild
                 >
                   <a
-                    href="https://drive.google.com/file/d/1ap-JWBWX2pf1dVaIM6SDsNvIUoocmbnO/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1BR11EvZvvFpuoM3FM79oyz3oYuj89pKC/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
