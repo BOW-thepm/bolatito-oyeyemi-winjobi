@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: 'Sajad Haidary',
     position: 'Technical Manager and Team Lead',
-    company: 'Healthcare App',
+    company: 'RefuCare',
     content:
       "I had the pleasure of working with Bow on the UI/UX design of our healthcare application, and I can confidently say that she is a talented and dedicated designer who brings both creativity and precision to her work. From day one, Bow showed a deep understanding of user-centered design principles and transformed complex healthcare workflows into intuitive, seamless experiences for our users. Her attention to detail, responsiveness to feedback, and collaborative spirit made the entire design process smooth and efficient.",
     avatar: '/lovable-uploads/5a4177fc-16e5-4453-b8ee-7a09d6e86f15.png',
