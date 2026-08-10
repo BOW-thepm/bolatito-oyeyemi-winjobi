@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import adebosipoAvatar from '@/assets/adebosipo-badiru.png.asset.json';
 
 const testimonials = [
   {
@@ -26,7 +27,7 @@ const testimonials = [
     company: 'PaydayHub Online',
     content:
       "Working with BOW on the PaydayHub project was an absolute game-changer. She designed both our main landing page (paydayhubonline.com) and the complete customer dashboard portal with incredible attention to detail. BOW has a rare talent for balancing high-end, modern aesthetics with clean, user-centric UX. She took complex financial workflows, like user onboarding, loan applications and repayment tracking, and transformed them into seamless, intuitive screens that our users love. The landing page design immediately elevated our brand authority and boosted our conversion rates. If you need a world-class UI/UX designer who truly understands user behaviour and modern fintech branding, I cannot recommend BOW highly enough!",
-    avatar: '/lovable-uploads/adebosipo-badiru.png',
+    avatar: adebosipoAvatar.url,
   },
 ];
 
