@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
@@ -157,6 +157,26 @@ const ProjectDetail = () => {
           >
             {project.fullDescription}
           </motion.p>
+
+          {project.playUrl && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="mt-8"
+            >
+              <Button
+                asChild
+                className="rounded-full h-12 px-6 bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                <a href={project.playUrl} target="_blank" rel="noopener noreferrer">
+                  <Play className="mr-2 h-4 w-4 fill-current" />
+                  Play the game
+                  <ArrowUpRight className="ml-1 h-4 w-4" />
+                </a>
+              </Button>
+            </motion.div>
+          )}
         </div>
       </section>
 

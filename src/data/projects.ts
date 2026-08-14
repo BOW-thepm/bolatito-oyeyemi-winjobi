@@ -15,6 +15,7 @@ export interface Project {
   gallery?: string[];
   detailImage?: string;
   team?: string;
+  playUrl?: string;
 }
 
 
@@ -61,6 +62,7 @@ export const projects: Project[] = [
       "Cosmic Defender is a browser-based arcade shooter that brings retro sci-fi energy to modern web gameplay. The interface leans into bold neon typography, high-contrast HUD elements, and clear navigation so players can jump straight into the action.",
     image: "/lovable-uploads/cosmic-defender-mockup.png",
     caseStudyUrl: "#",
+    playUrl: "https://cosmic-defender-v3-0.vercel.app/",
     tags: ["Web Game", "Game Design", "UI Design", "Interaction Design"],
     year: "2026",
     category: "Web Game",
