@@ -212,9 +212,9 @@ const ProjectDetail = () => {
             )}
             <div className="w-fit justify-self-start">
               <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">Disciplines</div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-nowrap gap-2">
                 {project.tags.map((t) => (
-                  <span key={t} className="text-xs px-3 py-1 rounded-full border border-border text-foreground/80">
+                  <span key={t} className="text-xs px-3 py-1 rounded-full border border-border text-foreground/80 whitespace-nowrap">
                     {t}
                   </span>
                 ))}
