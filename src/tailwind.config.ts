@@ -66,17 +66,17 @@ export default {
 				},
 				// Feminine brand colors
 				'deep-purple': {
-					DEFAULT: '#5B2E91',
-					50: '#EDE6F5',
-					100: '#DDD0EB',
-					200: '#BCA6D6',
-					300: '#9B7CC2',
-					400: '#7A52AE',
-					500: '#5B2E91',
-					600: '#4E257D',
-					700: '#411C69',
-					800: '#341355',
-					900: '#270A41'
+					DEFAULT: '#7B4FB8',
+					50: '#F4F0F9',
+					100: '#EAE2F2',
+					200: '#D4C5E6',
+					300: '#BBA5D8',
+					400: '#9B7AC8',
+					500: '#7B4FB8',
+					600: '#6A3FA3',
+					700: '#592F8E',
+					800: '#481F79',
+					900: '#370F64'
 				},
 				'powder-blue': {
 					DEFAULT: '#AEC6CF',
