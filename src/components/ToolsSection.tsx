@@ -18,6 +18,7 @@ const tools: string[] = [
   'Google Forms',
   'UserTesting',
   'X-Mind',
+  'Design System',
 ];
 
 const totalCells = 18;
