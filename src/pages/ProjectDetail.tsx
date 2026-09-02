@@ -19,6 +19,9 @@ const ProjectDetail = () => {
   const project = slug ? getProjectBySlug(slug) : undefined;
   const [activeSection, setActiveSection] = useState('overview');
   const observersRef = useRef<IntersectionObserver[]>([]);
+  const navSections = project?.caseStudy?.length
+    ? [...sectionLabels, { id: 'case-study', label: 'Case study' }]
+    : sectionLabels;
 
   if (!project) return <Navigate to="/projects" replace />;
 
@@ -59,7 +62,7 @@ const ProjectDetail = () => {
 
     observersRef.current.push(observer);
 
-    sectionLabels.forEach(({ id }) => {
+    navSections.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -96,7 +99,7 @@ const ProjectDetail = () => {
 
       {/* Right-hand vertical reading progress indicator */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-end gap-6">
-        {sectionLabels.map(({ id, label }) => {
+        {navSections.map(({ id, label }) => {
           const isActive = activeSection === id;
           return (
             <button
