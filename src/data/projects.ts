@@ -1,3 +1,6 @@
+import bubblrCover from "@/assets/bubblr-cover.jpg.asset.json";
+import bubblrBoard from "@/assets/bubblr-case-study.jpg.asset.json";
+
 export interface Project {
   id: number;
   slug: string;
@@ -16,12 +19,38 @@ export interface Project {
   detailImage?: string;
   team?: string;
   playUrl?: string;
+  /** Tall, full case-study board rendered as a scrollable panel on the detail page. */
+  caseStudyBoard?: string;
 }
 
 
 
 
 export const projects: Project[] = [
+  {
+    id: 11,
+    slug: "bubblr",
+    title: "Bubblr",
+    description:
+      "A safe, playful social media app built for kids — bubbles instead of feeds, with guardrails parents can trust.",
+    fullDescription:
+      "Bubblr is a social media experience designed specifically for children. Instead of an endless public feed, kids share moments inside small, invite-only \"bubbles\" of approved friends and family. The product balances two audiences at once: children, who want expression, colour and play, and parents, who need visibility, consent and control. The case study covers the full arc — research, information architecture, visual identity, design system, and the final high-fidelity screens.",
+    image: bubblrCover.url,
+    detailImage: bubblrCover.url,
+    caseStudyBoard: bubblrBoard.url,
+    caseStudyUrl: "#",
+    tags: ["Mobile App", "Social", "Kids Safety", "UX/UI"],
+    year: "2026",
+    category: "Social",
+    team: "1 PM, 1 UX, 3 Devs, 1 Child-safety Advisor",
+    challenge:
+      "Mainstream social platforms are built for adults: open feeds, vanity metrics, and strangers one tap away. Kids still want to share their world, and parents still want them to — but not on those terms. The design problem was to keep the joy of sharing while removing the exposure.",
+    solution:
+      "A bubble-based model replaces the public feed: every post lives inside a small, parent-approved circle. Friend requests route through a guardian approval flow, comments are limited to reactions and pre-moderated replies, and the visual language — soft bubbles, high-contrast colour, oversized touch targets, and plain-language copy — was tuned for readers as young as seven. A single design system carries the same components across the kid app and the parent dashboard.",
+    outcome:
+      "Testing with kids and parents showed children could publish a moment in under three taps, while guardians reported clear confidence in who could see it. The design system shipped as a reusable foundation for future Bubblr surfaces.",
+  },
+
   {
     id: 10,
     slug: "msc",
