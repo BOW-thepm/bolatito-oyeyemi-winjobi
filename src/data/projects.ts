@@ -7,6 +7,12 @@ export interface CaseStudySection {
   body: string;
   /** Optional supporting bullet points */
   points?: string[];
+  /** Optional mockup image for this section. When absent, a reserved slot is rendered. */
+  image?: string;
+  /** Caption shown under the mockup slot. */
+  imageCaption?: string;
+  /** Aspect ratio of the mockup slot. */
+  imageRatio?: "wide" | "tall" | "square";
 }
 
 export interface Project {
