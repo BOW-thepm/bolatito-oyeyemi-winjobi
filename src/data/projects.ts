@@ -7,6 +7,12 @@ export interface CaseStudySection {
   body: string;
   /** Optional supporting bullet points */
   points?: string[];
+  /** Optional mockup image for this section. When absent, a reserved slot is rendered. */
+  image?: string;
+  /** Caption shown under the mockup slot. */
+  imageCaption?: string;
+  /** Aspect ratio of the mockup slot. */
+  imageRatio?: "wide" | "tall" | "square";
 }
 
 export interface Project {
@@ -68,12 +74,16 @@ export const projects: Project[] = [
     caseStudy: [
       {
         label: "01 — Context",
+        imageCaption: "Cover — child using Bubblr at home",
+        imageRatio: "wide",
         title: "A social app that has to earn a parent's trust first",
         body:
           "Bubblr set out to give children aged 7 to 12 a place to share photos, drawings and small moments with the people who actually matter to them. Every decision had to satisfy two users at once: the child using the app daily, and the guardian who decides whether it stays installed. That dual mandate shaped the brief — playful enough for a seven-year-old to love, legible enough for a parent to audit in seconds.",
       },
       {
         label: "02 — Research",
+        imageCaption: "Research synthesis board and user quotes",
+        imageRatio: "wide",
         title: "What kids want, what parents fear",
         body:
           "Conversations with parents and observation sessions with children surfaced a consistent split. Children described sharing as a way to be seen by a handful of people — cousins, best friends, a grandparent. Parents described their anxiety in terms of reach: who can see this, who can contact my child, and what happens when I'm not looking.",
@@ -86,12 +96,16 @@ export const projects: Project[] = [
       },
       {
         label: "03 — Strategy",
+        imageCaption: "Bubble model diagram — post scoped to a circle",
+        imageRatio: "wide",
         title: "Bubbles instead of feeds",
         body:
           "The core product decision was to remove the public feed entirely. A bubble is a small, invite-only circle — a family bubble, a class bubble, a best-friends bubble. Content is posted into a bubble, never to the world, so privacy is structural rather than a setting somebody has to find and switch on. Guardians approve the members of every bubble, which turns safety into a one-time, deliberate action instead of constant surveillance.",
       },
       {
         label: "04 — Information architecture",
+        imageCaption: "Sitemap and user flows, kid app and guardian app",
+        imageRatio: "wide",
         title: "Two apps, one system",
         body:
           "The kid experience is organised around three destinations: Bubbles, Create and Me. Nothing else competes for attention. The guardian experience mirrors the same data through a review lens — pending invites, bubble membership, and a running activity log. Both surfaces are built from one component library, so a change to a card or a button propagates everywhere.",
@@ -103,12 +117,16 @@ export const projects: Project[] = [
       },
       {
         label: "05 — Interaction design",
+        imageCaption: "Post creation flow — three screens",
+        imageRatio: "tall",
         title: "Three taps to share, zero dead ends",
         body:
           "Posting was reduced to pick a bubble, add the moment, send. Comments are replaced by a fixed set of reactions plus pre-moderated short replies, which removes the free-text risk without removing the feeling of a response. Friend requests never reach the child directly — they surface in the guardian queue, and the child sees the outcome, not the request.",
       },
       {
         label: "06 — Visual identity",
+        imageCaption: "Logo, colour palette and type scale",
+        imageRatio: "square",
         title: "Playful, but never noisy",
         body:
           "Soft, rounded bubble forms carry the brand across icons, cards and empty states. Colour is high-contrast and used to signal meaning — each bubble gets its own hue so children can navigate by colour before they navigate by name. Touch targets are oversized, type is set large with generous line height, and every label uses plain, short language a seven-year-old can read without help.",
@@ -121,12 +139,16 @@ export const projects: Project[] = [
       },
       {
         label: "07 — Design system",
+        imageCaption: "Component library and token sheet",
+        imageRatio: "wide",
         title: "A foundation for what ships next",
         body:
           "Tokens for colour, type, spacing, radius and elevation feed a component library covering navigation, cards, sheets, forms and the approval patterns unique to Bubblr. Documented states — default, pressed, disabled, loading, empty and error — meant engineering could build screens that weren't drawn, and future surfaces inherit the same behaviour for free.",
       },
       {
         label: "08 — Validation",
+        imageCaption: "High-fidelity screens in device mockups",
+        imageRatio: "tall",
         title: "Tested with both audiences",
         body:
           "Sessions were run with children and, separately, with their guardians. Children completed a post in under three taps without prompting and understood bubble colour as an identifier immediately. Guardians could state exactly who could see a given post, which was the single clearest signal that the privacy model was reading correctly. Remaining friction sat in bubble creation, which was simplified into a named, colour-picked flow.",

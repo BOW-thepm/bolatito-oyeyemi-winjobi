@@ -322,7 +322,43 @@ const ProjectDetail = () => {
                         ))}
                       </ul>
                     )}
+
+                    {(s.image || s.imageCaption) && (
+                      <figure className="mt-8">
+                        <div
+                          className={`w-full overflow-hidden rounded-sm border border-border bg-secondary ${
+                            s.imageRatio === 'tall'
+                              ? 'aspect-[4/5]'
+                              : s.imageRatio === 'square'
+                              ? 'aspect-square'
+                              : 'aspect-[16/9]'
+                          }`}
+                        >
+                          {s.image ? (
+                            <img
+                              src={s.image}
+                              alt={s.imageCaption || `${project.title} — ${s.title}`}
+                              loading="lazy"
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            <div className="flex h-full w-full flex-col items-center justify-center gap-2 px-6 text-center">
+                              <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+                                Mockup
+                              </span>
+                              <span className="text-sm text-muted-foreground/70">{s.imageCaption}</span>
+                            </div>
+                          )}
+                        </div>
+                        {s.imageCaption && (
+                          <figcaption className="mt-3 text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+                            {s.imageCaption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    )}
                   </div>
+
                 </motion.article>
               ))}
             </div>
