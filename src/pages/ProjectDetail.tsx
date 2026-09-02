@@ -192,6 +192,37 @@ const ProjectDetail = () => {
         />
       </div>
 
+      {/* Full case-study board */}
+      {project.caseStudyBoard && (
+        <section className="px-6 md:px-10 mb-24">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-baseline justify-between mb-6">
+              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+                Full case study board
+              </div>
+              <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground hidden md:inline">
+                Scroll
+              </span>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="max-h-[80vh] overflow-y-auto rounded-sm border border-border bg-secondary"
+            >
+              <img
+                src={project.caseStudyBoard}
+                alt={`${project.title} — full case study board`}
+                loading="lazy"
+                className="w-full block"
+              />
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+
       {/* Meta strip */}
       <section className="px-6 md:px-10 mb-24">
         <div className="container mx-auto max-w-5xl">
