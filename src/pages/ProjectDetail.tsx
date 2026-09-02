@@ -19,6 +19,9 @@ const ProjectDetail = () => {
   const project = slug ? getProjectBySlug(slug) : undefined;
   const [activeSection, setActiveSection] = useState('overview');
   const observersRef = useRef<IntersectionObserver[]>([]);
+  const navSections = project?.caseStudy?.length
+    ? [...sectionLabels, { id: 'case-study', label: 'Case study' }]
+    : sectionLabels;
 
   if (!project) return <Navigate to="/projects" replace />;
 
@@ -59,7 +62,7 @@ const ProjectDetail = () => {
 
     observersRef.current.push(observer);
 
-    sectionLabels.forEach(({ id }) => {
+    navSections.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -96,7 +99,7 @@ const ProjectDetail = () => {
 
       {/* Right-hand vertical reading progress indicator */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-end gap-6">
-        {sectionLabels.map(({ id, label }) => {
+        {navSections.map(({ id, label }) => {
           const isActive = activeSection === id;
           return (
             <button
@@ -192,35 +195,22 @@ const ProjectDetail = () => {
         />
       </div>
 
-      {/* Full case-study board */}
-      {project.caseStudyBoard && (
-        <section className="px-6 md:px-10 mb-24">
-          <div className="container mx-auto max-w-6xl">
-            <div className="flex items-baseline justify-between mb-6">
-              <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
-                Full case study board
-              </div>
-              <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground hidden md:inline">
-                Scroll
-              </span>
+      {/* Metrics */}
+      {project.metrics && project.metrics.length > 0 && (
+        <section className="px-6 md:px-10 mb-20">
+          <div className="container mx-auto max-w-5xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border rounded-sm overflow-hidden">
+              {project.metrics.map((m) => (
+                <div key={m.label} className="bg-background p-6">
+                  <div className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">{m.value}</div>
+                  <div className="mt-2 text-[10px] tracking-[0.2em] uppercase text-muted-foreground">{m.label}</div>
+                </div>
+              ))}
             </div>
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="max-h-[80vh] overflow-y-auto rounded-sm border border-border bg-secondary"
-            >
-              <img
-                src={project.caseStudyBoard}
-                alt={`${project.title} — full case study board`}
-                loading="lazy"
-                className="w-full block"
-              />
-            </motion.div>
           </div>
         </section>
       )}
+
 
 
       {/* Meta strip */}
@@ -296,6 +286,51 @@ const ProjectDetail = () => {
           )}
         </div>
       </section>
+
+      {/* Templated long-form case study */}
+      {project.caseStudy && project.caseStudy.length > 0 && (
+        <section id="case-study" className="px-6 md:px-10 pb-24">
+          <div className="container mx-auto max-w-5xl border-t border-border pt-12">
+            <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-12">
+              Full case study
+            </div>
+            <div className="space-y-16">
+              {project.caseStudy.map((s, i) => (
+                <motion.article
+                  key={s.label}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.55, delay: (i % 2) * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="grid md:grid-cols-[180px_1fr] gap-6 md:gap-12 border-t border-border/60 pt-8 first:border-t-0 first:pt-0"
+                >
+                  <div className="text-[10px] tracking-[0.25em] uppercase text-deep-purple-300 md:pt-2">
+                    {s.label}
+                  </div>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4 leading-tight">
+                      {s.title}
+                    </h2>
+                    <p className="text-lg leading-relaxed text-muted-foreground">{s.body}</p>
+                    {s.points && s.points.length > 0 && (
+                      <ul className="mt-6 space-y-3">
+                        {s.points.map((p) => (
+                          <li key={p} className="flex gap-3 text-lg leading-relaxed text-foreground/85">
+                            <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-deep-purple-300" />
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+
 
       {/* Next project */}
       <section className="px-6 md:px-10 pb-24">
