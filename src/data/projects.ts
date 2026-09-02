@@ -1,5 +1,13 @@
 import bubblrCover from "@/assets/bubblr-cover.jpg.asset.json";
-import bubblrBoard from "@/assets/bubblr-case-study.jpg.asset.json";
+
+export interface CaseStudySection {
+  /** Small uppercase label, e.g. "01 — Research" */
+  label: string;
+  title: string;
+  body: string;
+  /** Optional supporting bullet points */
+  points?: string[];
+}
 
 export interface Project {
   id: number;
@@ -19,9 +27,12 @@ export interface Project {
   detailImage?: string;
   team?: string;
   playUrl?: string;
-  /** Tall, full case-study board rendered as a scrollable panel on the detail page. */
-  caseStudyBoard?: string;
+  /** Short highlight stats shown under the hero of the case study. */
+  metrics?: { value: string; label: string }[];
+  /** Long-form, templated case-study sections. */
+  caseStudy?: CaseStudySection[];
 }
+
 
 
 
