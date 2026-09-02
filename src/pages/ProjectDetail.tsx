@@ -284,6 +284,51 @@ const ProjectDetail = () => {
         </div>
       </section>
 
+      {/* Templated long-form case study */}
+      {project.caseStudy && project.caseStudy.length > 0 && (
+        <section id="case-study" className="px-6 md:px-10 pb-24">
+          <div className="container mx-auto max-w-5xl border-t border-border pt-12">
+            <div className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-12">
+              Full case study
+            </div>
+            <div className="space-y-16">
+              {project.caseStudy.map((s, i) => (
+                <motion.article
+                  key={s.label}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.55, delay: (i % 2) * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="grid md:grid-cols-[180px_1fr] gap-6 md:gap-12 border-t border-border/60 pt-8 first:border-t-0 first:pt-0"
+                >
+                  <div className="text-[10px] tracking-[0.25em] uppercase text-deep-purple-300 md:pt-2">
+                    {s.label}
+                  </div>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4 leading-tight">
+                      {s.title}
+                    </h2>
+                    <p className="text-lg leading-relaxed text-muted-foreground">{s.body}</p>
+                    {s.points && s.points.length > 0 && (
+                      <ul className="mt-6 space-y-3">
+                        {s.points.map((p) => (
+                          <li key={p} className="flex gap-3 text-lg leading-relaxed text-foreground/85">
+                            <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-deep-purple-300" />
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+
+
       {/* Next project */}
       <section className="px-6 md:px-10 pb-24">
         <div className="container mx-auto max-w-6xl border-t border-border pt-12">
