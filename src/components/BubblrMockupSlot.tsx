@@ -23,11 +23,16 @@ const ratioClasses = {
 
 const BubblrMockupSlot = ({ projectTitle, sectionTitle, caption, ratio = 'wide' }: BubblrMockupSlotProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const mockupsRef = useRef<UploadedMockup[]>([]);
   const [mockups, setMockups] = useState<UploadedMockup[]>([]);
 
   useEffect(() => {
-    return () => mockups.forEach((mockup) => URL.revokeObjectURL(mockup.url));
+    mockupsRef.current = mockups;
   }, [mockups]);
+
+  useEffect(() => {
+    return () => mockupsRef.current.forEach((mockup) => URL.revokeObjectURL(mockup.url));
+  }, []);
 
   const addMockups = (files: FileList | null) => {
     if (!files) return;
@@ -46,8 +51,6 @@ const BubblrMockupSlot = ({ projectTitle, sectionTitle, caption, ratio = 'wide' 
 
   const removeMockup = (id: string) => {
     setMockups((current) => {
-      const mockup = current.find((item) => item.id === id);
-      if (mockup) URL.revokeObjectURL(mockup.url);
       return current.filter((item) => item.id !== id);
     });
   };
@@ -83,15 +86,16 @@ const BubblrMockupSlot = ({ projectTitle, sectionTitle, caption, ratio = 'wide' 
 
         <div className="flex min-h-40 gap-3 overflow-x-auto pb-2">
           {mockups.length === 0 ? (
-            <button
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => inputRef.current?.click()}
-              className="flex min-h-40 w-full min-w-full flex-col items-center justify-center border border-border/70 bg-background/50 px-6 text-center transition-colors hover:border-accent hover:bg-background md:min-h-52"
+              className="flex min-h-40 w-full min-w-full flex-col items-center justify-center rounded-none border border-border/70 bg-background/50 px-6 text-center transition-colors hover:border-accent hover:bg-background md:min-h-52"
             >
               <ImagePlus className="mb-3 h-6 w-6 text-accent" />
               <span className="text-sm text-foreground">Upload mockups for this section</span>
               <span className="mt-1 text-xs text-muted-foreground">PNG, JPG, or WEBP · select multiple screens</span>
-            </button>
+            </Button>
           ) : (
             mockups.map((mockup) => (
               <div key={mockup.id} className={`group relative shrink-0 overflow-hidden border border-border bg-background ${ratioClasses[ratio]}`}>
