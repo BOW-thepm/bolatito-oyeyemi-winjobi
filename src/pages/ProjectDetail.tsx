@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
+import BubblrMockupSlot from '@/components/BubblrMockupSlot';
 import { useEffect, useState, useRef } from 'react';
 
 const sectionLabels = [
@@ -323,7 +324,14 @@ const ProjectDetail = () => {
                       </ul>
                     )}
 
-                    {(s.image || s.imageCaption) && (
+                    {project.slug === 'bubblr' && s.imageCaption ? (
+                      <BubblrMockupSlot
+                        projectTitle={project.title}
+                        sectionTitle={s.title}
+                        caption={s.imageCaption}
+                        ratio={s.imageRatio}
+                      />
+                    ) : (s.image || s.imageCaption) && (
                       <figure className="mt-8">
                         <div
                           className={`w-full overflow-hidden rounded-sm border border-border bg-secondary ${
