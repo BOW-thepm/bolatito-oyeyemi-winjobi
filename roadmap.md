@@ -1,4 +1,6 @@
 # Roadmap
 
-- [x] Rework Bubblr portfolio case study with categorized sections and scrollable mockup upload spaces.
-- [ ] Replace the provisional Bubblr copy with exact reference wording once a readable source export or pasted text is provided.
+- [x] Redesign Bubblr portfolio case study using the dedicated editorial layout and existing case-study content.
+- [ ] Replace the current Bubblr copy with exact reference wording once a readable source export is available.
+- [x] Represent every original screen with clearly named proportional upload slots and horizontally scrollable visual rails.
+- [x] Verify desktop and mobile presentation plus build/runtime health.

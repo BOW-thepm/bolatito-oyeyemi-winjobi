@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
+import BubblrCaseStudy from '@/components/BubblrCaseStudy';
 import BubblrMockupSlot from '@/components/BubblrMockupSlot';
 import { useEffect, useState, useRef } from 'react';
 
@@ -30,6 +31,8 @@ const ProjectDetail = () => {
   const next = projects[(currentIndex + 1) % projects.length];
 
   useEffect(() => {
+    if (project.slug === 'bubblr') return;
+
     // Clean up any previous observers stored in ref
     observersRef.current.forEach((obs) => obs.disconnect());
     observersRef.current = [];
@@ -79,6 +82,10 @@ const ProjectDetail = () => {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  if (project.slug === 'bubblr') {
+    return <BubblrCaseStudy project={project} next={next} />;
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
