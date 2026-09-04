@@ -92,7 +92,7 @@ const BubblrCaseStudy = ({ project, next }: BubblrCaseStudyProps) => {
             <div className="container mx-auto max-w-5xl">
               <div className="grid grid-cols-2 border-y border-border md:grid-cols-4">
                 {project.metrics.map((metric) => (
-                  <div key={metric.label} className="border-b border-border p-5 last:border-b-0 even:border-l md:border-b-0 md:p-6 md:nth-[3]:border-l md:nth-[4]:border-l">
+                  <div key={metric.label} className="border-b border-border p-5 last:border-b-0 even:border-l md:border-b-0 md:p-6">
                     <div className="text-3xl font-bold tracking-tight md:text-4xl">{metric.value}</div>
                     <div className="mt-2 text-[9px] uppercase tracking-[0.18em] text-muted-foreground">{metric.label}</div>
                   </div>

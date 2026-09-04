@@ -139,6 +139,10 @@
     @apply font-satoshi tracking-tight;
   }
 
+  .case-label {
+    @apply text-[10px] uppercase tracking-[0.25em] text-muted-foreground;
+  }
+
   .section-padding {
     @apply py-20 md:py-32;
   }

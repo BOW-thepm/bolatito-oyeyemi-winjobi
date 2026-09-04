@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
 import BubblrMockupSlot from '@/components/BubblrMockupSlot';
+import BubblrCaseStudy from '@/components/BubblrCaseStudy';
 import { useEffect, useState, useRef } from 'react';
 
 const sectionLabels = [
@@ -28,6 +29,10 @@ const ProjectDetail = () => {
 
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(currentIndex + 1) % projects.length];
+
+  if (project.slug === 'bubblr') {
+    return <BubblrCaseStudy project={project} next={next} />;
+  }
 
   useEffect(() => {
     // Clean up any previous observers stored in ref
