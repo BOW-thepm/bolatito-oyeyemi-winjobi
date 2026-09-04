@@ -29,10 +29,6 @@ const ProjectDetail = () => {
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(currentIndex + 1) % projects.length];
 
-  if (project.slug === 'bubblr') {
-    return <BubblrCaseStudy project={project} next={next} />;
-  }
-
   useEffect(() => {
     if (project.slug === 'bubblr') return;
 
