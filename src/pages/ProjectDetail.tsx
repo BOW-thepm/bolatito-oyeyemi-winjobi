@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
 import BubblrCaseStudy from '@/components/BubblrCaseStudy';
+import BubblrMockupSlot from '@/components/BubblrMockupSlot';
 import { useEffect, useState, useRef } from 'react';
 
 const sectionLabels = [

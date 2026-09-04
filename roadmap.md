@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Redesign Bubblr portfolio case study using Reference 2 layout and Reference 1 content.
-- [ ] Preserve exact Bubblr wording; do not invent or paraphrase copy.
-- [ ] Represent every original screen with clearly named proportional upload slots and art-directed compositions.
-- [ ] Verify desktop, tablet, and mobile presentation plus build/runtime health.
+- [x] Redesign Bubblr portfolio case study using the dedicated editorial layout and existing case-study content.
+- [ ] Replace the current Bubblr copy with exact reference wording once a readable source export is available.
+- [x] Represent every original screen with clearly named proportional upload slots and horizontally scrollable visual rails.
+- [x] Verify desktop and mobile presentation plus build/runtime health.
