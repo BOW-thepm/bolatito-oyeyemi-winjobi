@@ -6,6 +6,8 @@ import { getProjectBySlug, projects } from '@/data/projects';
 import ProjectGallery from '@/components/ProjectGallery';
 import BubblrCaseStudy from '@/components/BubblrCaseStudy';
 import BubblrMockupSlot from '@/components/BubblrMockupSlot';
+import MscCaseStudy from '@/components/MscCaseStudy';
+import LockedProjectNotice from '@/components/LockedProjectNotice';
 import { useEffect, useState, useRef } from 'react';
 
 const sectionLabels = [
@@ -85,6 +87,14 @@ const ProjectDetail = () => {
 
   if (project.slug === 'bubblr') {
     return <BubblrCaseStudy project={project} next={next} />;
+  }
+
+  if (project.slug === 'msc') {
+    return <MscCaseStudy />;
+  }
+
+  if (project.locked) {
+    return <LockedProjectNotice project={project} />;
   }
 
   return (

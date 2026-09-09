@@ -33,6 +33,7 @@ export interface Project {
   detailImage?: string;
   team?: string;
   playUrl?: string;
+  locked?: boolean;
   /** Short highlight stats shown under the hero of the case study. */
   metrics?: { value: string; label: string }[];
   /** Long-form, templated case-study sections. */
@@ -211,6 +212,7 @@ export const projects: Project[] = [
   {
     id: 7,
     slug: "feetz",
+    locked: true,
     title: "Feetz",
     description:
       "A bold e-commerce platform for street-comfort footwear, blending editorial storytelling with a streamlined shopping experience.",
@@ -251,6 +253,7 @@ export const projects: Project[] = [
   {
     id: 1,
     slug: "todo-plus-plus",
+    locked: true,
     title: "TODO++",
     description:
       "A simple hardware based to do list designed for users who want a dedicated task management device.",
@@ -271,6 +274,7 @@ export const projects: Project[] = [
   {
     id: 2,
     slug: "refucare",
+    locked: true,
     title: "RefuCare",
     description:
       "A mobile healthcare app that helps newcomers to Canada find, book, and navigate clinics with ease.",
