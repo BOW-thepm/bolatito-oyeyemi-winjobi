@@ -75,7 +75,7 @@ const MscCaseStudy = () => {
     <div className="msc-wrap"><div className="msc-topnav"><Link to="/projects" className="msc-back"><ArrowLeft size={16}/>All projects</Link><span className="msc-pill">E-Commerce</span></div></div>
 
     <header className="msc-wrap msc-hero msc-reveal" id="hero">
-      <div className="msc-hero-meta"><span>2026</span><i/><span>E-Commerce</span></div>
+      <div className="msc-hero-meta"><span>2025</span><i/><span>E-Commerce</span></div>
       <h1>Medicare Supply Chain (MSC)</h1>
       <p>A digital platform that connects licensed pharmacies with verified pharmaceutical suppliers and distributors in Nigeria.</p>
       <div className="msc-hero-visual"><img src={heroImage.url} alt="MSC desktop and mobile storefront showing structured pharmaceutical procurement" /></div>
