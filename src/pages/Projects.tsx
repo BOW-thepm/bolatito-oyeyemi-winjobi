@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { projects } from '@/data/projects';
 import ProjectHoverPreview from '@/components/ProjectHoverPreview';
+import { LockKeyhole } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
 
@@ -101,7 +103,16 @@ const Projects = () => {
               >
                 <Link
                   to={`/projects/${project.slug}`}
-                  className="group flex items-baseline gap-6 py-7 md:py-9"
+                  onClick={(event) => {
+                    if (project.locked) {
+                      event.preventDefault();
+                      toast({
+                        title: 'Case study locked',
+                        description: `${project.title} is coming soon.`,
+                      });
+                    }
+                  }}
+                  className={`group flex items-baseline gap-6 py-7 md:py-9 ${project.locked ? 'opacity-65' : ''}`}
                 >
                   <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground w-8 shrink-0 transition-colors duration-300 group-hover:text-accent">
                     {String(index + 1).padStart(2, '0')}
@@ -110,6 +121,12 @@ const Projects = () => {
                     {project.title}
                     <ArrowUpRight className="h-5 w-5 md:h-6 md:w-6 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                   </h3>
+                  {project.locked && (
+                    <span className="inline-flex shrink-0 items-center gap-1.5 border border-accent/40 px-2 py-1 text-[9px] uppercase tracking-[0.16em] text-accent">
+                      <LockKeyhole className="h-3 w-3" aria-hidden="true" />
+                      Coming soon
+                    </span>
+                  )}
                   <span className="ml-auto hidden sm:block text-[10px] tracking-[0.25em] uppercase text-muted-foreground text-right">
                     {project.category}
                   </span>
